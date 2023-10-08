@@ -1,3 +1,8 @@
-* {
-  font-family: ;
+:root {
+  --blanco: #ffffff;
+  --rojo: #f90000;
+  --griscla: #7a7a7a;
+  --negro: #000000;
+  --grisoscu: #414141;
+  --grisfont: rgb(185, 185, 185) a;
 }
