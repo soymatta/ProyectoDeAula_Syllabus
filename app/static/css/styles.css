@@ -6,3 +6,11 @@
   --grisoscu: #414141;
   --grisfont: rgb(185, 185, 185) a;
 }
+html {
+  font-size: 62.5%;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
