@@ -1,16 +1,25 @@
-:root {
-  --blanco: #ffffff;
-  --rojo: #f90000;
-  --griscla: #7a7a7a;
-  --negro: #000000;
-  --grisoscu: #414141;
-  --grisfont: rgb(185, 185, 185) a;
+* {
+  font-family: "Fira Sans", sans-serif;
 }
-html {
-  font-size: 62.5%;
+bg-primary {
+  background-color: #f90000;
 }
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
+bg-secondary {
+  background-color: #7a7a7a;
+}
+bg-tertiary {
+  background-color: #414141;
+}
+bg-fondo {
+  color: rgb(185, 185, 185) a;
+}
+
+color-primary {
+  color: #f90000;
+}
+color-secondary {
+  color: #7a7a7a;
+}
+color-tertiary {
+  color: #414141;
 }
