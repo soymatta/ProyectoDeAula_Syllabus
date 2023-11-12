@@ -13,12 +13,30 @@ main = blueprints.Blueprint('main', __name__)
 def index():
     return redirect(url_for('main.home'))
 
-
+# Menu / Home
 @main.route('/home', methods=['GET'])
 def home():
-
     return render_template('/home.html')
 
+# Login 
+@main.route('/login', methods=['GET'])
+def login():
+    return render_template('/login.html')
+
+# Admin option panel
+@main.route('/admin/options', methods=['GET'])
+def admin():
+    return render_template('/admin.html')
+
+# Editor online
+@main.route('/editor', methods=['GET'])
+def editor():
+    return render_template('/editor.html')
+
+# Admin panel
+@main.route('/admin/options/update_user')
+def admin_options():
+    return render_template('/admin.html')
 
 # ------------------- Structure Methods -----------------
 
