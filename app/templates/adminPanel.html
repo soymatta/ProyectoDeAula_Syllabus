@@ -1,0 +1,282 @@
+{% extends "layout.html" %} {% block content %}
+<section class="container d-flex p-4">
+  <div class="container row align-items-center">
+    <div class="col-lg-6 text-center text-lg-start">
+      <h2 class="fw-bold">Seleccione una opcion</h2>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="opcionRadio"
+          id="opcionCrearCuenta"
+          onchange="mostrarFormulario('modificarCuentas')"
+        />
+        <label class="form-check-label" for="opcionCrearCuenta">
+          Crear nueva cuenta
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="opcionRadio"
+          id="opcionModificarCuenta"
+          onchange="mostrarFormulario('modificarCuentas')"
+        />
+        <label class="form-check-label" for="opcionModificarCuenta">
+          Modificar cuenta
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="opcionRadio"
+          id="opcionEliminarCuenta"
+          onchange="mostrarFormulario('modificarCuentas')"
+        />
+        <label class="form-check-label" for="opcionEliminarCuenta">
+          Eliminar cuenta
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="opcionRadio"
+          id="opcionNuevaAsignatura"
+          onchange="mostrarFormulario('modificarAsignaturas')"
+        />
+        <label class="form-check-label" for="opcionNuevaAsignatura">
+          Agregar nueva asignatura
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="opcionRadio"
+          id="opcionEliminarAsignatura"
+          onchange="mostrarFormulario('modificarAsignaturas')"
+        />
+        <label class="form-check-label" for="opcionEliminarAsignatura">
+          Eliminar asignatura
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="opcionRadio"
+          id="opcionAdministrarAsignaturasDocente"
+          onchange="mostrarFormulario('administrarAsignaturasDocente')"
+        />
+        <label
+          class="form-check-label"
+          for="opcionAdministrarAsignaturasDocente"
+        >
+          Administrar asignaturas del docente
+        </label>
+      </div>
+    </div>
+    <div class="col-md-10 mx-auto col-lg-6">
+      <form id="modificarCuentas" class="p-4 p-md-5 rounded-5 bg_tertiary">
+        <h3 class="text-center fw-bold">Modificar cuentas</h3>
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            class="form-control bg_secondary"
+            id="floatingInput"
+            placeholder="name@example.com"
+          />
+          <label for="floatingInput"
+            ><i class="bx bxs-user" style="color: #ff0000"></i> Nombre de
+            usuario</label
+          >
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control bg_secondary"
+            id="floatingInput3"
+            placeholder="text"
+          />
+          <label for="floatingInput3"
+            ><i class="bx bx-envelope" style="color: #ff0000"></i> Cambiar
+            nombre de usuario
+          </label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            class="form-control bg_secondary"
+            id="floatingInput"
+            placeholder="name@example.com"
+          />
+          <label for="floatingInput"
+            ><i class="bx bxs-user" style="color: #ff0000"></i> Email de
+            usuario</label
+          >
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            class="form-control bg_secondary"
+            id="floatingInput2"
+            placeholder="name@example.com"
+          />
+          <label for="floatingInput2"
+            ><i class="bx bx-envelope" style="color: #ff0000"></i> Nuevo
+            email</label
+          >
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="password"
+            class="form-control bg_secondary"
+            id="floatingPassword"
+            placeholder="Password"
+          />
+          <label for="floatingPassword"
+            ><i class="bx bxs-lock" style="color: #ff0000"></i> Cambiar
+            contraseña</label
+          >
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="password"
+            class="form-control bg_secondary"
+            id="floatingPassword2"
+            placeholder="Password"
+          />
+          <label for="floatingPassword2"
+            ><i class="bx bx-key" style="color: #ff0000"></i> Repetir
+            contraseña</label
+          >
+        </div>
+        <button
+          id="btn_hover"
+          class="w-100 btn btn-lg btn-primary bg_primary mb-3 border-0"
+        >
+          Aceptar
+        </button>
+      </form>
+      <form id="modificarAsignaturas" class="p-4 p-md-5 rounded-5 bg_tertiary">
+        <h3 class="text-center fw-bold">Modificar asignaturas</h3>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control bg_secondary"
+            id="floatingInput"
+            placeholder="text"
+          />
+          <label for="floatingInput">Codigo de asignatura</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control bg_secondary"
+            id="floatingInput2"
+            placeholder="text"
+          />
+          <label for="floatingInput2">Cambiar nombre de la asignatura</label>
+        </div>
+        <div class="form-floating mb-3">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bx bxs-book"></i> Tipo de asignatura
+          </button>
+          <ul class="dropdown-menu">
+            <li><button class="dropdown-item">Practica</button></li>
+            <li><button class="dropdown-item">Teórica</button></li>
+            <li><button class="dropdown-item">Teórico-practica</button></li>
+          </ul>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control bg_secondary"
+            id="floatingtext"
+            placeholder="Password"
+          />
+          <label for="floatingPassword">Cantidad de creditos </label>
+        </div>
+        <button
+          id="btn_hover"
+          class="w-100 btn btn-lg btn-primary bg_primary mb-3 border-0"
+        >
+          Aceptar
+        </button>
+      </form>
+      <form
+        id="administrarAsignaturasDocente"
+        class="p-4 p-md-5 rounded-5 bg_tertiary"
+      >
+        <h3 class="text-center fw-bold">Administrar asignaturas del docente</h3>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control bg_secondary"
+            id="floatingInput"
+            placeholder="text"
+          />
+          <label for="floatingInput">Email del docente</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control bg_secondary"
+            id="floatingInput2"
+            placeholder="text"
+          />
+          <label for="floatingInput2">Codigo de asignatura</label>
+        </div>
+        <div class="row justify-content-between">
+          <button
+            id="btn_hover"
+            class="btn btn-lg btn-primary bg_primary border-0"
+            style="width: 40%"
+          >
+            Agregar
+          </button>
+          <button
+            id="btn_hover"
+            class="btn btn-lg btn-primary bg_primary border-0"
+            style="width: 40%"
+          >
+            Eliminar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Asignar la clase 'd-none' a todos los elementos 'form'
+    const formularios = document.querySelectorAll("form");
+    formularios.forEach((form) => form.classList.add("d-none"));
+  });
+
+  function mostrarFormulario(formularioId) {
+    // Ocultar todos los formularios
+    const formularios = document.querySelectorAll("form");
+    formularios.forEach((form) => form.classList.add("d-none"));
+
+    // Mostrar el formulario seleccionado
+    const formularioSeleccionado = document.getElementById(formularioId);
+    formularioSeleccionado.classList.remove("d-none");
+  }
+</script>
+
+{% endblock %}{% block scripts%} {% endblock %}
