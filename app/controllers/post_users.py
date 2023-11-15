@@ -1,6 +1,6 @@
 from database.db import insert
 import datetime
-
+   
 def main(event):
 
     try:
