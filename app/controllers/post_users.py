@@ -1,75 +1,48 @@
 from database.db import insert
-from controllers.validators import str_validator, bool_validator
-
-R = '\033[31m'  # Red
-RS = '\033[39m'  # Reset
+import datetime
 
 def main(event):
-      
-    # Header
+
     try:
+
         data = event['body']
-        params = {}
 
-        if "params" in event:
-            params = event['params']
-
-            for key, value in params.items():
-                data.update({key: value})
-
-        # Mandatory params (log-in required).
+        # User info (necessary)
         name = data['name']
         email = data['email']
         password = data['password']
 
-
-    except KeyError as e:
-        return f"{R}* The method needs the params.{RS} {e}"
-        
-    # Body
-    validation = []
-    result = {'data': [], 'status': False}
-
-    # Default params.
-    default = {
-        'status': 1,
-        'role': 'teacher'
+    except Exception as e:
+        return {
+            'status': False,
+            'error_message': f"Datos insuficientes, revise la data enviada. {e}"
         }
-
-    # Update with defaults.
-    data.update({**default})
-
     
+    # Body
+    result = {'status': False, 'data': {} }
 
-    for field, value in data.items():
+    defaults = {
+        'status': 1,
+        'role': 'teacher',
+        'image': 'image.png',
+        'last_update': datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+    }
 
-        if str_validator(value):
-            validation.append(1)
-        
-    favorite = data['favorite']
-    if bool_validator(favorite):
-        validation.append(1)
+    result['data'].update(**defaults)
+    result['data'].update(**data)
 
-    if len(validation) == len(data):
-        inserted = insert('clients', data)
-        result = {
-            'data': inserted,
-            'status': bool(inserted)
+    # inserted = insert('users', data)
+
+    result['status'] = True
+
+    if not result['status']:
+        return {
+            'status_code': 404,
+            'error_message': 'Algo pasó con el metodo de inserción, revise la tabla o data enviadas.'
         }
 
-    else:
-        print(f"{R} * You must complete the fields properly. {RS}")
-
-    # Response
-    status = result['status']
-
-    if not status:
-        result.update({
-            'data': [],
-            'error': "CreateException",
-            'errorMessage': "Could not create the user register." 
-        }) 
-
-    return result
-
+    return {
+        'status_code': 200,
+        'body': result['data']
+    }
 

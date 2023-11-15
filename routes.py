@@ -11,32 +11,32 @@ main = blueprints.Blueprint('main', __name__)
 # ------------------------ Template Rendering ------------------------
 
 # Menu / Home
-@app.route('/menu', methods=['GET'])
+@main.route('/menu', methods=['GET'])
 def menu():
     return render_template('/menu.html')
 
 # Login 
-@app.route('/login', methods=['GET'])
+@main.route('/login', methods=['GET'])
 def login():
     return render_template('/login.html')
 
 # Admin option panel
-@app.route('/admin/options', methods=['GET'])
+@main.route('/admin/options', methods=['GET'])
 def admin():
     return render_template('/adminPanel.html')
 
 # Admin panel
-@app.route('/admin/denied')
+@main.route('/admin/denied')
 def admin_denied():
     return render_template('/adminDenegado.html')
 
 # Editor online
-@app.route('/editor', methods=['GET'])
+@main.route('/editor', methods=['GET'])
 def editor():
     return render_template('/editor.html')
 
 # Cerrar sesión
-@app.route('/logout')
+@main.route('/logout')
 def logout():
     session.pop('user_id', None)
     return redirect(url_for('menu'))
