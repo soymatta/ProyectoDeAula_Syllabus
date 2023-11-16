@@ -24,6 +24,26 @@ def main(event):
         return f"{R}* This method requires the params.{e}{RS}"
 
     # Body 
+
+    permitted = (
+        'name',
+        'email',
+        'password',
+        'subjects',
+        'role',
+        'status',
+        'faculties',
+        'image',
+        'last_update'
+    )
+
+    for i in  data:
+        if i not in permitted:
+            return {
+                'status': False,
+                'error_message': 'There are unvalid fields in the data'
+            }
+
     validation = []
     result = {'data': [], 'status': False}
 

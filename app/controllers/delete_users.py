@@ -22,7 +22,10 @@ def main(event):
     result = {'status': False, 'row_count': 0}
 
     result['status'] = bool(delete('users', params))
-    
+
+    if result['status']:
+        result['row_count'] = 1
+
     # Response
     return {'status': bool(result), 'data': result}
 
