@@ -92,6 +92,7 @@ def insert(table: str, data: dict):
         return False
 
     data.update({'id': id})
+
     return data
 
 
@@ -141,7 +142,9 @@ def search(table, params):
     else:
         query += ";"
 
-    execute_query(query)
+    data = execute_query(query)
+
+    return data
 
 
 def update(table, field, condition):

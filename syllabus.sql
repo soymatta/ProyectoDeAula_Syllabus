@@ -9,7 +9,6 @@ CREATE TABLE IF NOT EXISTS users (
     status BOOLEAN NOT NULL,
     subjects VARCHAR(1500),
     faculties VARCHAR(1000),
-    image VARCHAR(500),
     last_update DATETIME
 );
 CREATE TABLE IF NOT EXISTS subjects(

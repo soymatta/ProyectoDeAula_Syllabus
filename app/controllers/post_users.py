@@ -24,16 +24,15 @@ def main(event):
     defaults = {
         'status': 1,
         'role': 'teacher',
-        'image': 'image.png',
         'last_update': datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
     }
 
-    result['data'].update(**defaults)
-    result['data'].update(**data)
+    result['data'].update(**defaults) # Solo con los defaults
+    result['data'].update(**data)     # Agrega la data enviada y reescribe la actual en caso tal
 
-    # inserted = insert('users', data)
+    inserted = insert('users', data)
 
-    result['status'] = True
+    result['status'] = bool(inserted) 
 
     if not result['status']:
         return {
