@@ -90,7 +90,7 @@ def api_post_users():
     return response
 
 @main.route('/subjects', methods=['POST'])
-def api_post_distribuitors():
+def api_post_subjects():
 
     event = request_parse(request)
     response = post_subjects.main(event)
@@ -99,7 +99,7 @@ def api_post_distribuitors():
 
 
 @main.route('/faculties', methods=['POST'])
-def api_post_faculties(distributor_id):
+def api_post_faculties():
 
     event = request_parse(request)
     
@@ -107,9 +107,25 @@ def api_post_faculties(distributor_id):
 
     return response
 
+@main.route('/syllabus', methods=['POST'])
+def api_post_syllabus():
+    
+    event = request_parse(request)
+    response = post_syllabus.main(event)
+
+    return response
+
+@main.route('/versions', methods=['POST'])
+def api_post_versions():
+    
+    event = request_parse(request)
+    response = post_version.main(event)
+
+    return response
+
 # -------------------- GET --------------------
 @main.route('/users/<user_id>', methods=['GET'])
-def api_get_users():
+def api_get_users(user_id):
 
     event = request_parse(request)
     response = get_users.main(event)
@@ -118,7 +134,7 @@ def api_get_users():
 
 
 @main.route('/subjects/<subject_id>', methods=['GET'])
-def api_get_subjects():
+def api_get_subjects(subject_id):
 
     event = request_parse(request)
     response = get_subjects.main(event)
@@ -127,12 +143,31 @@ def api_get_subjects():
 
 
 @main.route('/faculties/<faculty_id>/', methods=['GET'])
-def api_get_faculties(distributor_id):
+def api_get_faculties(faculty_id):
 
     event = request_parse(request)
     response = get_faculties.main(event)
 
     return response
+
+
+@main.route('/syllabus/<syllabus_id>/', methods=['GET'])
+def api_get_syllabus(syllabus_id):
+
+    event = request_parse(request)
+    response = get_syllabus.main(event)
+
+    return response
+
+
+@main.route('/versions/<version_id>/', methods=['GET'])
+def api_get_versions(version_id):
+
+    event = request_parse(request)
+    response = get_version.main(event)
+
+    return response
+
 
 # -------------------- PUT --------------------
 @main.route('/users/<user_id>', methods=['PUT'])
@@ -145,7 +180,7 @@ def api_put_users():
 
 
 @main.route('/subjects/<subject_id>', methods=['PUT'])
-def api_put_subjects():
+def api_put_subjects(subject_id):
 
     event = request_parse(request)
     response = put_subjects.main(event)
@@ -154,16 +189,35 @@ def api_put_subjects():
 
 
 @main.route('/faculties/<faculty_id>', methods=['PUT'])
-def api_put_faculties(distributor_id):
+def api_put_faculties(faculty_id):
 
     event = request_parse(request)
     response = put_faculties.main(event)
 
     return response
 
+
+@main.route('/syllabus/<syllabus_id>', methods=['PUT'])
+def api_put_syllabus(syllabus_id):
+
+    event = request_parse(request)
+    response = put_syllabus.main(event)
+
+    return response
+
+
+@main.route('/versions/<version_id>', methods=['PUT'])
+def api_put_versions(version_id):
+
+    event = request_parse(request)
+    response = put_version.main(event)
+
+    return response
+
+
 # -------------------- DELETE -------------------- 
 @main.route('/users/<user_id>', methods=['DELETE'])
-def api_delete_users():
+def api_delete_users(user_id):
 
     event = request_parse(request)
     response = delete_users.main(event)
@@ -172,7 +226,7 @@ def api_delete_users():
 
 
 @main.route('/subjects/<subject_id>', methods=['DELETE'])
-def api_delete_subjects():
+def api_delete_subjects(subject_id):
 
     event = request_parse(request)
     response = delete_subjects.main(event)
@@ -181,9 +235,27 @@ def api_delete_subjects():
 
 
 @main.route('/faculties/<faculty_id>', methods=['DELETE'])
-def api_delete_faculties(distributor_id):
+def api_delete_faculties(faculty_id):
 
     event = request_parse(request)
     response = delete_faculties.main(event)
+
+    return response
+
+
+@main.route('/syllabus/<syllabus_id>', methods=['DELETE'])
+def api_delete_syllabus(syllabus_id):
+
+    event = request_parse(request)
+    response = delete_syllabus.main(event)
+
+    return response
+
+
+@main.route('/versions/<version_id>', methods=['DELETE'])
+def api_delete_versions(version_id):
+
+    event = request_parse(request)
+    response = delete_syllabus.main(event)
 
     return response
