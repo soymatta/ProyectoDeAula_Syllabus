@@ -1,5 +1,5 @@
 import pymysql
-from .connection_db import execute_query
+from connection_db import execute_query
 
 # Colors
 R = '\033[31m'  # Red
