@@ -30,7 +30,7 @@ def main(event):
     result['data'].update(**data)
 
    
-    result['status'] = bool(insert('subjects', data, params))
+    result['status'] = bool(insert('subjects', data))
     
 
     if not result['status']:
