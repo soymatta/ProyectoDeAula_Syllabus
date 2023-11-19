@@ -142,9 +142,7 @@ def search(table, params):
     else:
         query += ";"
 
-    data = execute_query(query)
-
-    return data
+    execute_query(query)
 
 
 def update(table, field, condition):
