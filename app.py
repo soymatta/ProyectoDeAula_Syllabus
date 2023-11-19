@@ -21,6 +21,10 @@ app.static_folder = 'app/static'
 def menu():
     return render_template('/menu.html')
 
+params = {
+    'id': '1'
+}
+
 # Login 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -31,7 +35,9 @@ def login():
             email = request.form['email']
             password = request.form['password']
 
-            user = search('users', '1')
+            user = search('users', params)
+
+            user = True if user['email'] == email and user['password'] == password else False
 
             if user:
                 session['user_id'] = user.id
