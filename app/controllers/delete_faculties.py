@@ -11,7 +11,7 @@ def main(event):
         params['id'] = event['params'].pop(id_param_name)
 
     except Exception as e:
-        return f"* Debe enviar el id de usuario.{e}"
+        return f"* Debe enviar el id de la facultad.{e}"
     
     # Body
     result = {'status': False, 'row_count': 0}

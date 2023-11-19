@@ -1,10 +1,6 @@
 from database.db import delete
 
-
-R = '\033[31m'  # Red
-RS = '\033[39m'  # Reset
-
-id_param_name = 'versions_id'
+id_param_name = 'version_id'
 
 def main(event):
     
@@ -12,18 +8,21 @@ def main(event):
     try:
         params = event['params']
 
-        if id_param_name in params:
-            params['id'] = params.pop(id_param_name)
+        params['id'] = event['params'].pop(id_param_name)
 
-    except KeyError as e:
-        return f"{R}* This method requires the parameters.{e}{RS}"
+    except Exception as e:
+        return f"* Debe enviar el id de version.{e}"
     
     # Body
     result = {'status': False, 'row_count': 0}
 
     result['status'] = bool(delete('versions', params))
     
-    if result['status']:
-        result['row_count'] = 1
+    if not result['status']:
+        return {
+            'status_code': 404,
+            'error_message': 'Revisa los datos enviados. La tabla o los parametros son erroneos.'
+        }
+    
     # Response
-    return {'status': bool(result), 'data': result}
+    return {'status': bool(result), 'row_count': 1}
