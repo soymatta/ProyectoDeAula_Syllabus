@@ -1,6 +1,7 @@
 from app.routes.routes import main
+from app.database.db import search
 import os
-from flask import Flask, render_template, url_for, session, redirect
+from flask import Flask, render_template, url_for, session, redirect, request
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -8,38 +9,60 @@ app.secret_key = os.urandom(50)
 
 app.register_blueprint(main)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+app.template_folder = 'app/templates'
+app.static_folder = 'app/static'
 
 # Routes - Template Rendering
 
+
+
 # Menu / Home
-@main.route('/menu', methods=['GET'])
+@app.route('/menu', methods=['GET'])
 def menu():
     return render_template('/menu.html')
 
 # Login 
-@main.route('/login', methods=['GET'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('/login.html')
+    if 'user_id' in session:
+        return redirect(url_for('menu'))
+    else: 
+        if request.method == 'POST':
+            email = request.form['email']
+            password = request.form['password']
+
+            user = users.query.filter_by(email=email, password=password).first()
+
+            if user:
+                session['user_id'] = user.id
+                print('Inicio de sesión exitoso')
+                return redirect(url_for('menu'))
+            else:
+                print('Credenciales incorrectas')
+                return redirect(url_for('login'))
+
+    return render_template('login.html')
 
 # Admin option panel
-@main.route('/admin/options', methods=['GET'])
+@app.route('/admin/options', methods=['GET'])
 def admin():
     return render_template('/adminPanel.html')
 
 # Admin panel
-@main.route('/admin/denied')
+@app.route('/admin/denied')
 def admin_denied():
     return render_template('/adminDenegado.html')
 
 # Editor online
-@main.route('/editor', methods=['GET'])
+@app.route('/editor', methods=['GET'])
 def editor():
     return render_template('/editor.html')
 
 # Cerrar sesión
-@main.route('/logout')
+@app.route('/logout')
 def logout():
     session.pop('user_id', None)
     return redirect(url_for('menu'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
