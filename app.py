@@ -1,52 +1,32 @@
-from app.routes.routes import main
-from app.database.db import search
-import os
-from flask import Flask, render_template, url_for, session, redirect, request
+from flask import render_template, request, redirect, url_for, session, flash, jsonify
 
-app = Flask(__name__)
-app.config.from_object(__name__)
-app.secret_key = os.urandom(50)
+from syllabus.db.db import app, db
 
-app.register_blueprint(main)
+from syllabus.models.user_model import User
 
-app.template_folder = 'app/templates'
-app.static_folder = 'app/static'
+from syllabus.routes.faculty_routes import faculty_routes
+from syllabus.routes.version_routes import version_routes
+from syllabus.routes.syllabus_routes import syllabus_routes
+from syllabus.routes.subject_routes import subject_routes
+from syllabus.routes.user_routes import user_routes
+
+app.register_blueprint(faculty_routes, url_prefix="/faculty")
+app.register_blueprint(subject_routes, url_prefix="/subject")
+app.register_blueprint(user_routes, url_prefix="/user")
+app.register_blueprint(syllabus_routes, url_prefix="/syllabus")
+app.register_blueprint(version_routes, url_prefix="/version")
+
 
 # Routes - Template Rendering
 
-
-
 # Menu / Home
-@app.route('/menu', methods=['GET'])
+@app.route('/', methods=['GET'])
 def menu():
     return render_template('/menu.html')
-
-params = {
-    'id': '1'
-}
 
 # Login 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if 'user_id' in session:
-        return redirect(url_for('menu'))
-    else: 
-        if request.method == 'POST':
-            email = request.form['email']
-            password = request.form['password']
-
-            user = search('users', params)
-
-            user = True if user['email'] == email and user['password'] == password else False
-
-            if user:
-                session['user_id'] = user.id
-                print('Inicio de sesión exitoso')
-                return redirect(url_for('menu'))
-            else:
-                print('Credenciales incorrectas')
-                return redirect(url_for('login'))
-
     return render_template('login.html')
 
 # Admin option panel

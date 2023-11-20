@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Syllabus{% endblock %}</title>
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='img/Logo.png') }}"
+      type="image/x-icon"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+
+    <!-- Iconos CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css' ) }}"
+    />
+
+    <!-- fuente -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    {% block header %}
+    <header class="p-2 bg_primary fw-bold">
+      <div class="container">
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+        >
+          <a
+            href="/menu"
+            class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+          >
+            <img
+              src="{{ url_for('static', filename='img/logoSyllabus.png') }}"
+              alt="Logo syllabus virtual"
+              height="80px"
+            />
+          </a>
+
+          <ul
+            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+          >
+            <li>
+              <a href="/menu" class="nav-link px-2 mx-2 text-white"
+                >MIS ASIGNATURAS</a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-link px-2 mx-2 text-white">MI PERFIL</a>
+            </li>
+            <li>
+              <a href="/admin/options" class="nav-link px-2 mx-2 text-white"
+                >ADMINISTRADOR</a
+              >
+            </li>
+            <li>
+              <a href="/logout" class="nav-link px-2 mx-2 text-white"
+                ><i class="bx bx-log-out"></i> SALIR</a
+              >
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center justify-content-center">
+            <p class="nav-link px-2 text-white">USER NAME</p>
+            <img
+              src="{{ url_for('static', filename='img/userDefault.png') }}"
+              alt="Imagen de usuario"
+              height="65px"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+    {% endblock %} {% block content%} {% endblock %}
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    {% block scripts%}
+    <!--Custom JS-->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% endblock %}
+  </body>
+</html>

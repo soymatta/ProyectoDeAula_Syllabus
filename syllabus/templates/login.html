@@ -1,0 +1,60 @@
+{% extends "layout.html" %} {% block header %} {% endblock %} {% block content
+%}
+<section id="hero" class="bg-1 d-flex justify-content-around">
+  <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <img
+          src="{{ url_for('static', filename='img/logoSyllabus.png') }}"
+          alt="Logo syllabus virtual"
+        />
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+        <form
+          class="p-4 p-md-5 border rounded-5 bg-body-tertiary"
+          method="POST"
+          action="/login"
+        >
+          <h2 class="text-center fw-bold">Inicio de sesión</h2>
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              name="emailInput"
+              class="form-control bg_secondary"
+              id="floatingInput"
+              placeholder="name@example.com"
+            />
+            <label for="floatingInput"
+              ><i class="bx bxs-user" style="color: #ff0000"></i> Email de
+              usuario</label
+            >
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              name="passwordInput"
+              class="form-control bg_secondary"
+              id="floatingPassword"
+              placeholder="Password"
+            />
+            <label for="floatingPassword"
+              ><i class="bx bxs-lock" style="color: #ff0000"></i>
+              Contraseña</label
+            >
+          </div>
+
+          <button
+            id="btn_hover"
+            class="w-100 btn btn-lg btn-primary bg_primary mb-3 border-0"
+          >
+            Entrar</button
+          ><a href="" class="text-body-secondary"
+            >¿ Olvidaste tu contraseña ?</a
+          >
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}{% block scripts%} {% endblock %}
