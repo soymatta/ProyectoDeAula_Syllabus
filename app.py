@@ -3,16 +3,23 @@ from sqlalchemy import Enum
 
 from syllabus.db.db import app, db
 
-# Tablas independiente
+# Creación de tablas
+
+    # Tablas Independientes
+from syllabus.models.evaluations_model import Evaluations
 from syllabus.models.subjects_model import Subjects
 from syllabus.models.faculties_model import Faculties
-
-from syllabus.models.faculties_subjects_model import FacultiesSubjects
+    # Tablas Dependientes
 from syllabus.models.users_model import Users
 from syllabus.models.syllabi_model import Syllabi
+from syllabus.models.versions_model import Versions
+from syllabus.models.contentsAndStrategies_model import ContentsAndStrategies
+    # Tablas Intermedias
 from syllabus.models.users_subjects_model import UsersSubjects
+from syllabus.models.faculties_subjects_model import FacultiesSubjects
+from syllabus.models.users_syllabi_model import UsersSyllabi
 
-
+# Importación de las rutas HTTP
 from syllabus.routes.faculties_routes import faculties_routes
 from syllabus.routes.versions_routes import versions_routes
 from syllabus.routes.syllabi_routes import syllabi_routes
