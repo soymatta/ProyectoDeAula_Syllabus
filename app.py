@@ -95,9 +95,24 @@ def admin():
 def editor_by_id(syllabus_id):
     if 'user_id' in session:
 
-        syllabus = Syllabi.query.get(syllabus_id)
-        print (syllabus)
-        return render_template('/editor.html')
+        syllabus = db.session.query(Syllabi).filter(Syllabi.id == syllabus_id).first()
+
+        syllabus_data = {
+                'id': syllabus.id,
+                'date': syllabus.date,
+                'program': syllabus.program,
+                'cycle': syllabus.cycle,
+                'justification': syllabus.justification,
+                'competences': syllabus.competences,
+                'learning_results': syllabus.learning_results,
+                'methodology': syllabus.methodology,
+                'evaluations_id': syllabus.evaluations_id,
+                'faculty_id': syllabus.faculty_id,
+                'subjects_id': syllabus.faculty_id,
+            }
+
+        print (syllabus_data)
+        return render_template('/editor.html', syllabus_data = syllabus_data)
     else:
         return redirect(url_for('login'))
 
