@@ -210,26 +210,6 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-        aria-expanded="false" aria-controls="collapseTwo">
-        IDENTIFICACIÓN
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the second item's accordion body.</strong> It is hidden
-        by default, until the collapse plugin adds the appropriate classes that
-        we use to style each element. These classes control the overall
-        appearance, as well as the showing and hiding via CSS transitions. You
-        can modify any of this with custom CSS or overriding our default
-        variables. It's also worth noting that just about any HTML can go within
-        the <code>.accordion-body</code>, though the transition does limit
-        overflow.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
         aria-expanded="false" aria-controls="collapseThree">
         JUSTIFICACIÓN
@@ -238,7 +218,9 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
     <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <textarea name="justificationArea" id="JustificationText" class="full-width-textarea" rows="15" cols="80"
-          oninput="JustificationRun()"></textarea>
+        oninput="JustificationRun()">
+          {{ syllabus_data.justification }}
+        </textarea>
       </div>
     </div>
   </div>
@@ -252,7 +234,9 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
     <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <textarea name="competencesArea" id="competencesText" class="full-width-textarea" rows="15" cols="80"
-          oninput="competencesRun()"></textarea>
+          oninput="competencesRun()" >
+          {{ syllabus_data.competences}}
+        </textarea>
       </div>
     </div>
   </div>
@@ -266,7 +250,9 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
     <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <textarea name="learningssArea" id="learningsText" class="full-width-textarea" rows="15" cols="80"
-          oninput="learningsRun()"></textarea>
+          oninput="learningsRun()">
+          {{ syllabus_data.learning_results}}
+        </textarea>
       </div>
     </div>
   </div>
@@ -280,7 +266,9 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
     <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <textarea name="methodologyArea" id="methodologyText" class="full-width-textarea" rows="15" cols="80"
-          oninput="methodologyRun()"></textarea>
+          oninput="methodologyRun()">
+          {{ syllabus_data.methodology}}
+        </textarea>
       </div>
     </div>
   </div>
@@ -352,11 +340,10 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
             </h2>
             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
               <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse
-                plugin adds the appropriate classes that we use to style each element. These classes control the overall
-                appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go
-                within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <textarea name="firstEvaluationArea" id="firstEvaluationText" class="full-width-textarea" rows="15" cols="80"
+                  oninput="firstEvaluationRun()">
+                    {{ evaluations_data.description_first_percentage}}
+                 </textarea>
               </div>
             </div>
           </div>
@@ -370,11 +357,10 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
             </h2>
             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
               <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse
-                plugin adds the appropriate classes that we use to style each element. These classes control the overall
-                appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go
-                within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <textarea name="secondEvaluationArea" id="secondEvaluationText" class="full-width-textarea" rows="15" cols="80"
+                  oninput="secondEvaluationRun()">
+                    {{ evaluations_data.description_second_percentage}}
+                 </textarea>
               </div>
             </div>
           </div>
@@ -388,11 +374,10 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
             </h2>
             <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
               <div class="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse
-                plugin adds the appropriate classes that we use to style each element. These classes control the overall
-                appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go
-                within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <textarea name="thirdEvaluationArea" id="thirdEvaluationText" class="full-width-textarea" rows="15" cols="80"
+                  oninput="thirdEvaluationRun()">
+                    {{ evaluations_data.description_third_percentage}}
+                 </textarea>
               </div>
             </div>
           </div>
@@ -432,21 +417,21 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
       <p>FORMATO MICROCURRICULO</p>
     </div>
     <div class="documento">
-      <p>ST-DOC-01-E-01-F01</p>
+      <p>{{ syllabus_data.id}}</p>
     </div>
     <div class="version">
       <p>Versión 2</p>
     </div>
-    <div class="fecha" id="date"></div>
+    <div class="fecha" id="date"><p>{{ syllabus_data.date }}</p></div>
   </section>
 
   <!-- Facultad del syllabus y el programa -->
   <section class="facultad-programa">
     <div class="facultad">
-      <p>FACULTAD DE <span id="Facultad"></span></p>
+      <p>FACULTAD DE {{faculty_data.name}}</p>
     </div>
     <div class="programa">
-      <p>PROGRAMA DE {{ syllabus_data.program }}</p>
+      <p>PROGRAMA DE <strong>{{ syllabus_data.program }}</strong></p>
     </div>
   </section>
 
@@ -455,7 +440,7 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
     <div class="tipoCiclo">
       <p>
         <strong><span class="num">I.</span>CICLO:</strong>
-        <span id="ciclo">pruebita</span>
+        <span id="ciclo">{{ syllabus_data.cycle }}</span>
       </p>
     </div>
     <div class="componenteCiclo">
@@ -480,7 +465,7 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
           </td>
           <td>
             <div class="NombreAsignatura" id="nameAsignatura">
-              <p>nombreeeeee</p>
+              <p>{{subject_data.name}}</p>
             </div>
     </div>
     </td>
@@ -494,7 +479,7 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
       </td>
       <td>
         <div class="CodigoAsignatura" id="codeAsignatura">
-          <p>cod</p>
+          <p></p>
         </div>
 </div>
 </td>
@@ -509,7 +494,7 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
   </td>
   <td>
     <div class="SemestreAsignatura" id="semesterAsignatura">
-      <p>el SemestreAsignatura</p>
+      <p>{{subject_data.semester}}</p>
     </div>
     </div>
   </td>
@@ -523,7 +508,7 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
   </td>
   <td>
     <div class="creditosAcademicos" id="creditsAcademicos">
-      <p>creditos</p>
+      <p>{{subject_data.credits}}</p>
     </div>
     </div>
   </td>
@@ -820,7 +805,7 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
   <div class="porcentaje-estrategias">
     <div class="primerCorte">
       <div class="tPrimerCorte">
-        <p>1er. (_30_%)</p>
+        <p>{{evaluations_data.first_percentage}}%</p>
       </div>
       <div class="estrategiasPrimerCorte">
         <div class="bloques" id="firstEvaluation"></div>
@@ -828,7 +813,7 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
     </div>
     <div class="segundoCorte">
       <div class="tSegundoCorte">
-        <p>2do. (_30_%)</p>
+        <p>{{evaluations_data.second_percentage}}%</p>
       </div>
       <div class="estrategiasSegundoCorte">
         <div class="bloques" id="secondEvaluation"></div>
@@ -836,7 +821,7 @@ href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
     </div>
     <div class="tercerCorte">
       <div class="tTercerCorte">
-        <p>3ro. (_40_%)</p>
+        <p>{{evaluations_data.third_percentage}}%</p>
       </div>
       <div class="estrategiasTercerCorte">
         <div class="bloques" id="thirdEvaluation"></div>
