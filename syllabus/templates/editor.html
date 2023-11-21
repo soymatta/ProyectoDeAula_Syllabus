@@ -1,6 +1,5 @@
 {% extends "layout.html" %} {% block content %}
 
-<header class="navigation">
   <div class="navigation">
     <nav class="navi">
       <button href="#" class="button_nav">
@@ -126,7 +125,6 @@
       </button>
     </nav>
   </div>
-</header>
 
 
 <div class="accordion" id="accordionExample">
@@ -860,11 +858,11 @@
   </div>
 </section>
 </div>
-<script src="{{ url_for('static', filename='js/bloques.js') }}"></script>
-<script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
-<script src="{{ url_for('static', filename='js/markdown.js') }}"></script>
+<script src="{{ url_for('static', filename='jss/bloques.js') }}"></script>
+<script src="{{ url_for('static', filename='jss/bundle.js') }}"></script>
+<script src="{{ url_for('static', filename='jss/markdown.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/showdown@2.0.0/dist/showdown.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-<script src="{{ url_for('static', filename='js/drag.js') }}"></script>
+<script src="{{ url_for('static', filename='jss/drag.js') }}"></script>
 
 {% endblock %}
