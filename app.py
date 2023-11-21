@@ -91,11 +91,19 @@ def admin():
         return render_template('/adminDenegado.html')
 
 # Editor online
-@app.route('/editor', methods=['GET'])
-def editor():
+@app.route('/editor/<int:syllabus_id>', methods=['GET'])
+def editor_by_id(syllabus_id):
     if 'user_id' in session:
-        return render_template('/editor.html')
-    else: return redirect(url_for('login'))
+
+        syllabus = Syllabi.query.get(syllabus_id)
+
+        if syllabus:
+            syllabus_data = syllabi_schema.dump(syllabus)
+            return jsonify(syllabus_data)
+        else:
+            return jsonify({"error": "Syllabus no encontrado"}), 404
+    else:
+        return redirect(url_for('login'))
 
 # Cerrar sesión
 @app.route('/logout')
