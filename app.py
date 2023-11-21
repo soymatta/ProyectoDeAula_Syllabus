@@ -1,29 +1,44 @@
-from app.routes.routes import main
-from app.database.db import search
-import os
-from flask import Flask, render_template, url_for, session, redirect, request
+from flask import render_template, request, redirect, url_for, session, flash, jsonify
+from sqlalchemy import Enum
 
-app = Flask(__name__)
-app.config.from_object(__name__)
-app.secret_key = os.urandom(50)
+from syllabus.db.db import app, db
 
-app.register_blueprint(main)
+from syllabus.models.users_model import Users
+from syllabus.models.subjects_model import Subjects
+from syllabus.models.users_subjects_model import UsersSubjects
 
-app.template_folder = 'app/templates'
-app.static_folder = 'app/static'
+from syllabus.routes.faculties_routes import faculties_routes
+from syllabus.routes.versions_routes import versions_routes
+from syllabus.routes.syllabi_routes import syllabi_routes
+from syllabus.routes.subjects_routes import subjects_routes
+from syllabus.routes.users_routes import users_routes
+from syllabus.routes.users_subjects_routes import users_subjects_routes
+from syllabus.routes.faculties_subjects_routes import faculties_subjects_routes
+
+app.register_blueprint(faculties_routes, url_prefix="/faculties")
+app.register_blueprint(subjects_routes, url_prefix="/subjects")
+app.register_blueprint(users_routes, url_prefix="/users")
+app.register_blueprint(syllabi_routes, url_prefix="/syllabi")
+app.register_blueprint(versions_routes, url_prefix="/versions")
+app.register_blueprint(users_subjects_routes, url_prefix="/users_subjects")
+app.register_blueprint(faculties_subjects_routes, url_prefix="/faculties_subjects")
+
 
 # Routes - Template Rendering
 
-
-
 # Menu / Home
-@app.route('/menu', methods=['GET'])
+@app.route('/', methods=['GET'])
 def menu():
-    return render_template('/menu.html')
+    if 'user_id' in session:
+        user_id = session['user_id']
+        user = Users.query.get(user_id)
 
-params = {
-    'id': '1'
-}
+        # Consulta de las materias por usuario
+        user_subjects = db.session.query(Subjects).join(UsersSubjects).filter(UsersSubjects.users_id == user_id).all()
+        data = [{'id': subject.id, 'name': subject.name} for subject in user_subjects]
+
+        return render_template('/menu.html', username = user.name, data = data)
+    else: return redirect(url_for('login'))
 
 # Login 
 @app.route('/login', methods=['GET', 'POST'])
@@ -32,12 +47,10 @@ def login():
         return redirect(url_for('menu'))
     else: 
         if request.method == 'POST':
-            email = request.form['email']
-            password = request.form['password']
+            email = request.form['emailInput']
+            password = request.form['passwordInput']
 
-            user = search('users', params)
-
-            user = True if user['email'] == email and user['password'] == password else False
+            user = Users.query.filter_by(email=email, password=password).first()
 
             if user:
                 session['user_id'] = user.id
@@ -52,23 +65,31 @@ def login():
 # Admin option panel
 @app.route('/admin/options', methods=['GET'])
 def admin():
-    return render_template('/adminPanel.html')
+    # Si no hay sesión iniciada va a login
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
 
-# Admin panel
-@app.route('/admin/denied')
-def admin_denied():
-    return render_template('/adminDenegado.html')
+    user_id = session['user_id']
+    user = Users.query.get(user_id)
+
+    if user.role == 'admin':
+        return render_template('/adminPanel.html')
+    else:
+        return render_template('/adminDenegado.html')
 
 # Editor online
 @app.route('/editor', methods=['GET'])
 def editor():
-    return render_template('/editor.html')
+    if 'user_id' in session:
+        return render_template('/editor.html')
+    else: return redirect(url_for('login'))
 
 # Cerrar sesión
 @app.route('/logout')
 def logout():
     session.pop('user_id', None)
-    return redirect(url_for('menu'))
+    print('Cierre de sesión exitoso')
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)

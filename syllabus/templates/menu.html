@@ -1,0 +1,40 @@
+{% extends "layout.html" %} {% block content %}
+<section class="p-5">
+  <h1 class="d-none">Menu syllabus universidad libre</h1>
+  <h2 class="fw-bold color_secondary">
+    Mis materias <i class="bx bxs-book"></i>
+  </h2>
+  {% if data %} {% for subject in data %}
+  <a href="" class="text-decoration-none">
+    <div class="bg_primary p-2 container-fluid rounded" style="color: #fff">
+      <div class="row">
+        <div class="col-5 me-5">
+          <p class="fw-bold">Nombre: {{ subject['name'] }}</p>
+        </div>
+        <div class="col-6">
+          <p class="fw-bold">
+            Código: <text id="valor1">{{ subject['id'] }}</text>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p class="fw-bold">
+            Ultima modificación: <text id="valor1">00/Enero/0000</text>
+          </p>
+        </div>
+      </div>
+    </div></a
+  >
+  <hr class="my-4" />
+  {% endfor %} {% else %}
+  <div class="text-center p-4 w-100 rounded-5 bg_tertiary">
+    <h2 class="fw-bold">Sin asignaturas</h2>
+    <p>
+      Usted no tiene ninguna asignatura en su perfil, contacte con algún
+      administrador.
+    </p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}{% block scripts%} {% endblock %}
