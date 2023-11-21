@@ -96,12 +96,8 @@ def editor_by_id(syllabus_id):
     if 'user_id' in session:
 
         syllabus = Syllabi.query.get(syllabus_id)
-
-        if syllabus:
-            syllabus_data = syllabi_schema.dump(syllabus)
-            return jsonify(syllabus_data)
-        else:
-            return jsonify({"error": "Syllabus no encontrado"}), 404
+        print (syllabus)
+        return render_template('/editor.html')
     else:
         return redirect(url_for('login'))
 
