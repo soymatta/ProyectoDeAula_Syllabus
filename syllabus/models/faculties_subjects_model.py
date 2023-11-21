@@ -10,12 +10,12 @@ class FacultiesSubjects(db.Model):
         self.subjects_id = subjects_id
 
 
-class FacultySubjectSchema(ma.SQLAlchemyAutoSchema):
+class FacultiesSubjectsSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = FacultiesSubjects
 
-facultySubject_schema = FacultySubjectSchema()
-facultiesSubjects_schema = FacultySubjectSchema(many=True)
+facultySubject_schema = FacultiesSubjectsSchema()
+facultiesSubjects_schema = FacultiesSubjectsSchema(many=True)
 
 with app.app_context():
     db.create_all()

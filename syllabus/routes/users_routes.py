@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from ..db.db import db
-from ..models.users_model import Users, UserSchema
+from ..models.users_model import Users, UsersSchema
 
 users_routes = Blueprint("users", __name__)
 
@@ -8,7 +8,7 @@ users_routes = Blueprint("users", __name__)
 @users_routes.route('/get', methods=['GET'])
 def get_users():
     users = Users.query.all()
-    user_schema = UserSchema(many=True)
+    user_schema = UsersSchema(many=True)
     return jsonify(user_schema.dump(users)), 200
 
 # ------- POST -----------
@@ -19,7 +19,7 @@ def create_user():
         user = User(**data)
         db.session.add(user)
         db.session.commit()
-        return UserSchema().jsonify(user), 201
+        return UsersSchema().jsonify(user), 201
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": "Error al crear el usuario", "details": str(e)}), 400

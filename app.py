@@ -3,9 +3,15 @@ from sqlalchemy import Enum
 
 from syllabus.db.db import app, db
 
-from syllabus.models.users_model import Users
+# Tablas independiente
 from syllabus.models.subjects_model import Subjects
+from syllabus.models.faculties_model import Faculties
+
+from syllabus.models.faculties_subjects_model import FacultiesSubjects
+from syllabus.models.users_model import Users
+from syllabus.models.syllabi_model import Syllabi
 from syllabus.models.users_subjects_model import UsersSubjects
+
 
 from syllabus.routes.faculties_routes import faculties_routes
 from syllabus.routes.versions_routes import versions_routes
@@ -26,7 +32,7 @@ app.register_blueprint(faculties_subjects_routes, url_prefix="/faculties_subject
 
 # Routes - Template Rendering
 
-# Menu / Home
+# Menu / Homes
 @app.route('/', methods=['GET'])
 def menu():
     if 'user_id' in session:

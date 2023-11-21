@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from ..db.db import db
-from ..models.users_subjects_model import UsersSubjects, UserSubjectSchema
+from ..models.users_subjects_model import UsersSubjects, UsersSubjectsSchema
 
 users_subjects_routes = Blueprint("users_subjects", __name__)
 
@@ -8,7 +8,7 @@ users_subjects_routes = Blueprint("users_subjects", __name__)
 @users_subjects_routes.route('/get', methods=['GET'])
 def get_users_subjects():
     users_subjects = UsersSubjects.query.all()
-    user_schema = UserSubjectSchema(many=True)
+    user_schema = UsersSubjectsSchema(many=True)
     return jsonify(user_schema.dump(users_subjects)), 200
 
 # ------- PUT -----------

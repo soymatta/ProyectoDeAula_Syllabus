@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from ..db.db import db
-from ..models.subjects_model import Subjects, SubjectSchema
+from ..models.subjects_model import Subjects, SubjectsSchema
 
 subjects_routes = Blueprint("subjects", __name__)
 
@@ -8,7 +8,7 @@ subjects_routes = Blueprint("subjects", __name__)
 @subjects_routes.route('/get', methods=['GET'])
 def get_subjects():
     subjects = Subjects.query.all()
-    subject_schema = SubjectSchema(many=True)
+    subject_schema = SubjectsSchema(many=True)
     return jsonify(subject_schema.dump(subjects)), 200
 
 # ------- POST -----------
@@ -19,7 +19,7 @@ def create_subject():
         subject = Subject(**data)
         db.session.add(subject)
         db.session.commit()
-        return SubjectSchema().jsonify(subject), 201
+        return SubjectsSchema().jsonify(subject), 201
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": "Error al crear la asignatura", "details": str(e)}), 400

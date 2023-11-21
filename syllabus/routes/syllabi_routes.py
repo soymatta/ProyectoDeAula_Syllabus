@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from ..db.db import db
-from ..models.syllabi_model import Syllabi, SyllabusSchema
+from ..models.syllabi_model import Syllabi, SyllabiSchema
 
 syllabi_routes = Blueprint("syllabi", __name__)
 
@@ -8,7 +8,7 @@ syllabi_routes = Blueprint("syllabi", __name__)
 @syllabi_routes.route('/get', methods=['GET'])
 def get_syllabi():
     syllabi = Syllabi.query.all()
-    syllabus_schema = SyllabusSchema(many=True)
+    syllabus_schema = SyllabiSchema(many=True)
     return jsonify(syllabus_schema.dump(syllabi)), 200
 
 # ------- POST -----------
@@ -19,7 +19,7 @@ def create_syllabus():
         syllabus = Syllabus(**data)
         db.session.add(syllabus)
         db.session.commit()
-        return SyllabusSchema().jsonify(syllabus), 201
+        return SyllabiSchema().jsonify(syllabus), 201
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": "Error al crear el syllabus", "details": str(e)}), 400

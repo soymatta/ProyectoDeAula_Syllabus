@@ -7,12 +7,12 @@ class Faculties(db.Model):
     def __init__(self, name, subjects=None, teachers=None):
         self.name = name
 
-class FacultySchema(ma.SQLAlchemyAutoSchema):
+class FacultiesSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Faculties
 
-faculty_schema = FacultySchema()
-faculties_schema = FacultySchema(many=True)
+faculty_schema = FacultiesSchema()
+faculties_schema = FacultiesSchema(many=True)
 
 with app.app_context():
     db.create_all()

@@ -19,10 +19,12 @@ class Users(db.Model):
         self.status = status
         self.faculty_id = faculty_id
 
-class UserSchema(ma.SQLAlchemyAutoSchema):
+class UsersSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Users
 
-user_schema = UserSchema()
-users_schema = UserSchema(many=True)
+user_schema = UsersSchema()
+users_schema = UsersSchema(many=True)
 
+with app.app_context():
+    db.create_all()

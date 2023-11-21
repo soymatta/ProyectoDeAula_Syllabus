@@ -10,12 +10,12 @@ class UsersSubjects(db.Model):
         self.subjects_id = subjects_id
 
 
-class UserSubjectSchema(ma.SQLAlchemyAutoSchema):
+class UsersSubjectsSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = UsersSubjects
 
-userSubject_schema = UserSubjectSchema()
-usersSubjects_schema = UserSubjectSchema(many=True)
+userSubject_schema = UsersSubjectsSchema()
+usersSubjects_schema = UsersSubjectsSchema(many=True)
 
 with app.app_context():
     db.create_all()

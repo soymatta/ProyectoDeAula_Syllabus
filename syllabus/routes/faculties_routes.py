@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from ..db.db import db
-from ..models.faculties_model import Faculties, FacultySchema
+from ..models.faculties_model import Faculties, FacultiesSchema
 
 faculties_routes = Blueprint("faculties", __name__)
 
@@ -8,7 +8,7 @@ faculties_routes = Blueprint("faculties", __name__)
 @faculties_routes.route('/get', methods=['GET'])
 def get_faculty():
     faculty = Faculties.query.all()
-    faculty_schema = FacultySchema(many=True)
+    faculty_schema = FacultiesSchema(many=True)
     return jsonify(faculty_schema.dump(faculty)), 200
 
 # ------- POST -----------
@@ -19,7 +19,7 @@ def create_faculty():
         faculty = Faculty(**data)
         db.session.add(faculty)
         db.session.commit()
-        return FacultySchema().jsonify(faculty), 201
+        return FacultiesSchema().jsonify(faculty), 201
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": "Error al crear la asignatura", "details": str(e)}), 400

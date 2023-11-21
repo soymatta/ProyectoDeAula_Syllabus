@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from ..db.db import db
-from ..models.versions_model import Versions, VersionSchema
+from ..models.versions_model import Versions, VersionsSchema
 
 versions_routes = Blueprint("versions", __name__)
 
@@ -8,7 +8,7 @@ versions_routes = Blueprint("versions", __name__)
 @versions_routes.route('/get', methods=['GET'])
 def get_versions():
     versions = Versions.query.all()
-    version_schema = VersionSchema(many=True)
+    version_schema = VersionsSchema(many=True)
     return jsonify(version_schema.dump(versions)), 200
 
 # ------- POST -----------
@@ -19,7 +19,7 @@ def create_version():
         version = Version(**data)
         db.session.add(version)
         db.session.commit()
-        return VersionSchema().jsonify(version), 201
+        return VersionsSchema().jsonify(version), 201
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": "Error al crear la versión", "details": str(e)}), 400
