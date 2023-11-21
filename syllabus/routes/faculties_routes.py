@@ -1,18 +1,18 @@
 from flask import Blueprint, request, jsonify
 from ..db.db import db
-from ..models.faculty_model import Faculty, FacultySchema
+from ..models.faculties_model import Faculties, FacultySchema
 
-faculty_routes = Blueprint("faculty", __name__)
+faculties_routes = Blueprint("faculties", __name__)
 
 # ------- GET -----------
-@faculty_routes.route('/get', methods=['GET'])
-def get_facultys():
-    facultys = Faculty.query.all()
+@faculties_routes.route('/get', methods=['GET'])
+def get_faculty():
+    faculty = Faculties.query.all()
     faculty_schema = FacultySchema(many=True)
-    return jsonify(faculty_schema.dump(facultys)), 200
+    return jsonify(faculty_schema.dump(faculty)), 200
 
 # ------- POST -----------
-@faculty_routes.route('/post', methods=['POST'])
+@faculties_routes.route('/post', methods=['POST'])
 def create_faculty():
     try:
         data = request.get_json()
@@ -25,10 +25,10 @@ def create_faculty():
         return jsonify({"error": "Error al crear la asignatura", "details": str(e)}), 400
 
 # ------- PUT -----------
-@faculty_routes.route('/put/<int:id>', methods=['PUT'])
+@faculties_routes.route('/put/<int:id>', methods=['PUT'])
 def update_faculty(id):
     try:
-        faculty = Faculty.query.get(id)
+        faculty = Faculties.query.get(id)
         if not faculty:
             return jsonify({"error": "Asignatura no encontrada"}), 404
 
@@ -45,10 +45,10 @@ def update_faculty(id):
         return jsonify({"error": "Error al actualizar la asignatura", "details": str(e)}), 500
 
 # ------- DELETE -----------
-@faculty_routes.route('/delete/<int:id>', methods=['DELETE'])
+@faculties_routes.route('/delete/<int:id>', methods=['DELETE'])
 def delete_faculty(id):
     try:
-        faculty = Faculty.query.get(id)
+        faculty = Faculties.query.get(id)
 
         if not faculty:
             return jsonify({"error": "Asignatura no encontrada"}), 404

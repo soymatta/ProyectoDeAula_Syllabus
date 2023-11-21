@@ -30,16 +30,13 @@
       href="{{ url_for('static', filename='css/styles.css' ) }}"
     />
 
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
-    />
-
     <!-- fuente -->
     <link
       href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
+
+    {% block css%} {% endblock %}
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -66,7 +63,7 @@
             class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
           >
             <li>
-              <a href="/menu" class="nav-link px-2 mx-2 text-white"
+              <a href="/" class="nav-link px-2 mx-2 text-white"
                 >MIS ASIGNATURAS</a
               >
             </li>
@@ -84,14 +81,8 @@
               >
             </li>
           </ul>
-
           <div class="d-flex align-items-center justify-content-center">
-            <p class="nav-link px-2 text-white">USER NAME</p>
-            <img
-              src="{{ url_for('static', filename='img/userDefault.png') }}"
-              alt="Imagen de usuario"
-              height="65px"
-            />
+            <p class="nav-link text-white mb-0">{{ username }}</p>
           </div>
         </div>
       </div>
