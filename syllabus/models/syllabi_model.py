@@ -1,6 +1,6 @@
 from ..db.db import db, ma, app
 
-class Syllabus(db.Model):
+class Syllabi(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     date = db.Column(db.DateTime, nullable=False)
     cycle = db.Column(db.String(500))
@@ -11,13 +11,14 @@ class Syllabus(db.Model):
     methodology = db.Column(db.Text)
     program_content = db.Column(db.Text)
     strategies = db.Column(db.Text)
-    evaluation = db.Column(db.String(2500))
+    evaluation = db.Column(db.Text)
     bibliography = db.Column(db.Text)
-    subject_id = db.Column(db.Integer, db.ForeignKey('subject.id'), nullable=False)
-    faculty_id = db.Column(db.Integer, db.ForeignKey('faculty.id'), nullable=False)
+    five_last_updates = db.Column(db.Text)
+    subject_id = db.Column(db.Integer, db.ForeignKey('subjects.id'), nullable=False)
+    faculty_id = db.Column(db.Integer, db.ForeignKey('faculties.id'), nullable=False)
 
     def __init__(self, date, cycle, identification, justification, competences, learning_results,
-                 methodology, program_content, strategies, evaluation, bibliography, subject_id, faculty_id):
+                 methodology, program_content, strategies, evaluation, bibliography, five_last_updates, subject_id, faculty_id):
         self.date = date
         self.cycle = cycle
         self.identification = identification
@@ -29,12 +30,13 @@ class Syllabus(db.Model):
         self.strategies = strategies
         self.evaluation = evaluation
         self.bibliography = bibliography
+        self.five_last_updates = five_last_updates
         self.subject_id = subject_id
         self.faculty_id = faculty_id
 
 class SyllabusSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
-        model = Syllabus
+        model = Syllabi
 
 syllabus_schema = SyllabusSchema()
 syllabi_schema = SyllabusSchema(many=True)

@@ -1,18 +1,18 @@
 from flask import Blueprint, request, jsonify
 from ..db.db import db
-from ..models.syllabus_model import Syllabus, SyllabusSchema
+from ..models.syllabi_model import Syllabi, SyllabusSchema
 
-syllabus_routes = Blueprint("syllabus", __name__)
+syllabi_routes = Blueprint("syllabi", __name__)
 
 # ------- GET -----------
-@syllabus_routes.route('/get', methods=['GET'])
+@syllabi_routes.route('/get', methods=['GET'])
 def get_syllabi():
-    syllabi = Syllabus.query.all()
+    syllabi = Syllabi.query.all()
     syllabus_schema = SyllabusSchema(many=True)
     return jsonify(syllabus_schema.dump(syllabi)), 200
 
 # ------- POST -----------
-@syllabus_routes.route('/post', methods=['POST'])
+@syllabi_routes.route('/post', methods=['POST'])
 def create_syllabus():
     try:
         data = request.get_json()
@@ -25,10 +25,10 @@ def create_syllabus():
         return jsonify({"error": "Error al crear el syllabus", "details": str(e)}), 400
 
 # ------- PUT -----------
-@syllabus_routes.route('/put/<int:id>', methods=['PUT'])
+@syllabi_routes.route('/put/<int:id>', methods=['PUT'])
 def update_syllabus(id):
     try:
-        syllabus = Syllabus.query.get(id)
+        syllabus = Syllabi.query.get(id)
         if not syllabus:
             return jsonify({"error": "Syllabus no encontrado"}), 404
 
@@ -45,10 +45,10 @@ def update_syllabus(id):
         return jsonify({"error": "Error al actualizar el syllabus", "details": str(e)}), 500
 
 # ------- DELETE -----------
-@syllabus_routes.route('/delete/<int:id>', methods=['DELETE'])
+@syllabi_routes.route('/delete/<int:id>', methods=['DELETE'])
 def delete_syllabus(id):
     try:
-        syllabus = Syllabus.query.get(id)
+        syllabus = Syllabi.query.get(id)
 
         if not syllabus:
             return jsonify({"error": "Syllabus no encontrado"}), 404

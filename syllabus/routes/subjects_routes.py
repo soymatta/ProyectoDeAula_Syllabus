@@ -1,18 +1,18 @@
 from flask import Blueprint, request, jsonify
 from ..db.db import db
-from ..models.subject_model import Subject, SubjectSchema
+from ..models.subjects_model import Subjects, SubjectSchema
 
-subject_routes = Blueprint("subject", __name__)
+subjects_routes = Blueprint("subjects", __name__)
 
 # ------- GET -----------
-@subject_routes.route('/get', methods=['GET'])
+@subjects_routes.route('/get', methods=['GET'])
 def get_subjects():
-    subjects = Subject.query.all()
+    subjects = Subjects.query.all()
     subject_schema = SubjectSchema(many=True)
     return jsonify(subject_schema.dump(subjects)), 200
 
 # ------- POST -----------
-@subject_routes.route('/post', methods=['POST'])
+@subjects_routes.route('/post', methods=['POST'])
 def create_subject():
     try:
         data = request.get_json()
@@ -25,10 +25,10 @@ def create_subject():
         return jsonify({"error": "Error al crear la asignatura", "details": str(e)}), 400
 
 # ------- PUT -----------
-@subject_routes.route('/put/<int:id>', methods=['PUT'])
+@subjects_routes.route('/put/<int:id>', methods=['PUT'])
 def update_subject(id):
     try:
-        subject = Subject.query.get(id)
+        subject = Subjects.query.get(id)
         if not subject:
             return jsonify({"error": "Asignatura no encontrada"}), 404
 
@@ -45,10 +45,10 @@ def update_subject(id):
         return jsonify({"error": "Error al actualizar la asignatura", "details": str(e)}), 500
 
 # ------- DELETE -----------
-@subject_routes.route('/delete/<int:id>', methods=['DELETE'])
+@subjects_routes.route('/delete/<int:id>', methods=['DELETE'])
 def delete_subject(id):
     try:
-        subject = Subject.query.get(id)
+        subject = Subjects.query.get(id)
 
         if not subject:
             return jsonify({"error": "Asignatura no encontrada"}), 404
