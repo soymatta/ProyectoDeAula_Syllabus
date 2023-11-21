@@ -9,12 +9,11 @@ class Syllabi(db.Model):
     competences = db.Column(db.Text)
     learning_results = db.Column(db.Text)
     methodology = db.Column(db.Text)
-    evaluations_id = db.Column(db.Integer, db.ForeignKey('evaluations.id'), nullable=False)
     subject_id = db.Column(db.Integer, db.ForeignKey('subjects.id'), nullable=False)
     faculty_id = db.Column(db.Integer, db.ForeignKey('faculties.id'), nullable=False)
     
     def __init__(self, date, program, faculty_id, cycle, identification, justification, competences, learning_results,
-                 methodology, program_content, strategies, evaluations_id, bibliography, five_last_updates, subject_id) :
+                 methodology, program_content, strategies, bibliography, five_last_updates, subject_id) :
         self.date = date
         self.program = program
         self.faculty_id = faculty_id
@@ -26,7 +25,6 @@ class Syllabi(db.Model):
         self.methodology = methodology
         self.program_content = program_content
         self.strategies = strategies
-        self.evaluations_id = evaluations_id
         self.bibliography = bibliography
         self.five_last_updates = five_last_updates
         self.subject_id = subject_id

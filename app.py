@@ -6,13 +6,13 @@ from syllabus.db.db import app, db
 # Creación de tablas
 
     # Tablas Independientes
-from syllabus.models.evaluations_model import Evaluations
 from syllabus.models.subjects_model import Subjects
 from syllabus.models.faculties_model import Faculties
     # Tablas Dependientes
 from syllabus.models.users_model import Users
 from syllabus.models.syllabi_model import Syllabi
 from syllabus.models.versions_model import Versions
+from syllabus.models.evaluations_model import Evaluations
 from syllabus.models.contentsAndStrategies_model import ContentsAndStrategies
     # Tablas Intermedias
 from syllabus.models.users_subjects_model import UsersSubjects
@@ -96,6 +96,7 @@ def editor_by_id(syllabus_id):
     if 'user_id' in session:
 
         syllabus = db.session.query(Syllabi).filter(Syllabi.id == syllabus_id).first()
+        evaluations = db.session.query(Evaluations).filter(Evaluations.syllabus_id == syllabus_id).first()
 
         syllabus_data = {
                 'id': syllabus.id,
@@ -106,13 +107,20 @@ def editor_by_id(syllabus_id):
                 'competences': syllabus.competences,
                 'learning_results': syllabus.learning_results,
                 'methodology': syllabus.methodology,
-                'evaluations_id': syllabus.evaluations_id,
                 'faculty_id': syllabus.faculty_id,
                 'subjects_id': syllabus.faculty_id,
             }
 
-        print (syllabus_data)
-        return render_template('/editor.html', syllabus_data = syllabus_data)
+        evaluations_data = {
+                'first_percentage': evaluations.first_percentage,
+                'description_first_percentage': evaluations.description_first_percentage,
+                'second_percentage': evaluations.second_percentage,
+                'description_second_percentage': evaluations.description_second_percentage,
+                'third_percentage': evaluations.third_percentage,
+                'description_third_percentage': evaluations.description_third_percentage
+            }
+
+        return render_template('/editor.html', syllabus_data = syllabus_data, evaluations_data = evaluations_data)
     else:
         return redirect(url_for('login'))
 

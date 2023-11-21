@@ -8,16 +8,18 @@ class Evaluations(db.Model):
     description_second_percentage = db.Column(db.Text)
     third_percentage = db.Column(db.Integer, nullable=False)
     description_third_percentage = db.Column(db.Text)
+    syllabus_id = db.Column(db.Integer, db.ForeignKey('syllabi.id'), nullable=False)
 
     def __init__(self, first_percentage, description_first_percentage,
                  second_percentage, description_second_percentage,
-                 third_percentage, description_third_percentage):
+                 third_percentage, description_third_percentage, syllabus_id):
         self.first_percentage = first_percentage
         self.description_first_percentage = description_first_percentage
         self.second_percentage = second_percentage
         self.description_second_percentage = description_second_percentage
         self.third_percentage = third_percentage
         self.description_third_percentage = description_third_percentage
+        self.syllabus_id = syllabus_id
 
 class EvaluationsSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
