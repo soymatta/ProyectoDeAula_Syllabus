@@ -1,4 +1,15 @@
-{% extends "layout.html" %} {% block content %}
+{% extends "layout.html" %} 
+{% block css%}
+<!-- CSS Especifico para el editor-->
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
+/>
+{% endblock %}
+{% block header%}
+
+{% endblock %}
+{% block content %}
 
   <div class="navigation">
     <nav class="navi">
