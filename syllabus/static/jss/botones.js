@@ -104,21 +104,33 @@ function hideHeaderMenu() {
     headerMenu.style.display = "none";
 }
 
+// Variable para almacenar el textArea activo
+var activeTextArea;
+
+// Función para establecer el textArea activo
+function setActiveTextArea(textArea) {
+    activeTextArea = textArea;
+}
+
+// Función para agregar encabezados en sintaxis Markdown al textArea activo
 function addHeader(level) {
-    var editor = document.getElementById('JustificationText');
-    var headerText = "Encabezado " + level;
+    // Verificar si hay un textArea activo
+    if (activeTextArea) {
+        // Obtener el ID del textArea activo
+        var textAreaId = activeTextArea.id;
 
-    // Obtener la selección actual del editor
-    var selectedText = editor.value.substring(editor.selectionStart, editor.selectionEnd);
+        // Obtener el contenido actual del textArea activo
+        var contenidoActual = activeTextArea.value;
 
-    // Agregar el encabezado correspondiente a la selección
-    var newText = editor.value.substring(0, editor.selectionStart) +
-        "#".repeat(level) + selectedText +
-        editor.value.substring(editor.selectionEnd);
+        // Obtener la selección actual del editor en el textArea activo
+        var selectedText = contenidoActual.substring(activeTextArea.selectionStart, activeTextArea.selectionEnd);
 
-    // Reemplazar el contenido del editor con el nuevo texto
-    editor.value = newText;
+        // Agregar el encabezado correspondiente a la selección
+        var newText = contenidoActual.substring(0, activeTextArea.selectionStart) +
+            "#".repeat(level) + selectedText +
+            contenidoActual.substring(activeTextArea.selectionEnd);
 
-    // Ocultar el menú desplegable
-    hideHeaderMenu();
+        // Reemplazar el contenido del textArea activo con el nuevo texto
+        activeTextArea.value = newText;
+    }
 }
