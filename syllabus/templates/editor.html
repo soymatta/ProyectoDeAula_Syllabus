@@ -466,7 +466,7 @@
       </td>
       <td>
         <div class="CodigoAsignatura" id="codeAsignatura">
-          <p></p>
+          <p>{{subject_data.id}}</p>
         </div>
 </div>
 </td>
@@ -508,6 +508,7 @@
         <p>MODALIDAD*</p>
       </div>
   </td>
+
   <td>
     <div class="tipoModalidades">
       <table>
@@ -520,9 +521,9 @@
               </div>
           </td>
           <td>
-            <div class="campoModalidadPresencial" id="idModalidadPresencial">
-
-            </div>
+            <div class="campoModalidadPresencial" id="idModalidadPresencial" data-tipo="{{ subject_data.modality }}">
+              
+          </div>
     </div>
   </td>
 </tr>
@@ -866,6 +867,8 @@
   </div>
 </div>
 
+
+<script src="{{ url_for('static', filename='jss/getSubjects.js') }}"></script>
 <script src="{{ url_for('static', filename='jss/bloques.js') }}"></script>
 <script src="{{ url_for('static', filename='jss/botones.js') }}"></script>
 <script src="{{ url_for('static', filename='jss/bundle.js') }}"></script>
