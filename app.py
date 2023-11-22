@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for, session, flash, jsonify
 from sqlalchemy import Enum
 from datetime import datetime
+
 from syllabus.db.db import app, db
 
 # Creación de tablas
@@ -19,7 +20,6 @@ from syllabus.models.contentsAndStrategies_model import ContentsAndStrategies
 # Tablas Intermedias
 from syllabus.models.users_subjects_model import UsersSubjects
 from syllabus.models.faculties_subjects_model import FacultiesSubjects
-from syllabus.models.users_syllabi_model import UsersSyllabi
 
 # Importación de las rutas HTTP
 from syllabus.routes.faculties_routes import faculties_routes
@@ -103,9 +103,16 @@ def admin():
 
 
 # Editor online
-@app.route("/editor/<int:syllabus_id>", methods=["GET"])
-def editor_by_id(syllabus_id):
+@app.route("/editor/<int:subject_id>", methods=["GET"])
+def editor_by_id(subject_id):
     if "user_id" in session:
+        syllabus_id = (
+            db.session.query(Syllabi.id)
+            .filter(Syllabi.subject_id == subject_id)
+            .first()[0]
+        )
+
+        # Consultas a la base de datos
         syllabus = db.session.query(Syllabi).filter(Syllabi.id == syllabus_id).first()
 
         evaluations = (
@@ -125,10 +132,23 @@ def editor_by_id(syllabus_id):
             .first()
         )
 
+        teachers = (
+            db.session.query(Users)
+            .join(UsersSubjects, Users.id == UsersSubjects.users_id)
+            .filter(UsersSubjects.subjects_id == syllabus.subject_id)
+            .all()
+        )
         versions = (
             db.session.query(Versions).filter(Versions.syllabus_id == syllabus_id).all()
         )
 
+        contents_and_strategies = (
+            db.session.query(ContentsAndStrategies)
+            .filter(ContentsAndStrategies.syllabus_id == syllabus_id)
+            .all()
+        )
+
+        # Formatear consultas en JSON
         syllabus_data = {
             "id": syllabus.id,
             "date": syllabus.date,
@@ -154,6 +174,24 @@ def editor_by_id(syllabus_id):
             "bibliography": subject.bibliography,
         }
 
+        teachers_data = [
+            {
+                "name": teacher.name,
+            }
+            for teacher in teachers
+        ]
+
+        contentsAndStrategies_data = [
+            {
+                "id": content.id,
+                "content_name": content.content_name,
+                "sub_content": content.sub_content,
+                "strategies": content.strategies,
+                "syllabus_id": content.syllabus_id
+                # Agrega más campos según sea necesario
+            }
+            for content in contents_and_strategies
+        ]
         evaluations_data = {
             "first_percentage": evaluations.first_percentage,
             "description_first_percentage": evaluations.description_first_percentage,
@@ -176,12 +214,16 @@ def editor_by_id(syllabus_id):
 
         return render_template(
             "/editor.html",
+            # Mandar JSON para el HTML
             syllabus_data=syllabus_data,
-            evaluations_data=evaluations_data,
             faculty_data=faculty_data,
             subject_data=subject_data,
+            teachers_data=teachers_data,
+            contentsAndStrategies_data=contentsAndStrategies_data,
+            evaluations_data=evaluations_data,
             versions_data=versions_data,
         )
+
     else:
         return redirect(url_for("login"))
 
