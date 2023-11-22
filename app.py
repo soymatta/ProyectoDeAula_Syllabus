@@ -182,7 +182,7 @@ def editor_by_id(subject_id):
         ]
 
         # Formatear los profesores en un STRING
-        formatted_teachers = ", ".join([teacher["name"] for teacher in teachers_data])
+        teachers_data = ", ".join([teacher["name"] for teacher in teachers_data])
 
         contentsAndStrategies_data = [
             {
