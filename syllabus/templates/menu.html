@@ -5,14 +5,14 @@
     Mis materias <i class="bx bxs-book"></i>
   </h2>
   {% if data %} {% for subject in data %}
-  <a href="/editor/1" class="text-decoration-none">
+  <a href="/editor/{{ subject.id }}" class="text-decoration-none">
     <div class="bg_primary p-2 container-fluid rounded" style="color: #fff">
       <div class="row">
         <div class="col-5 me-5">
-          <p class="fw-bold">Nombre: {{ subject['name'] }}</p>
+          <p class="fw-bold">Nombre: {{ subject.name }}</p>
         </div>
         <div class="col-6">
-          <p class="fw-bold">Código: {{ subject['id'] }}</p>
+          <p class="fw-bold">Código: {{ subject.id }}</p>
         </div>
       </div>
       <div class="row">
