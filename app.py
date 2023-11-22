@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, session, flash, jsonify
 from sqlalchemy import Enum
-
+from datetime import datetime
 from syllabus.db.db import app, db
 
 # Creación de tablas
@@ -145,6 +145,7 @@ def editor_by_id(syllabus_id):
         faculty_data = {"id": faculty.id, "name": faculty.name}
 
         subject_data = {
+            "id": subject.id,
             "name": subject.name,
             "modality": subject.modality,
             "type": subject.type,
@@ -165,7 +166,7 @@ def editor_by_id(syllabus_id):
         versions_data = [
             {
                 "id": version.id,
-                "update_date": version.update_date,
+                "update_date": version.update_date.isoformat(),
                 "description": version.description,
                 "user_id": version.user_id,
                 "syllabus_id": version.syllabus_id,

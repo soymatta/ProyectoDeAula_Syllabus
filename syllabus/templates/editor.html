@@ -386,7 +386,9 @@
     <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <textarea name="bibliographyArea" id="bibliographyText" class="full-width-textarea" rows="15" cols="80"
-          oninput="bibliographyRun()" onclick="setActiveTextArea(this)"></textarea>
+          oninput="bibliographyRun()" onclick="setActiveTextArea(this)">
+          {{subject_data.bibliography}}
+        </textarea>
       </div>
     </div>
   </div>
@@ -408,7 +410,7 @@
       <p>Versión 2</p>
     </div>
     <div class="fecha" id="date">
-      <p>{{ syllabus_data.date }}</p>
+      
     </div>
   </section>
 
@@ -719,18 +721,6 @@
 
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
 <p>
 
 </p>
@@ -792,9 +782,7 @@
 </td>
   </tr>
 </table>
-<span>
-  d
-</span>
+<p></p>
 <table>
 <tr>
   <td>
@@ -826,7 +814,7 @@
     <div class="porcentaje-estrategias">
     <div class="primerCorte">
       <div class="tPrimerCorte">
-        <p>1er. (30%)</p>
+        {{evaluations_data.first_percentage}}%
       </div>
   </td>
   <td>
@@ -840,7 +828,7 @@
   <td>
  <div class="segundoCorte">
       <div class="tSegundoCorte">
-        <p>2do. (30%)</p>
+        {{evaluations_data.second_percentage}}%
       </div>
   </td>
   <td>
@@ -854,7 +842,7 @@
   <td>
     <div class="tercerCorte">
       <div class="tTercerCorte">
-        <p>3ro. (40%)</p>
+        {{evaluations_data.third_percentage}}%
       </div>
   </td>
   <td>
@@ -868,7 +856,7 @@
 </tr>
 </table>
 <span>
-d
+<p></p>
 </span>
 <table>
   <tr>
@@ -887,22 +875,6 @@ d
   </tr>
 </table>
 
-<section class="firmas">
-  <div class="docente">
-    <p>___________________</p>
-    <p>DOCENTE</p>
-  </div>
-  <div class="directorPrograma">
-    <p>___________________</p>
-    <p>DIRECTOR PROGRAMA</p>
-    <p>(Si Aplica)</p>
-  </div>
-  <div class="decano">
-    <p>___________________</p>
-    <p>DECANO</p>
-  </div>
-</section>
-
 <!-- ultimos cambios -->
 <div class="changesControl" >
   <div class="tChangesControl"></div>
@@ -915,7 +887,7 @@ d
                   <th>Responsable</th>
               </tr>
           </thead>
-          <tbody id="changesTableBody" data-changes = '{{versions_data}}'>
+          <tbody id="changesTableBody" data-changes = '{{ versions_data | tojson | safe }}'>
               <!-- Aquí se insertarán las filas de la tabla con JavaScript -->
           </tbody>
       </table>
