@@ -181,14 +181,16 @@ def editor_by_id(subject_id):
             for teacher in teachers
         ]
 
+        # Formatear los profesores en un STRING
+        formatted_teachers = ", ".join([teacher["name"] for teacher in teachers_data])
+
         contentsAndStrategies_data = [
             {
                 "id": content.id,
                 "content_name": content.content_name,
                 "sub_content": content.sub_content,
                 "strategies": content.strategies,
-                "syllabus_id": content.syllabus_id
-                # Agrega más campos según sea necesario
+                "syllabus_id": content.syllabus_id,
             }
             for content in contents_and_strategies
         ]
@@ -212,6 +214,8 @@ def editor_by_id(subject_id):
             for version in versions
         ]
 
+        print(teachers_data)
+
         return render_template(
             "/editor.html",
             # Mandar JSON para el HTML
@@ -226,6 +230,15 @@ def editor_by_id(subject_id):
 
     else:
         return redirect(url_for("login"))
+
+
+# Contraseña olvidada
+@app.route("/forget")
+def forget():
+    if "user_id" in session:
+        return redirect(url_for("menu"))
+    else:
+        return render_template("/forgotPassword.html")
 
 
 # Cerrar sesión
