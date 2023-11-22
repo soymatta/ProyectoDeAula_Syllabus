@@ -11,294 +11,296 @@
 {% endblock %}
 {% block content %}
 
-<header class="navigation">
-  <div class="navigation">
-    <nav class="navi">
-
-      <div id="headerButton">
-        <button href="#" class="button_nav" onmouseover="showHeaderMenu()" onmouseout="hideHeaderMenu()">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-text-size" width="28" height="28"
+<div class="sticky-top">
+  <header class="navigation">
+    <div class="navigation">
+      <nav class="navi">
+  
+        <div id="headerButton">
+          <button href="#" class="button_nav" onmouseover="showHeaderMenu()" onmouseout="hideHeaderMenu()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-text-size" width="28" height="28"
+              viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M3 7v-2h13v2" />
+              <path d="M10 5v14" />
+              <path d="M12 19h-4" />
+              <path d="M15 13v-1h6v1" />
+              <path d="M18 12v7" />
+              <path d="M17 19h2" />
+            </svg>
+          </button>
+          <div id="headerMenu" onmouseover="showHeaderMenu()" onmouseout="hideHeaderMenu()">
+            <a href="#" onclick="addHeader(1)">h1</a>
+            <a href="#" onclick="addHeader(2)">h2</a>
+            <a href="#" onclick="addHeader(3)">h3</a>
+            <a href="#" onclick="addHeader(4)">h4</a>
+            <a href="#" onclick="addHeader(5)">h5</a>
+            <a href="#" onclick="addHeader(6)">h6</a>
+          </div>
+        </div>
+  
+        <button href="#" class="button_nav" onclick="aplicarImg()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo" width="28" height="28"
             viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
             stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M3 7v-2h13v2" />
-            <path d="M10 5v14" />
-            <path d="M12 19h-4" />
-            <path d="M15 13v-1h6v1" />
-            <path d="M18 12v7" />
-            <path d="M17 19h2" />
+            <path d="M15 8h.01" />
+            <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" />
+            <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
+            <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
           </svg>
         </button>
-        <div id="headerMenu" onmouseover="showHeaderMenu()" onmouseout="hideHeaderMenu()">
-          <a href="#" onclick="addHeader(1)">h1</a>
-          <a href="#" onclick="addHeader(2)">h2</a>
-          <a href="#" onclick="addHeader(3)">h3</a>
-          <a href="#" onclick="addHeader(4)">h4</a>
-          <a href="#" onclick="addHeader(5)">h5</a>
-          <a href="#" onclick="addHeader(6)">h6</a>
+  
+        <button href="#" class="button_nav" onclick="exportarAPDF()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="28" height="28"
+            viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+            <path d="M7 11l5 5l5 -5" />
+            <path d="M12 4l0 12" />
+          </svg>
+        </button>
+  
+        <button href="#" class="button_nav" onclick="aplicarNegrita()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bold" onclick="aplicarNegrita()"
+            width="28" height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M7 5h6a3.5 3.5 0 0 1 0 7h-6z" />
+            <path d="M13 12h1a3.5 3.5 0 0 1 0 7h-7v-7" />
+          </svg>
+        </button>
+  
+  
+        <img width="4%" src="{{ url_for('static', filename='img/logo.png') }}" alt="icono">
+  
+        <button href="#" class="button_nav" onclick="aplicarCursiva()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-italic" width="28" height="28"
+            viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M11 5l6 0" />
+            <path d="M7 19l6 0" />
+            <path d="M14 5l-4 14" />
+          </svg>
+        </button>
+  
+        <button href="#" class="button_nav" onclick="aplicarEnlace()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="28" height="28"
+            viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M9 15l6 -6" />
+            <path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" />
+            <path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" />
+          </svg>
+        </button>
+  
+        <button href="#" class="button_nav" onclick="aplicarListas()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="28" height="28"
+            viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M9 6l11 0" />
+            <path d="M9 12l11 0" />
+            <path d="M9 18l11 0" />
+            <path d="M5 6l0 .01" />
+            <path d="M5 12l0 .01" />
+            <path d="M5 18l0 .01" />
+          </svg>
+        </button>
+  
+        <button href="#" class="button_nav">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy" width="28"
+            height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+            <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+            <path d="M14 4l0 4l-6 0l0 -4" />
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+  
+  
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
+          SINTAXIS MARKDOWN
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <p>
+            <strong>Encabezados:</strong>
+          <ul>
+            <li># Encabezado 1</li>
+            <li>## Encabezado 2</li>
+            <li>### Encabezado 3</li>
+            <li>#### Encabezado 4</li>
+            <li>##### Encabezado 5</li>
+            <li>###### Encabezado 6</li>
+          </ul>
+          <br>
+          <strong>Texto en negrita y cursiva:</strong>
+          <ul>
+            <li>**Texto en negrita**</li>
+            <li>*Texto en cursiva*</li>
+          </ul>
+          <br>
+          <strong>Listas:</strong>
+          <br>
+          <ul>
+            <li>"- Elemento de lista 1"</li>
+            <li>"- Elemento de lista 2"</li>
+            <ul>
+              <li>"- Subelemento de lista"</li>
+            </ul>
+          </ul>
+          <ol>
+            <li>"1. Lista numerada 1"</li>
+            <li>"2. Lista numerada 2"</li>
+          </ol>
+          <br>
+          <strong>Enlaces:</strong>
+          <br>
+          [Texto del enlace](https://www.ejemplo.com)
+          <br>
+          <br>
+          <strong>Imágenes:</strong>
+          <br>
+          ![Texto alternativo](ruta/imagen.jpg)
+          <br>
+          <br>
+          <strong>Citas:</strong>
+          <br>
+          > Esto es una cita.
+          <br>
+          <br>
+          <strong>Líneas horizontales:</strong>
+          <br>
+          ---
+          <br>
+          <br>
+          <strong>Código en línea:</strong>
+          <br>
+          `código en línea`
+  
+  
+          </p>
         </div>
       </div>
-
-      <button href="#" class="button_nav" onclick="aplicarImg()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo" width="28" height="28"
-          viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
-          stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M15 8h.01" />
-          <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" />
-          <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
-          <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
-        </svg>
-      </button>
-
-      <button href="#" class="button_nav" onclick="exportarAPDF()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="28" height="28"
-          viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
-          stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-          <path d="M7 11l5 5l5 -5" />
-          <path d="M12 4l0 12" />
-        </svg>
-      </button>
-
-      <button href="#" class="button_nav" onclick="aplicarNegrita()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bold" onclick="aplicarNegrita()"
-          width="28" height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M7 5h6a3.5 3.5 0 0 1 0 7h-6z" />
-          <path d="M13 12h1a3.5 3.5 0 0 1 0 7h-7v-7" />
-        </svg>
-      </button>
-
-
-      <img width="4%" src="{{ url_for('static', filename='img/logo.png') }}" alt="icono">
-
-      <button href="#" class="button_nav" onclick="aplicarCursiva()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-italic" width="28" height="28"
-          viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
-          stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M11 5l6 0" />
-          <path d="M7 19l6 0" />
-          <path d="M14 5l-4 14" />
-        </svg>
-      </button>
-
-      <button href="#" class="button_nav" onclick="aplicarEnlace()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="28" height="28"
-          viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
-          stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M9 15l6 -6" />
-          <path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" />
-          <path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" />
-        </svg>
-      </button>
-
-      <button href="#" class="button_nav" onclick="aplicarListas()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="28" height="28"
-          viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
-          stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M9 6l11 0" />
-          <path d="M9 12l11 0" />
-          <path d="M9 18l11 0" />
-          <path d="M5 6l0 .01" />
-          <path d="M5 12l0 .01" />
-          <path d="M5 18l0 .01" />
-        </svg>
-      </button>
-
-      <button href="#" class="button_nav">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy" width="28"
-          height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
-          stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
-          <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-          <path d="M14 4l0 4l-6 0l0 -4" />
-        </svg>
-      </button>
-    </nav>
-  </div>
-</header>
-
-
-<div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-        aria-expanded="true" aria-controls="collapseOne">
-        SINTAXIS MARKDOWN
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <p>
-          <strong>Encabezados:</strong>
-        <ul>
-          <li># Encabezado 1</li>
-          <li>## Encabezado 2</li>
-          <li>### Encabezado 3</li>
-          <li>#### Encabezado 4</li>
-          <li>##### Encabezado 5</li>
-          <li>###### Encabezado 6</li>
-        </ul>
-        <br>
-        <strong>Texto en negrita y cursiva:</strong>
-        <ul>
-          <li>**Texto en negrita**</li>
-          <li>*Texto en cursiva*</li>
-        </ul>
-        <br>
-        <strong>Listas:</strong>
-        <br>
-        <ul>
-          <li>"- Elemento de lista 1"</li>
-          <li>"- Elemento de lista 2"</li>
-          <ul>
-            <li>"- Subelemento de lista"</li>
-          </ul>
-        </ul>
-        <ol>
-          <li>"1. Lista numerada 1"</li>
-          <li>"2. Lista numerada 2"</li>
-        </ol>
-        <br>
-        <strong>Enlaces:</strong>
-        <br>
-        [Texto del enlace](https://www.ejemplo.com)
-        <br>
-        <br>
-        <strong>Imágenes:</strong>
-        <br>
-        ![Texto alternativo](ruta/imagen.jpg)
-        <br>
-        <br>
-        <strong>Citas:</strong>
-        <br>
-        > Esto es una cita.
-        <br>
-        <br>
-        <strong>Líneas horizontales:</strong>
-        <br>
-        ---
-        <br>
-        <br>
-        <strong>Código en línea:</strong>
-        <br>
-        `código en línea`
-
-
-        </p>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+          aria-expanded="false" aria-controls="collapseThree">
+          JUSTIFICACIÓN
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <textarea name="justificationArea" id="JustificationText" class="full-width-textarea" rows="15" cols="80"
+            oninput="JustificationRun()" onclick="setActiveTextArea(this)">
+            {{ syllabus_data.justification }}
+          </textarea>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
-        aria-expanded="false" aria-controls="collapseThree">
-        JUSTIFICACIÓN
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <textarea name="justificationArea" id="JustificationText" class="full-width-textarea" rows="15" cols="80"
-          oninput="JustificationRun()" onclick="setActiveTextArea(this)">
-          {{ syllabus_data.justification }}
-        </textarea>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+          aria-expanded="false" aria-controls="collapseFour">
+          COMPETENCIAS
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <textarea name="competencesArea" id="competencesText" class="full-width-textarea" rows="15" cols="80"
+            oninput="competencesRun()" onclick="setActiveTextArea(this)">
+            {{ syllabus_data.competences}}
+          </textarea>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
-        aria-expanded="false" aria-controls="collapseFour">
-        COMPETENCIAS
-      </button>
-    </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <textarea name="competencesArea" id="competencesText" class="full-width-textarea" rows="15" cols="80"
-          oninput="competencesRun()" onclick="setActiveTextArea(this)">
-          {{ syllabus_data.competences}}
-        </textarea>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
+          aria-expanded="false" aria-controls="collapseFive">
+          RESULTADOS DE APRENDIZAJE DEL PROGRAMA
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <textarea name="learningssArea" id="learningsText" class="full-width-textarea" rows="15" cols="80"
+            oninput="learningsRun()" onclick="setActiveTextArea(this)">
+            {{ syllabus_data.learning_results}}
+          </textarea>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
-        aria-expanded="false" aria-controls="collapseFive">
-        RESULTADOS DE APRENDIZAJE DEL PROGRAMA
-      </button>
-    </h2>
-    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <textarea name="learningssArea" id="learningsText" class="full-width-textarea" rows="15" cols="80"
-          oninput="learningsRun()" onclick="setActiveTextArea(this)">
-          {{ syllabus_data.learning_results}}
-        </textarea>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix"
+          aria-expanded="false" aria-controls="collapseSix">
+          METODOLOGÍA GENERAL
+        </button>
+      </h2>
+      <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <textarea name="methodologyArea" id="methodologyText" class="full-width-textarea" rows="15" cols="80"
+            oninput="methodologyRun()" onclick="setActiveTextArea(this)">
+            {{ syllabus_data.methodology}}
+          </textarea>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix"
-        aria-expanded="false" aria-controls="collapseSix">
-        METODOLOGÍA GENERAL
-      </button>
-    </h2>
-    <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <textarea name="methodologyArea" id="methodologyText" class="full-width-textarea" rows="15" cols="80"
-          oninput="methodologyRun()" onclick="setActiveTextArea(this)">
-          {{ syllabus_data.methodology}}
-        </textarea>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven"
-        aria-expanded="false" aria-controls="collapseSeven">
-        CONTENIDO PROGRÁMATICO Y ENSEÑANZA-APRENDIZAJE
-      </button>
-    </h2>
-    <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body" id="blockItems">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-          data-bs-whatever="@getbootstrap">Crear nuevo bloque</button>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Crear nuevo Bloque para contenido y enseñanzas
-                </h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Contenido Programático:</label>
-                    <textarea class="form-control program_contentTextArea" id="content-text"></textarea>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven"
+          aria-expanded="false" aria-controls="collapseSeven">
+          CONTENIDO PROGRÁMATICO Y ENSEÑANZA-APRENDIZAJE
+        </button>
+      </h2>
+      <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body" id="blockItems">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="@getbootstrap">Crear nuevo bloque</button>
+  
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Crear nuevo Bloque para contenido y enseñanzas
+                  </h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label">Contenido Programático:</label>
+                      <textarea class="form-control program_contentTextArea" id="content-text"></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label for="message-text" class="col-form-label">Estrategias de enseñanza de Aprendizaje:</label>
+                      <textarea class="form-control strategyLearningTextArea" id="learning-text"></textarea>
+                    </div>
+  
+                    <!-- Campo oculto para almacenar el ID del bloque que se está editando -->
+                    <input type="hidden" id="editBlockId" value="">
+                  </form>
+  
+                  <!-- Botones del pie del modal -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="createBlockBtn">Crear bloque</button>
                   </div>
-                  <div class="mb-3">
-                    <label for="message-text" class="col-form-label">Estrategias de enseñanza de Aprendizaje:</label>
-                    <textarea class="form-control strategyLearningTextArea" id="learning-text"></textarea>
-                  </div>
-
-                  <!-- Campo oculto para almacenar el ID del bloque que se está editando -->
-                  <input type="hidden" id="editBlockId" value="">
-                </form>
-
-                <!-- Botones del pie del modal -->
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" id="createBlockBtn">Crear bloque</button>
                 </div>
               </div>
             </div>
@@ -306,93 +308,94 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine"
-        aria-expanded="false" aria-controls="collapseNine">
-        EVALUACIÓN
-      </button>
-    </h2>
-    <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-
-        <div class="accordion3" id="accordionPanelsStayOpenExample">
-          <div class="accordion-item3">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne">
-                PRIMER CORTE
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
-              <div class="accordion-body">
-                <textarea name="firstEvaluationArea" id="firstEvaluationText" class="full-width-textarea" rows="15"
-                  cols="80" oninput="firstEvaluationRun()" onclick="setActiveTextArea(this)">
-                    {{ evaluations_data.description_first_percentage}}
-                 </textarea>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine"
+          aria-expanded="false" aria-controls="collapseNine">
+          EVALUACIÓN
+        </button>
+      </h2>
+      <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+  
+          <div class="accordion3" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item3">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                  aria-controls="panelsStayOpen-collapseOne">
+                  PRIMER CORTE
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  <textarea name="firstEvaluationArea" id="firstEvaluationText" class="full-width-textarea" rows="15"
+                    cols="80" oninput="firstEvaluationRun()" onclick="setActiveTextArea(this)">
+                      {{ evaluations_data.description_first_percentage}}
+                   </textarea>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item3">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseTwo">
+                  SEGUNDO CORTE
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  <textarea name="secondEvaluationArea" id="secondEvaluationText" class="full-width-textarea" rows="15"
+                    cols="80" oninput="secondEvaluationRun()" onclick="setActiveTextArea(this)">
+                      {{ evaluations_data.description_second_percentage}}
+                   </textarea>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item3">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseThree">
+                  TERCER CORTE
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  <textarea name="thirdEvaluationArea" id="thirdEvaluationText" class="full-width-textarea" rows="15"
+                    cols="80" oninput="thirdEvaluationRun()" onclick="setActiveTextArea(this)">
+                      {{ evaluations_data.description_third_percentage}}
+                   </textarea>
+                </div>
               </div>
             </div>
           </div>
-          <div class="accordion-item3">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseTwo">
-                SEGUNDO CORTE
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-              <div class="accordion-body">
-                <textarea name="secondEvaluationArea" id="secondEvaluationText" class="full-width-textarea" rows="15"
-                  cols="80" oninput="secondEvaluationRun()" onclick="setActiveTextArea(this)">
-                    {{ evaluations_data.description_second_percentage}}
-                 </textarea>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item3">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseThree">
-                TERCER CORTE
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
-              <div class="accordion-body">
-                <textarea name="thirdEvaluationArea" id="thirdEvaluationText" class="full-width-textarea" rows="15"
-                  cols="80" oninput="thirdEvaluationRun()" onclick="setActiveTextArea(this)">
-                    {{ evaluations_data.description_third_percentage}}
-                 </textarea>
-              </div>
-            </div>
-          </div>
+  
         </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen"
+          aria-expanded="false" aria-controls="collapseTen">
+          BIBLIOGRAFÍA
+        </button>
+      </h2>
+      <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <textarea name="bibliographyArea" id="bibliographyText" class="full-width-textarea" rows="15" cols="80"
+            oninput="bibliographyRun()" onclick="setActiveTextArea(this)">
+            {{subject_data.bibliography}}
+          </textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>
 
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen"
-        aria-expanded="false" aria-controls="collapseTen">
-        BIBLIOGRAFÍA
-      </button>
-    </h2>
-    <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <textarea name="bibliographyArea" id="bibliographyText" class="full-width-textarea" rows="15" cols="80"
-          oninput="bibliographyRun()" onclick="setActiveTextArea(this)">
-          {{subject_data.bibliography}}
-        </textarea>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
 
 
 <div id="contenedorParaExportar">
@@ -631,7 +634,7 @@
   </td>
   <td>
     <div class="campoDocentes" id="idDocentes">
-      <p>{{teachers_data.name}}</p>
+      <p>{{teachers_data}}</p>
     </div>
     </div>
   </td>

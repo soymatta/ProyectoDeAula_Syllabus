@@ -4,6 +4,7 @@ const lista2= document.getElementById('strategies');
 
 
 new Sortable(lista, {
+    group:'group1',
     multiDrag: true, // Enable multi-drag
 	selectedClass: 'selected', // The class applied to the selected items
 	fallbackTolerance: 3,
@@ -29,6 +30,7 @@ new Sortable(lista, {
 });
 
 new Sortable(lista2, {
+    group:'group2',
     multiDrag: true, // Enable multi-drag
 	selectedClass: 'selected', // The class applied to the selected items
 	fallbackTolerance: 3,
@@ -38,7 +40,7 @@ new Sortable(lista2, {
     onEnd: ()=> {
         console.log("se solto un elemento")
     },
-    group:"lista-elemento",
+    group:"lista-elemento2",
     store: {
         //guarda orden de lista (de manera local, alfredo lo hara en la base de datos)
         set: (sortable)=>{
