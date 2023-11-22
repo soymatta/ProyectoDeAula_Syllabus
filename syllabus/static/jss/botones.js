@@ -1,97 +1,182 @@
+
 function exportarAPDF() {
-    // Obtener la lista de elementos que deseas exportar
-    var elementos = document.querySelectorAll('.elemento-exportar');
+    var element = document.getElementById('DivExportar');
 
-    // Crear un contenedor temporal para almacenar los elementos a exportar
-    var contenedor = document.createElement('div');
+    // Opciones de configuración para html2pdf
+    var opt = {
+        margin: 10,
+        filename: 'documento.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
 
-    // Clonar y agregar cada elemento al contenedor
-    elementos.forEach(function (elemento) {
-        contenedor.appendChild(elemento.cloneNode(true));
-    });
-
-    // Llamar a la función html2pdf con el contenido del contenedor
-    html2pdf(contenedor);
+    // Llama a html2pdf con las opciones
+    html2pdf(element, opt);
 }
 
 
 function aplicarNegrita() {
-    var editor = document.getElementById('JustificationText');
-    var seleccion = window.getSelection().toString();
+    // Verificar si hay un textArea activo
+    if (activeTextArea) {
+        // Obtener el contenido actual del textArea activo
+        var contenidoActual = activeTextArea.value;
 
-    // Verifica si hay texto seleccionado
-    if (seleccion !== '') {
-        var nuevoContenido = editor.innerHTML.replace(seleccion, `__${seleccion}__`);
-        editor.innerHTML = nuevoContenido;
-    } else {
-        var nuevoContenido = editor.innerHTML.replace(seleccion, `__type here__`);
-        editor.innerHTML = nuevoContenido;
+        // Obtener la selección actual del editor en el textArea activo
+        var selectedText = contenidoActual.substring(activeTextArea.selectionStart, activeTextArea.selectionEnd);
+
+        // Verificar si hay texto seleccionado
+        if (selectedText !== "") {
+            // Agregar el texto en negrita a la selección
+            var newText = contenidoActual.substring(0, activeTextArea.selectionStart) +
+                "**" + selectedText + "**" +
+                contenidoActual.substring(activeTextArea.selectionEnd);
+
+            // Reemplazar el contenido del textArea activo con el nuevo texto
+            activeTextArea.value = newText;
+        } else {
+            // Si no hay texto seleccionado, agregar los caracteres de negrita alrededor del cursor
+            var cursorPosition = activeTextArea.selectionStart;
+            var newText = contenidoActual.substring(0, cursorPosition) +
+                "**Type here**" +
+                contenidoActual.substring(cursorPosition);
+
+            // Reemplazar el contenido del textArea activo con el nuevo texto
+            activeTextArea.value = newText;
+
+            // Mover el cursor al medio de los caracteres de negrita
+            activeTextArea.setSelectionRange(cursorPosition + 2, cursorPosition + 2);
+        }
     }
 }
-
 
 function aplicarCursiva() {
-    var editor = document.getElementById('JustificationText');
-    var seleccion = window.getSelection().toString();
+    // Verificar si hay un textArea activo
+    if (activeTextArea) {
+        // Obtener el contenido actual del textArea activo
+        var contenidoActual = activeTextArea.value;
 
-    // Verifica si hay texto seleccionado
-    if (seleccion !== '') {
-        var nuevoContenido = editor.innerHTML.replace(seleccion, `_${seleccion}_`);
-        editor.innerHTML = nuevoContenido;
-    } else {
-        var nuevoContenido = editor.innerHTML.replace(seleccion, `_type here_`);
-        editor.innerHTML = nuevoContenido;
+        // Obtener la selección actual del editor en el textArea activo
+        var selectedText = contenidoActual.substring(activeTextArea.selectionStart, activeTextArea.selectionEnd);
+
+        // Verificar si hay texto seleccionado
+        if (selectedText !== "") {
+            // Agregar el texto en negrita a la selección
+            var newText = contenidoActual.substring(0, activeTextArea.selectionStart) +
+                "*" + selectedText + "*" +
+                contenidoActual.substring(activeTextArea.selectionEnd);
+
+            // Reemplazar el contenido del textArea activo con el nuevo texto
+            activeTextArea.value = newText;
+        } else {
+            // Si no hay texto seleccionado, agregar los caracteres de negrita alrededor del cursor
+            var cursorPosition = activeTextArea.selectionStart;
+            var newText = contenidoActual.substring(0, cursorPosition) +
+                "*Type here*" +
+                contenidoActual.substring(cursorPosition);
+
+            // Reemplazar el contenido del textArea activo con el nuevo texto
+            activeTextArea.value = newText;
+
+            // Mover el cursor al medio de los caracteres de negrita
+            activeTextArea.setSelectionRange(cursorPosition + 2, cursorPosition + 2);
+        }
     }
 }
-
-function aplicarEnlace() {
-    var editor = document.getElementById('JustificationText');
-    var seleccion = window.getSelection().toString();
-
-    // Verifica si hay texto seleccionado
-    if (seleccion !== '') {
-        var nuevoContenido = editor.innerHTML.replace(seleccion, `[${seleccion}](${seleccion})`);
-        editor.innerHTML = nuevoContenido;
-    } else {
-        var nuevoContenido = editor.innerHTML.replace(seleccion, `[Link](type link)`);
-        editor.innerHTML = nuevoContenido;
-    }
-}
-
-
 
 function aplicarImg() {
-    var editor = document.getElementById('JustificationText');
-    var seleccion = window.getSelection().toString();
+    // Verificar si hay un textArea activo
+    if (activeTextArea) {
+        // Obtener el contenido actual del textArea activo
+        var contenidoActual = activeTextArea.value;
 
-    // Verifica si hay texto seleccionado
-    if (seleccion !== '') {
-        var nuevoContenido = editor.innerHTML.replace(seleccion, `![${seleccion}](${seleccion})`);
-        editor.innerHTML = nuevoContenido;
-    } else {
-        var nuevoContenido = editor.innerHTML.replace(seleccion, `![Link](type link)`);
-        editor.innerHTML = nuevoContenido;
+        // Obtener la selección actual del editor en el textArea activo
+        var selectedText = contenidoActual.substring(activeTextArea.selectionStart, activeTextArea.selectionEnd);
+
+        // Insertar la estructura de imagen alrededor del texto seleccionado o en el cursor
+        var newText = contenidoActual.substring(0, activeTextArea.selectionStart) +
+            "![texto alternativo](URL_de_la_imagen)" +
+            contenidoActual.substring(activeTextArea.selectionEnd);
+
+        // Reemplazar el contenido del textArea activo con el nuevo texto
+        activeTextArea.value = newText;
+
+        // Si no hay texto seleccionado, seleccionar "texto alternativo"
+        if (selectedText === "") {
+            var cursorPosition = activeTextArea.selectionStart + 2;
+            activeTextArea.setSelectionRange(cursorPosition, cursorPosition + 13); // Selecciona "texto alternativo"
+        }
+    }
+}
+
+function aplicarEnlace3() {
+    // Verificar si hay un textArea activo
+    if (activeTextArea) {
+        // Obtener el contenido actual del textArea activo
+        var contenidoActual = activeTextArea.value;
+
+        // Obtener la selección actual del editor en el textArea activo
+        var selectedText = contenidoActual.substring(activeTextArea.selectionStart, activeTextArea.selectionEnd);
+
+        // Insertar la estructura de enlace alrededor del texto seleccionado o en el cursor
+        var newText = contenidoActual.substring(0, activeTextArea.selectionStart) +
+            "[" + selectedText + "](URL_del_enlace)" +
+            contenidoActual.substring(activeTextArea.selectionEnd);
+
+        // Reemplazar el contenido del textArea activo con el nuevo texto
+        activeTextArea.value = newText;
+
+        // Si no hay texto seleccionado, seleccionar "texto del enlace"
+        if (selectedText === "") {
+            var cursorPosition = activeTextArea.selectionStart + 1;
+            activeTextArea.setSelectionRange(cursorPosition, cursorPosition + 15); // Selecciona "texto del enlace"
+        }
     }
 }
 
 function aplicarListas() {
-    var editor = document.getElementById('JustificationText');
-    var seleccion = window.getSelection().toString();
-    var contenidoActual = document.getElementById('JustificationText').innerHTML;
-    // Verifica si hay texto seleccionado
-    if (seleccion !== '') {
-        var nuevoContenido = editor.innerHTML.replace(seleccion, `>-${seleccion}`);
-        editor.innerHTML = nuevoContenido;
-    } else if (seleccion !== '>-' + seleccion) {
-        var contenidoActual = document.getElementById('JustificationText').innerHTML;
+    // Verificar si hay un textArea activo
+    if (activeTextArea) {
+        // Obtener el contenido actual del textArea activo
+        var contenidoActual = activeTextArea.value;
 
-        // Agregar un encabezado con #
-        var nuevoContenido = '>' + contenidoActual;
+        // Obtener la selección actual del editor en el textArea activo
+        var selectedText = contenidoActual.substring(activeTextArea.selectionStart, activeTextArea.selectionEnd);
 
-        // Actualizar el contenido del div
-        document.getElementById('JustificationText').innerHTML = nuevoContenido;
+        // Verificar si hay texto seleccionado
+        if (selectedText !== "") {
+            // Insertar la estructura de lista alrededor del texto seleccionado
+            var newText = contenidoActual.substring(0, activeTextArea.selectionStart) +
+                "- " + selectedText +
+                contenidoActual.substring(activeTextArea.selectionEnd);
+
+            // Reemplazar el contenido del textArea activo con el nuevo texto
+            activeTextArea.value = newText;
+        } else {
+            // Si no hay texto seleccionado, colocar el cursor al inicio de una nueva línea y agregar un elemento de lista
+            var cursorPosition = activeTextArea.selectionStart;
+            var beforeCursor = contenidoActual.substring(0, cursorPosition);
+            var afterCursor = contenidoActual.substring(cursorPosition);
+
+            // Verificar si el cursor está al inicio de una línea o al principio del texto
+            var isNewLine = cursorPosition === 0 || beforeCursor.charAt(cursorPosition - 1) === '\n';
+
+            // Agregar el elemento de lista al inicio de una nueva línea o al principio del texto
+            var newText = (isNewLine ? "" : "\n") +
+                "- " +
+                (isNewLine ? "" : " ") +
+                beforeCursor +
+                afterCursor;
+
+            // Reemplazar el contenido del textArea activo con el nuevo texto
+            activeTextArea.value = newText;
+
+            // Mover el cursor al final del nuevo elemento de lista
+            activeTextArea.setSelectionRange(cursorPosition + (isNewLine ? 2 : 3), cursorPosition + (isNewLine ? 2 : 3));
+        }
     }
 }
+
 
 
 function showHeaderMenu() {
