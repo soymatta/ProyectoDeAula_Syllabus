@@ -1,3 +1,16 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const $boton = document.querySelector("#btnCrearPdf");
+    
+    $boton.addEventListener("click", () => {
+        const $elementoParaConvertir = document.querySelector("#contenedorParaExportar");
+
+        html2pdf()
+            .set({ jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } })
+            .from($elementoParaConvertir)
+            .save()
+            .catch(err => console.log(err));
+    });
+});
 
 function exportarAPDF() {
     var element = document.getElementById('DivExportar');
@@ -109,7 +122,7 @@ function aplicarImg() {
     }
 }
 
-function aplicarEnlace3() {
+function aplicarEnlace() {
     // Verificar si hay un textArea activo
     if (activeTextArea) {
         // Obtener el contenido actual del textArea activo
@@ -153,7 +166,7 @@ function aplicarListas() {
             // Reemplazar el contenido del textArea activo con el nuevo texto
             activeTextArea.value = newText;
         } else {
-            // Si no hay texto seleccionado, colocar el cursor al inicio de una nueva línea y agregar un elemento de lista
+            // Si no hay texto seleccionado, agregar un elemento de lista en la posición actual del cursor
             var cursorPosition = activeTextArea.selectionStart;
             var beforeCursor = contenidoActual.substring(0, cursorPosition);
             var afterCursor = contenidoActual.substring(cursorPosition);
@@ -161,11 +174,11 @@ function aplicarListas() {
             // Verificar si el cursor está al inicio de una línea o al principio del texto
             var isNewLine = cursorPosition === 0 || beforeCursor.charAt(cursorPosition - 1) === '\n';
 
-            // Agregar el elemento de lista al inicio de una nueva línea o al principio del texto
-            var newText = (isNewLine ? "" : "\n") +
+            // Agregar el elemento de lista en la posición actual del cursor
+            var newText = beforeCursor +
+                (isNewLine ? "" : "\n") +
                 "- " +
                 (isNewLine ? "" : " ") +
-                beforeCursor +
                 afterCursor;
 
             // Reemplazar el contenido del textArea activo con el nuevo texto
@@ -176,6 +189,7 @@ function aplicarListas() {
         }
     }
 }
+
 
 
 

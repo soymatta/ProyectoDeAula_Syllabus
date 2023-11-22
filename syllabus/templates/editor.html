@@ -2,6 +2,9 @@
 {% block css%}
 <!-- CSS Especifico para el editor-->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/styleEditor.css' ) }}" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
 {% endblock %}
 {% block header%}
 
@@ -396,7 +399,10 @@
 </div>
 </div>
 
-<!-- Cuadro de inicio -->
+
+<div id="contenedorParaExportar">
+
+  <!-- Cuadro de inicio -->
 <div class="cuerpo" id="DivExportar">
   <section class="inicio">
     <div class="imageLibre"></div>
@@ -893,6 +899,12 @@
       </table>
   </div>
 </div>
+
+
+</div>
+
+
+
 
 <script src="{{ url_for('static', filename='jss/getVersions.js') }}"></script>
 <script src="{{ url_for('static', filename='jss/getSubjects.js') }}"></script>
