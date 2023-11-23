@@ -269,10 +269,14 @@
         </button>
       </h2>
       <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body" id="blockItems">
+        <div class="accordion-body" >
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
             data-bs-whatever="@getbootstrap">Crear nuevo bloque</button>
-  
+          
+           <div class="bloques" id="blockItems">
+
+           </div>
+
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -407,13 +411,14 @@
     <div class="titulo">
       <p>FORMATO MICROCURRICULO</p>
     </div>
-    <div class="documento">
-      <p>{{ syllabus_data.id}}</p>
+    <!-- Para la tabla formatos -->
+    <div class="documento" id="IdVersionFormato">
+      <p><!-- {{ syllabus_data.id}} --></p>
     </div>
-    <div class="version">
+    <div class="version" id="VersionFormato">
       <p>Versión 2</p>
     </div>
-    <div class="fecha" id="date">
+    <div class="fecha" id="fechaFormato">
       
     </div>
   </section>
@@ -423,8 +428,9 @@
     <div class="facultad">
       <p>FACULTAD DE {{faculty_data.name}}</p>
     </div>
-    <div class="programa">
-      <p>PROGRAMA DE <strong>{{ syllabus_data.program }}</strong></p>
+    <!-- para la tabla progama -->
+    <div class="programa" id="programaNombre">
+      <p>PROGRAMA DE <strong><!-- {{ syllabus_data.program }} --></strong></p>
     </div>
   </section>
 
@@ -734,62 +740,50 @@
     <td>
       <!-- VII. CONTENIDOS PROGRAMÁTICOS VIII. ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
 <section class="contenido-estrategias">
-  <div class="contenidoProgramatico">
-    <div class="tContenidoProgramatico">
-      <p>
-        <span class="num">VII.</span> <strong>CONTENIDO PROGRAMATICO</strong>
-      </p>
-    </div>
-  </td>
-    <td>
-       <!-- ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
-  <div class="estrategias">
-    <div class="estrategiasDeAprendizaje">
-      <div class="tEstrategias">
+    <div class="contenidoProgramatico">
+      <div class="tContenidoProgramatico">
         <p>
-          <span class="num">VIII.</span>
-          <strong>ESTRATEGIAS DE ENSEÑANZA-APRENDIZAJE</strong>
+          <span class="num">VII.</span> <strong>CONTENIDO PROGRAMATICO</strong>
         </p>
       </div>
     </td>
-  </tr>
+      <td>
+        <!-- ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
+    <div class="estrategias">
+      <div class="estrategiasDeAprendizaje">
+        <div class="tEstrategias">
+          <p>
+            <span class="num">VIII.</span>
+            <strong>ESTRATEGIAS DE ENSEÑANZA-APRENDIZAJE</strong>
+          </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="campoContenidoProgramatico" >
+        <div class="bloques" id="program_content">
+          
+        </div>
+      </div>
+    </div>
+  </td>
+      <td>
+          <div class="campoEstrategias">
+          <div class="bloques" id="strategies">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </td>
+    </tr>
+  </table>
+  <p></p>
+  <table>
   <tr>
     <td>
-       <div class="campoContenidoProgramatico" id="program_content">
-      <div class="bloques">
-        <p>prueba1</p>
-      </div>
-      <div class="bloques">
-        <p>prueba2</p>
-      </div>
-      <div class="bloques">
-        <p>prueba3</p>
-      </div>
-    </div>
-  </div>
-</td>
-    <td>
-        <div class="campoEstrategias" id="strategies">
-        <div class="bloques">
-          <p>prueba 1</p>
-        </div>
-        <div class="bloques">
-          <p>prueba 2</p>
-        </div>
-        <div class="bloques">
-          <p>prueba 3</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-</td>
-  </tr>
-</table>
-<p></p>
-<table>
-<tr>
-  <td>
     <!-- EVALUACION -->
 <section class="evaluacion">
   <div class="tEvaluacion">
