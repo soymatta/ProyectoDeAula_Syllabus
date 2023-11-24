@@ -64,7 +64,7 @@
           <form>
             <div class="mb-3">
               <label for="message-text" class="col-form-label">Describa los cambios en el syllabus</label>
-              <textarea rows="3" cols="15" class="full-width-textarea" id="message-text"></textarea>
+              <textarea rows="3" cols="15" class="full-width-textarea" id="description-text1"></textarea>
             </div>
           </form>
         </div>
@@ -117,7 +117,7 @@
             </svg>
           </button>
 
-          <button href="#" class="button_nav" onclick="exportarAPDF()">
+          <button href="#" class="button_nav" id="btnCrearPdf">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="28" height="28"
               viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
               stroke-linejoin="round">
@@ -178,7 +178,7 @@
           </button>
 
 
-          <button href="#" class="button_nav" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+          <button href="#" class="button_nav" id="btnGuardar" data-bs-toggle="modal" data-bs-target="#exampleModal1">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy" width="28"
               height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
               stroke-linejoin="round">
