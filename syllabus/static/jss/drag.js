@@ -1,8 +1,6 @@
 const lista= document.getElementById('program-content');
 const lista2= document.getElementById('strategies');
 
-
-
 new Sortable(lista, {
     group:'group1',
     multiDrag: true, // Enable multi-drag
