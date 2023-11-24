@@ -781,8 +781,6 @@
       </tr>
     </table>
 
-    <table>
-      <tr>
         <!-- EVALUACION -->
         <section class="evaluacion">
           <div class="tEvaluacion">
@@ -870,26 +868,23 @@
         </section>
 
         <!-- ultimos cambios -->
-        <div class="changesControl">
-          <div class="tChangesControl"></div>
-          <div class="formatChanges">
-            <table>
-              <thead>
+        <section id="versiones">
+          <table>
+            <tr class="fw-bold">Histórico de control de cambios</tr>
+            <tr>
+                <td class="fw-bold text-center">Fecha de 
+                  actualización </td>
+                <td class="fw-bold text-center">Descripción de la actualización del microcurrículo realizado</td>
+                <td class="fw-bold text-center">Responsable</td>
+            </tr>
+            {% for version in versions_data %}
                 <tr>
-                  <th>Fecha de Actualización</th>
-                  <th>
-                    Descripción de la actualización del microcurrículo realizado
-                  </th>
-                  <th>Responsable</th>
+                    <td>{{ version.update_date }}</td>
+                    <td>{{ version.description }}</td>
+                    <td>{{ version.user_name }}</td>
                 </tr>
-              </thead>
-              <tbody id="changesTableBody" data-changes="{{ versions_data | tojson | safe }}">
-                <!-- Aquí se insertarán las filas de la tabla con JavaScript -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </tr>
+            {% endfor %}
+        </section>
   </div>
 </div>
 
@@ -904,7 +899,3 @@
 <script src="{{ url_for('static', filename='jss/drag.js') }}"></script>
 
 {% endblock %}
-</tr>
-</table>
-</div>
-</div>
