@@ -1,26 +1,37 @@
-{% extends "layout.html" %}
-{% block css%}
+{% extends "layout.html" %} {% block css%}
 <!-- CSS Especifico para el editor-->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/styleEditor.css' ) }}" />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
+/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
-{% endblock %}
-{% block header%}
-
-{% endblock %}
-{% block content %}
+{% endblock %} {% block header%} {% endblock %} {% block content %}
 
 <div>
   <header class="navigation">
     <div class="navigation">
       <nav class="navi">
-
         <div id="headerButton">
-          <button href="#" class="button_nav" onmouseover="showHeaderMenu()" onmouseout="hideHeaderMenu()">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-text-size" width="28"
-              height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
-              stroke-linejoin="round">
+          <button
+            href="#"
+            class="button_nav"
+            onmouseover="showHeaderMenu()"
+            onmouseout="hideHeaderMenu()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-text-size"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="#ffffff"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M3 7v-2h13v2" />
               <path d="M10 5v14" />
@@ -30,7 +41,11 @@
               <path d="M17 19h2" />
             </svg>
           </button>
-          <div id="headerMenu" onmouseover="showHeaderMenu()" onmouseout="hideHeaderMenu()">
+          <div
+            id="headerMenu"
+            onmouseover="showHeaderMenu()"
+            onmouseout="hideHeaderMenu()"
+          >
             <a href="#" onclick="addHeader(1)">h1</a>
             <a href="#" onclick="addHeader(2)">h2</a>
             <a href="#" onclick="addHeader(3)">h3</a>
@@ -41,21 +56,41 @@
         </div>
 
         <button href="#" class="button_nav" onclick="aplicarImg()">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo" width="28" height="28"
-            viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-photo"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="#ffffff"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M15 8h.01" />
-            <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" />
+            <path
+              d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z"
+            />
             <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
             <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
           </svg>
         </button>
 
         <button href="#" class="button_nav" onclick="exportarAPDF()">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="28" height="28"
-            viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-download"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="#ffffff"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
             <path d="M7 11l5 5l5 -5" />
@@ -65,22 +100,43 @@
 
         <!-- aplicar negrita -->
         <button href="#" class="button_nav" onclick="aplicarNegrita()">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bold" width="28" height="28"
-            viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-bold"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="#ffffff"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M7 5h6a3.5 3.5 0 0 1 0 7h-6z" />
             <path d="M13 12h1a3.5 3.5 0 0 1 0 7h-7v-7" />
           </svg>
         </button>
 
-
-        <img width="4%" src="{{ url_for('static', filename='img/logo.png') }}" alt="icono">
+        <img
+          width="4%"
+          src="{{ url_for('static', filename='img/logo.png') }}"
+          alt="icono"
+        />
         <!-- aplicar cursiva -->
         <button href="#" class="button_nav" onclick="aplicarCursiva()">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-italic" width="28" height="28"
-            viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-italic"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#ffffff"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M11 5l6 0" />
             <path d="M7 19l6 0" />
@@ -89,20 +145,40 @@
         </button>
 
         <button href="#" class="button_nav" onclick="aplicarEnlace()">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="28" height="28"
-            viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-link"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="#ffffff"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M9 15l6 -6" />
             <path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" />
-            <path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" />
+            <path
+              d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463"
+            />
           </svg>
         </button>
 
         <button href="#" class="button_nav" onclick="aplicarListas()">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="28" height="28"
-            viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-list"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="#ffffff"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M9 6l11 0" />
             <path d="M9 12l11 0" />
@@ -114,11 +190,22 @@
         </button>
 
         <button href="#" class="button_nav">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy" width="28"
-            height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
-            stroke-linejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-device-floppy"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="#ffffff"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+            <path
+              d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"
+            />
             <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
             <path d="M14 4l0 4l-6 0l0 -4" />
           </svg>
@@ -127,19 +214,27 @@
     </div>
   </header>
 
-
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-          aria-expanded="true" aria-controls="collapseOne">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="true"
+          aria-controls="collapseOne"
+        >
           SINTAXIS MARKDOWN
         </button>
       </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div
+        id="collapseOne"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+      >
         <div class="accordion-body">
-          
-            <strong>Encabezados:</strong>
+          <strong>Encabezados:</strong>
           <ul>
             <li># Encabezado 1</li>
             <li>## Encabezado 2</li>
@@ -148,15 +243,15 @@
             <li>##### Encabezado 5</li>
             <li>###### Encabezado 6</li>
           </ul>
-          <br>
+          <br />
           <strong>Texto en negrita y cursiva:</strong>
           <ul>
             <li>**Texto en negrita**</li>
             <li>*Texto en cursiva*</li>
           </ul>
-          <br>
+          <br />
           <strong>Listas:</strong>
-          <br>
+          <br />
           <ul>
             <li>"- Elemento de lista 1"</li>
             <li>"- Elemento de lista 2"</li>
@@ -168,137 +263,257 @@
             <li>"1. Lista numerada 1"</li>
             <li>"2. Lista numerada 2"</li>
           </ol>
-          <br>
+          <br />
           <strong>Enlaces:</strong>
-          <br>
+          <br />
           [Texto del enlace](https://www.ejemplo.com)
-          <br>
-          <br>
+          <br />
+          <br />
           <strong>Imágenes:</strong>
-          <br>
+          <br />
           ![Texto alternativo](ruta/imagen.jpg)
-          <br>
-          <br>
+          <br />
+          <br />
           <strong>Citas:</strong>
-          <br>
+          <br />
           > Esto es una cita.
-          <br>
-          <br>
+          <br />
+          <br />
           <strong>Líneas horizontales:</strong>
-          <br>
+          <br />
           ---
-          <br>
-          <br>
+          <br />
+          <br />
           <strong>Código en línea:</strong>
-          <br>
+          <br />
           `código en línea`
-
-
-          
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseThree"
+          aria-expanded="false"
+          aria-controls="collapseThree"
+        >
           JUSTIFICACIÓN
         </button>
       </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div
+        id="collapseThree"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+      >
         <div class="accordion-body">
-          <textarea name="justificationArea" id="JustificationText" class="full-width-textarea" rows="15" cols="80"
-            oninput="JustificationRun()" onclick="setActiveTextArea(this)">{{syllabus_data.justification}}</textarea>
-
+          <textarea
+            name="justificationArea"
+            id="JustificationText"
+            class="full-width-textarea"
+            rows="15"
+            cols="80"
+            oninput="JustificationRun()"
+            onclick="setActiveTextArea(this)"
+          >
+{{syllabus_data.justification}}</textarea
+          >
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseFour"
+          aria-expanded="false"
+          aria-controls="collapseFour"
+        >
           COMPETENCIAS
         </button>
       </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div
+        id="collapseFour"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+      >
         <div class="accordion-body">
-          <textarea name="competencesArea" id="competencesText" class="full-width-textarea" rows="15" cols="80"
-            oninput="competencesRun()" onclick="setActiveTextArea(this)">{{ syllabus_data.competences}}</textarea>
+          <textarea
+            name="competencesArea"
+            id="competencesText"
+            class="full-width-textarea"
+            rows="15"
+            cols="80"
+            oninput="competencesRun()"
+            onclick="setActiveTextArea(this)"
+          >
+{{ syllabus_data.competences}}</textarea
+          >
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseFive"
+          aria-expanded="false"
+          aria-controls="collapseFive"
+        >
           RESULTADOS DE APRENDIZAJE DEL PROGRAMA
         </button>
       </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div
+        id="collapseFive"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+      >
         <div class="accordion-body">
-          <textarea name="learningssArea" id="learningsText" class="full-width-textarea" rows="15" cols="80"
-            oninput="learningsRun()" onclick="setActiveTextArea(this)">{{ syllabus_data.learning_results}}</textarea>
+          <textarea
+            name="learningssArea"
+            id="learningsText"
+            class="full-width-textarea"
+            rows="15"
+            cols="80"
+            oninput="learningsRun()"
+            onclick="setActiveTextArea(this)"
+          >
+{{ syllabus_data.learning_results}}</textarea
+          >
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix"
-          aria-expanded="false" aria-controls="collapseSix">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseSix"
+          aria-expanded="false"
+          aria-controls="collapseSix"
+        >
           METODOLOGÍA GENERAL
         </button>
       </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div
+        id="collapseSix"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+      >
         <div class="accordion-body">
-          <textarea name="methodologyArea" id="methodologyText" class="full-width-textarea" rows="15" cols="80"
-            oninput="methodologyRun()" onclick="setActiveTextArea(this)">{{ syllabus_data.methodology}}</textarea>
+          <textarea
+            name="methodologyArea"
+            id="methodologyText"
+            class="full-width-textarea"
+            rows="15"
+            cols="80"
+            oninput="methodologyRun()"
+            onclick="setActiveTextArea(this)"
+          >
+{{ syllabus_data.methodology}}</textarea
+          >
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseSeven"
+          aria-expanded="false"
+          aria-controls="collapseSeven"
+        >
           CONTENIDO PROGRÁMATICO Y ENSEÑANZA-APRENDIZAJE
         </button>
       </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div
+        id="collapseSeven"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+      >
         <div class="accordion-body">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            data-bs-whatever="@getbootstrap">Crear nuevo bloque</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            data-bs-whatever="@getbootstrap"
+          >
+            Crear nuevo bloque
+          </button>
 
-          <div class="bloques" id="blockItems">
+          <div class="bloques" id="blockItems"></div>
 
-          </div>
-
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Crear nuevo Bloque para contenido y enseñanzas
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Crear nuevo Bloque para contenido y enseñanzas
                   </h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
                 </div>
                 <div class="modal-body">
                   <form>
                     <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label">Contenido Programático:</label>
-                      <textarea class="form-control program_contentTextArea" id="content-text"></textarea>
+                      <label for="recipient-name" class="col-form-label"
+                        >Contenido Programático:</label
+                      >
+                      <textarea
+                        class="form-control program_contentTextArea"
+                        id="content-text"
+                      ></textarea>
                     </div>
                     <div class="mb-3">
-                      <label for="message-text" class="col-form-label">Estrategias de enseñanza de Aprendizaje:</label>
-                      <textarea class="form-control strategyLearningTextArea" id="learning-text"></textarea>
+                      <label for="message-text" class="col-form-label"
+                        >Estrategias de enseñanza de Aprendizaje:</label
+                      >
+                      <textarea
+                        class="form-control strategyLearningTextArea"
+                        id="learning-text"
+                      ></textarea>
                     </div>
 
                     <!-- Campo oculto para almacenar el ID del bloque que se está editando -->
-                    <input type="hidden" id="editBlockId" value="">
+                    <input type="hidden" id="editBlockId" value="" />
                   </form>
 
                   <!-- Botones del pie del modal -->
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="createBlockBtn">Crear bloque</button>
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      id="createBlockBtn"
+                    >
+                      Crear bloque
+                    </button>
                   </div>
                 </div>
               </div>
@@ -309,28 +524,53 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseNine"
+          aria-expanded="false"
+          aria-controls="collapseNine"
+        >
           EVALUACIÓN
         </button>
       </h2>
-      <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div
+        id="collapseNine"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+      >
         <div class="accordion-body">
-
           <div class="accordion3" id="accordionPanelsStayOpenExample">
             <div class="accordion-item3">
               <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                  aria-controls="panelsStayOpen-collapseOne">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseOne"
+                  aria-expanded="true"
+                  aria-controls="panelsStayOpen-collapseOne"
+                >
                   PRIMER CORTE
                 </button>
               </h2>
-              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
+              <div
+                id="panelsStayOpen-collapseOne"
+                class="accordion-collapse collapse"
+              >
                 <div class="accordion-body">
-                  <textarea name="firstEvaluationArea" id="firstEvaluationText" class="full-width-textarea" rows="15"
-                    cols="80" oninput="firstEvaluationRun()"
-                    onclick="setActiveTextArea(this)">{{ evaluations_data.description_first_percentage}}</textarea>
+                  <textarea
+                    name="firstEvaluationArea"
+                    id="firstEvaluationText"
+                    class="full-width-textarea"
+                    rows="15"
+                    cols="80"
+                    oninput="firstEvaluationRun()"
+                    onclick="setActiveTextArea(this)"
+                  >
+{{ evaluations_data.description_first_percentage}}</textarea
+                  >
                 </div>
               </div>
             </div>
@@ -338,65 +578,112 @@
             {% if evaluations_data.second_percentage is not none %}
             <div class="accordion-item3">
               <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-                  aria-controls="panelsStayOpen-collapseTwo">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseTwo"
+                >
                   SEGUNDO CORTE
                 </button>
               </h2>
-              <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+              <div
+                id="panelsStayOpen-collapseTwo"
+                class="accordion-collapse collapse"
+              >
                 <div class="accordion-body">
-                  <textarea name="secondEvaluationArea" id="secondEvaluationText" class="full-width-textarea" rows="15"
-                    cols="80" oninput="secondEvaluationRun()" onclick="setActiveTextArea(this)">
+                  <textarea
+                    name="secondEvaluationArea"
+                    id="secondEvaluationText"
+                    class="full-width-textarea"
+                    rows="15"
+                    cols="80"
+                    oninput="secondEvaluationRun()"
+                    onclick="setActiveTextArea(this)"
+                  >
                       {{ evaluations_data.description_second_percentage}}
-                   </textarea>
+                   </textarea
+                  >
                 </div>
               </div>
             </div>
             <div class="accordion-item3">
               <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                  aria-controls="panelsStayOpen-collapseThree">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseThree"
+                >
                   TERCER CORTE
                 </button>
               </h2>
-              <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+              <div
+                id="panelsStayOpen-collapseThree"
+                class="accordion-collapse collapse"
+              >
                 <div class="accordion-body">
-                  <textarea name="thirdEvaluationArea" id="thirdEvaluationText" class="full-width-textarea" rows="15"
-                    cols="80" oninput="thirdEvaluationRun()" onclick="setActiveTextArea(this)">
+                  <textarea
+                    name="thirdEvaluationArea"
+                    id="thirdEvaluationText"
+                    class="full-width-textarea"
+                    rows="15"
+                    cols="80"
+                    oninput="thirdEvaluationRun()"
+                    onclick="setActiveTextArea(this)"
+                  >
                       {{ evaluations_data.description_third_percentage}}
-                   </textarea>
+                   </textarea
+                  >
                 </div>
               </div>
             </div>
             {% endif %}
           </div>
-
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen"
-          aria-expanded="false" aria-controls="collapseTen">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseTen"
+          aria-expanded="false"
+          aria-controls="collapseTen"
+        >
           BIBLIOGRAFÍA
         </button>
       </h2>
-      <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div
+        id="collapseTen"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+      >
         <div class="accordion-body">
-          <textarea name="bibliographyArea" id="bibliographyText" class="full-width-textarea" rows="15" cols="80"
-            oninput="bibliographyRun()" onclick="setActiveTextArea(this)">{{subject_data.bibliography}}</textarea>
+          <textarea
+            name="bibliographyArea"
+            id="bibliographyText"
+            class="full-width-textarea"
+            rows="15"
+            cols="80"
+            oninput="bibliographyRun()"
+            onclick="setActiveTextArea(this)"
+          >
+{{subject_data.bibliography}}</textarea
+          >
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
-
 <div id="contenedorParaExportar">
-
   <!-- Cuadro de inicio -->
   <div class="cuerpo" id="DivExportar">
     <section class="inicio">
@@ -411,9 +698,7 @@
       <div class="version" id="VersionFormato">
         <p>Versión 2</p>
       </div>
-      <div class="fecha" id="fechaFormato">
-
-      </div>
+      <div class="fecha" id="fechaFormato"></div>
     </section>
 
     <!-- Facultad del syllabus y el programa -->
@@ -423,7 +708,9 @@
       </div>
       <!-- para la tabla progama -->
       <div class="programa" id="programaNombre">
-        <p>PROGRAMA DE <strong><!-- {{ syllabus_data.program }} --></strong></p>
+        <p>
+          PROGRAMA DE <strong><!-- {{ syllabus_data.program }} --></strong>
+        </p>
       </div>
     </section>
 
@@ -441,448 +728,457 @@
     </section>
 
     <!-- Identificación -->
-<section class="identificacion" id="identification">
-  <div class="tIdentificacion">
-    <p><span class="num">II.</span><strong>IDENTIFICACIÓN</strong></p>
-  </div>
-  <div class="cuadroIdentificacion">
-    <!-- Fila nombre asignatura -->
+    <section class="identificacion" id="identification">
+      <div class="tIdentificacion">
+        <p><span class="num">II.</span><strong>IDENTIFICACIÓN</strong></p>
+      </div>
+      <div class="cuadroIdentificacion">
+        <!-- Fila nombre asignatura -->
+        <table>
+          <tr>
+            <td>
+              <div class="filaNombreAsignatura">
+                <div class="tNombreAsignatura">
+                  <p>NOMBRE ASIGNATURA O MÓDULO</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="NombreAsignatura" id="nameAsignatura">
+                <p>{{ subject_data.name }}</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="filaCodigoAsignatura">
+                <div class="tCodigo">
+                  <p>CÓDIGO</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="CodigoAsignatura" id="codeAsignatura">
+                <p>{{ subject_data.id }}</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="filaSemestreAsignatura">
+                <div class="tSemestre">
+                  <p>SEMESTRE</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="SemestreAsignatura" id="semesterAsignatura">
+                <p>{{ subject_data.semester }}</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="filaCreditosAcademicos">
+                <div class="tCreditos">
+                  <p>Nº DE CRÉDITOS ACADÉMICOS</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="creditosAcademicos" id="creditsAcademicos">
+                <p>{{ subject_data.credits }}</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="filaModalidadAsignatura">
+                <div class="tModalidad">
+                  <p>MODALIDAD*</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="tipoModalidades">
+                <table>
+                  <tr>
+                    <td>
+                      <div class="filaModalidadPresencial">
+                        <div class="modalidadPresencial">
+                          <p>Presencial</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div
+                        class="campoModalidadPresencial"
+                        id="idModalidadPresencial"
+                        data-modalidad="{{ subject_data.modality }}"
+                      ></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="filaModalidadTIC">
+                        <div class="modalidadTIC">
+                          <p>Presencial asistida por TIC</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="campoTIC" id="idModalidadTIC"></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="filaModalidadVirtual">
+                        <div class="modalidadVirtual">
+                          <p>Virtual</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="campoVirtual" id="idModalidadVirtual"></div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div
+                class="filaTipoAsignatura"
+                data-tipo="{{ subject_data.type }}"
+                id="typeAsignatura"
+              >
+                <div class="tTipoAsignatura">
+                  <p>TIPO DE ASIGNATURA*</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="tipoAsignaturas">
+                <table>
+                  <tr>
+                    <td>
+                      <div class="filaAsignaturaTeorica">
+                        <div class="tTeorica">
+                          <p>Teórica</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="campoTeorica" id="idAsignaturaTeorica"></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="filaAsignaturaTeoricoPractica">
+                        <div class="tTeoricoPractica">
+                          <p>Teórico-Práctica</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div
+                        class="campoTeoricoPractica"
+                        id="idAsignaturaTeoricoPractica"
+                      ></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="filaAsignaturaPractica">
+                        <div class="tPractica">
+                          <p>Práctica</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div
+                        class="campoPractica"
+                        id="idAsignaturaPractica"
+                      ></div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="filaDocentes">
+                <div class="tDocentes">
+                  <p>DOCENTE(S)</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="campoDocentes" id="idDocentes">
+                <p>{{ teachers_data }}</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="filaFechaActualizacion">
+                <div class="tFechaActualizacion">
+                  <p>FECHA DE ACTUALIZACIÓN</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="campoFechaActualizacion" id="dateActualizacion">
+                <p>{{ date_actualizacion }}</p>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <table>
+      <!-- III Justificación -->
+      <tr>
+        <td>
+          <section class="justificacion">
+            <div class="tJustificacion">
+              <p>
+                <span class="num">III.</span> <strong>JUSTIFICACIÓN</strong>
+              </p>
+            </div>
+          </section>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="campoJustificacion p-3" id="justification"></div>
+        </td>
+      </tr>
+
+      <!-- IV COMPETENCIAS -->
+      <tr>
+        <td>
+          <section class="competencias">
+            <div class="tcompetencias">
+              <p><span class="num">IV.</span> <strong>COMPETENCIAS</strong></p>
+            </div>
+          </section>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="campoCompetencias" id="competences"></div>
+        </td>
+      </tr>
+      <!-- V resultados de aprendizaje del programa -->
+      <tr>
+        <td>
+          <section class="aprendizaje">
+            <div class="tAprendizaje">
+              <p>
+                <span class="num">V.</span>
+                <strong>RESULTADOS DE APRENDIZAJE DEL PROGRAMA</strong>
+              </p>
+            </div>
+          </section>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="campoAprendizaje" id="learning_results"></div>
+        </td>
+      </tr>
+
+      <!--  VI metodología general -->
+      <tr>
+        <td>
+          <section class="metodología">
+            <div class="tMetodologia">
+              <p>
+                <span class="num">VI.</span>
+                <strong>METODOLOGÍA GENERAL</strong>
+              </p>
+            </div>
+          </section>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="campoMetodologias" id="methodology"></div>
+        </td>
+      </tr>
+    </table>
+
     <table>
       <tr>
         <td>
-          <div class="filaNombreAsignatura">
-            <div class="tNombreAsignatura">
-              <p>NOMBRE ASIGNATURA O MÓDULO</p>
+          <!-- VII. CONTENIDOS PROGRAMÁTICOS VIII. ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
+          <section class="contenido-estrategias">
+            <div class="contenidoProgramatico">
+              <div class="tContenidoProgramatico">
+                <p>
+                  <span class="num">VII.</span>
+                  <strong>CONTENIDO PROGRAMATICO</strong>
+                </p>
+              </div>
             </div>
-          </div>
+          </section>
         </td>
         <td>
-          <div class="NombreAsignatura" id="nameAsignatura">
-            <p>{{ subject_data.name }}</p>
+          <!-- ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
+          <div class="estrategias">
+            <div class="estrategiasDeAprendizaje">
+              <div class="tEstrategias">
+                <p>
+                  <span class="num">VIII.</span>
+                  <strong>ESTRATEGIAS DE ENSEÑANZA-APRENDIZAJE</strong>
+                </p>
+              </div>
+            </div>
           </div>
         </td>
       </tr>
       <tr>
         <td>
-          <div class="filaCodigoAsignatura">
-            <div class="tCodigo">
-              <p>CÓDIGO</p>
-            </div>
+          <div class="campoContenidoProgramatico">
+            <div class="bloques" id="program-content"></div>
           </div>
         </td>
         <td>
-          <div class="CodigoAsignatura" id="codeAsignatura">
-            <p>{{ subject_data.id }}</p>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="filaSemestreAsignatura">
-            <div class="tSemestre">
-              <p>SEMESTRE</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="SemestreAsignatura" id="semesterAsignatura">
-            <p>{{ subject_data.semester }}</p>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="filaCreditosAcademicos">
-            <div class="tCreditos">
-              <p>Nº DE CRÉDITOS ACADÉMICOS</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="creditosAcademicos" id="creditsAcademicos">
-            <p>{{ subject_data.credits }}</p>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="filaModalidadAsignatura">
-            <div class="tModalidad">
-              <p>MODALIDAD*</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="tipoModalidades">
-            <table>
-              <tr>
-                <td>
-                  <div class="filaModalidadPresencial">
-                    <div class="modalidadPresencial">
-                      <p>Presencial</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="campoModalidadPresencial" id="idModalidadPresencial" data-modalidad="{{ subject_data.modality }}">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="filaModalidadTIC">
-                    <div class="modalidadTIC">
-                      <p>Presencial asistida por TIC</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="campoTIC" id="idModalidadTIC">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="filaModalidadVirtual">
-                    <div class="modalidadVirtual">
-                      <p>Virtual</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="campoVirtual" id="idModalidadVirtual">
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="filaTipoAsignatura" data-tipo="{{ subject_data.type }}" id="typeAsignatura">
-            <div class="tTipoAsignatura">
-              <p>TIPO DE ASIGNATURA*</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="tipoAsignaturas">
-            <table>
-              <tr>
-                <td>
-                  <div class="filaAsignaturaTeorica">
-                    <div class="tTeorica">
-                      <p>Teórica</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="campoTeorica" id="idAsignaturaTeorica">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="filaAsignaturaTeoricoPractica">
-                    <div class="tTeoricoPractica">
-                      <p>Teórico-Práctica</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="campoTeoricoPractica" id="idAsignaturaTeoricoPractica">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="filaAsignaturaPractica">
-                    <div class="tPractica">
-                      <p>Práctica</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="campoPractica" id="idAsignaturaPractica">
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="filaDocentes">
-            <div class="tDocentes">
-              <p>DOCENTE(S)</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="campoDocentes" id="idDocentes">
-            <p>{{ teachers_data }}</p>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="filaFechaActualizacion">
-            <div class="tFechaActualizacion">
-              <p>FECHA DE ACTUALIZACIÓN</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="campoFechaActualizacion" id="dateActualizacion">
-            <p>{{ date_actualizacion }}</p>
+          <div class="campoEstrategias">
+            <div class="bloques" id="strategies"></div>
           </div>
         </td>
       </tr>
     </table>
-  </div>
-</section>
 
-<p>Marque una X en la opción indicada</p>
-<table>
-  <!-- III Justificación -->
-  <tr>
-    <td>
-      <section class="justificacion">
-        <div class="tJustificacion">
-          <p><span class="num">III.</span> <strong>JUSTIFICACIÓN</strong></p>
-        </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="campoJustificacion p-3" id="justification"></div>
-      </section>
-    </td>
-  </tr>
-  <!-- IV COMPETENCIAS -->
-  <tr>
-    <td>
-      <section class="competencias">
-        <div class="tcompetencias">
-          <p><span class="num">IV.</span> <strong>COMPETENCIAS</strong></p>
-        </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="campoCompetencias" id="competences"></div>
-      </section>
-
-    </td>
-  </tr>
-  <!-- V resultados de aprendizaje del programa -->
-  <tr>
-    <td>
-      <section class="aprendizaje">
-        <div class="tAprendizaje">
-          <p><span class="num">V.</span> <strong>RESULTADOS DE APRENDIZAJE DEL PROGRAMA</strong></p>
-        </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="campoAprendizaje" id="learning_results"></div>
-      </section>
-    </td>
-  </tr>
-  <!--  VI metodología general -->
-  <tr>
-    <td>
-      <section class="metodología">
-        <div class="tMetodologia">
-          <p><span class="num">VI.</span> <strong>METODOLOGÍA GENERAL</strong></p>
-        </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="campoMetodologias" id="methodology"></div>
-      </section>
-    </td>
-  </tr>
-
-
-</table>
-
-<p>
-
-</p>
-
-<table>
-  <tr>
-    <td>
-      <!-- VII. CONTENIDOS PROGRAMÁTICOS VIII. ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
-      <section class="contenido-estrategias">
-        <div class="contenidoProgramatico">
-          <div class="tContenidoProgramatico">
-            <p>
-              <span class="num">VII.</span> <strong>CONTENIDO PROGRAMATICO</strong>
-            </p>
+    <table>
+      <tr>
+        <!-- EVALUACION -->
+        <section class="evaluacion">
+          <div class="tEvaluacion">
+            <p><span class="num">IX.</span> <strong>EVALUACIÓN</strong></p>
           </div>
-    </td>
-    <td>
-      <!-- ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
-      <div class="estrategias">
-        <div class="estrategiasDeAprendizaje">
-          <div class="tEstrategias">
-            <p>
-              <span class="num">VIII.</span>
-              <strong>ESTRATEGIAS DE ENSEÑANZA-APRENDIZAJE</strong>
-            </p>
-          </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="campoContenidoProgramatico">
-        <div class="bloques" id="program-content">
-
-        </div>
-      </div>
-      </div>
-    </td>
-    <td>
-      <div class="campoEstrategias">
-        <div class="bloques" id="strategies">
-
-        </div>
-      </div>
-      </div>
-      </div>
-      </section>
-    </td>
-  </tr>
-</table>
-<p></p>
-<table>
-  <tr>
-
-    <!-- EVALUACION -->
-    <section class="evaluacion">
-      <div class="tEvaluacion">
-        <p><span class="num">IX.</span> <strong>EVALUACIÓN</strong></p>
-      </div>
-      <table>
-
-        <tr>
-          <td>
-            <div class="tTablaPorcentaje-Estrategias">
-              <div class="tPorcentaje">
-                <p>PORCENTAJE</p>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="tEstrategias">
-              <p>ESTRATEGIAS</p>
-            </div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <div class="porcentaje-estrategias">
-              <div class="primerCorte">
-                <div class="tPrimerCorte">
-                  {{evaluations_data.first_percentage}}%
-                </div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="estrategiasPrimerCorte">
-              <div class="bloques" id="firstEvaluation"></div>
-            </div>
-          </td>
-        </tr>
-
-        {% if evaluations_data.second_percentage is not none %}
-        <tr>
-          <td>
-            <div class="segundoCorte">
-              <div class="tSegundoCorte">
-                {{evaluations_data.second_percentage}}%
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="estrategiasSegundoCorte">
-              <div class="bloques" id="secondEvaluation"></div>
-            </div>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <div class="tercerCorte">
-              <div class="tTercerCorte">
-                {{evaluations_data.third_percentage}}%
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="estrategiasTercerCorte">
-              <div class="bloques" id="thirdEvaluation"></div>
-            </div>
-          </td>
-        </tr>
-        {% endif %}
-
-      </table>
-    </section>
-
-    <!-- BIBLIOGRAFÍA -->
-    <section class="bibliografia">
-      <div class="tBibliografia">
-        <p>X. BIBLIOGRAFÍA</p>
-      </div>
-      <table>
-        <tr>
-          <td>
-            <div class="campoBibliografia" id="bibliography"></div>
-          </td>
-        </tr>
-      </table>
-    </section>
-
-
-    <!-- ultimos cambios -->
-    <div class="changesControl">
-      <div class="tChangesControl"></div>
-      <div class="formatChanges">
-        <table>
-          <thead>
+          <table>
             <tr>
-              <th>Fecha de Actualización</th>
-              <th>Descripción de la actualización del microcurrículo realizado</th>
-              <th>Responsable</th>
+              <td>
+                <div class="tTablaPorcentaje-Estrategias">
+                  <div class="tPorcentaje">
+                    <p>PORCENTAJE</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="tEstrategias">
+                  <p>ESTRATEGIAS</p>
+                </div>
+              </td>
             </tr>
-          </thead>
-          <tbody id="changesTableBody" data-changes='{{ versions_data | tojson | safe }}'>
-            <!-- Aquí se insertarán las filas de la tabla con JavaScript -->
-          </tbody>
-        </table>
-      </div>
-    </div>
 
+            <tr>
+              <td>
+                <div class="porcentaje-estrategias">
+                  <div class="primerCorte">
+                    <div class="tPrimerCorte">
+                      {{evaluations_data.first_percentage}}%
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="estrategiasPrimerCorte">
+                  <div class="bloques" id="firstEvaluation"></div>
+                </div>
+              </td>
+            </tr>
 
+            {% if evaluations_data.second_percentage is not none %}
+            <tr>
+              <td>
+                <div class="segundoCorte">
+                  <div class="tSegundoCorte">
+                    {{evaluations_data.second_percentage}}%
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="estrategiasSegundoCorte">
+                  <div class="bloques" id="secondEvaluation"></div>
+                </div>
+              </td>
+            </tr>
 
+            <tr>
+              <td>
+                <div class="tercerCorte">
+                  <div class="tTercerCorte">
+                    {{evaluations_data.third_percentage}}%
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="estrategiasTercerCorte">
+                  <div class="bloques" id="thirdEvaluation"></div>
+                </div>
+              </td>
+            </tr>
+            {% endif %}
+          </table>
+        </section>
 
-    <script src="{{ url_for('static', filename='jss/getVersions.js') }}"></script>
-    <script src="{{ url_for('static', filename='jss/getSubjects.js') }}"></script>
-    <script src="{{ url_for('static', filename='jss/bloques.js') }}"></script>
-    <script src="{{ url_for('static', filename='jss/botones.js') }}"></script>
-    <script src="{{ url_for('static', filename='jss/bundle.js') }}"></script>
-    <script src="{{ url_for('static', filename='jss/markdown.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/showdown@2.0.0/dist/showdown.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-    <script src="{{ url_for('static', filename='jss/drag.js') }}"></script>
+        <!-- BIBLIOGRAFÍA -->
+        <section class="bibliografia">
+          <div class="tBibliografia">
+            <p>X. BIBLIOGRAFÍA</p>
+          </div>
+          <table>
+            <tr>
+              <td>
+                <div class="campoBibliografia" id="bibliography"></div>
+              </td>
+            </tr>
+          </table>
+        </section>
 
-    {% endblock %}
+        <!-- ultimos cambios -->
+        <div class="changesControl">
+          <div class="tChangesControl"></div>
+          <div class="formatChanges">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fecha de Actualización</th>
+                  <th>
+                    Descripción de la actualización del microcurrículo realizado
+                  </th>
+                  <th>Responsable</th>
+                </tr>
+              </thead>
+              <tbody
+                id="changesTableBody"
+                data-changes="{{ versions_data | tojson | safe }}"
+              >
+                <!-- Aquí se insertarán las filas de la tabla con JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='jss/getVersions.js') }}"></script>
+        <script src="{{ url_for('static', filename='jss/getSubjects.js') }}"></script>
+        <script src="{{ url_for('static', filename='jss/bloques.js') }}"></script>
+        <script src="{{ url_for('static', filename='jss/botones.js') }}"></script>
+        <script src="{{ url_for('static', filename='jss/bundle.js') }}"></script>
+        <script src="{{ url_for('static', filename='jss/markdown.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/showdown@2.0.0/dist/showdown.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+        <script src="{{ url_for('static', filename='jss/drag.js') }}"></script>
+
+        {% endblock %}
+      </tr>
+    </table>
+  </div>
+</div>
