@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const $boton = document.querySelector("#btnCrearPdf");
 
     $boton.addEventListener("click", () => {
-        const $elementoParaConvertir = document.querySelector("#contenedorParaExportar");
+        const $elementoParaConvertir = document.querySelector("#DivExportar");
 
         html2pdf()
             .set({ jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } })
@@ -12,21 +12,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-function exportarAPDF() {
-    var element = document.getElementById('DivExportar');
+function modificarTamanoDeDivs() {
+    var divs = document.querySelectorAll('.carta');
 
-    // Opciones de configuración para html2pdf
+    divs.forEach(function (div) {
+        // Modifica el tamaño de cada div
+        div.style.width = '8.5in';
+        div.style.height = '11in';
+    });
+}
+
+// Función para exportar a PDF
+function exportarAPDF() {
+    // Llama primero a la función que modifica el tamaño de los divs
+    modificarTamanoDeDivs();
+
+    // Después, ejecuta la función para exportar a PDF
+    var element = document.getElementById('DivExportar'); // Cambia esto según tu estructura HTML
     var opt = {
         margin: 10,
         filename: 'documento.pdf',
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
+        html2canvas: { scale: 2, useCORS: true },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
-
-    // Llama a html2pdf con las opciones
+    
     html2pdf(element, opt);
 }
+
+
 
 
 function aplicarNegrita() {
