@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var update_date = new Date().toISOString(); // Obtén la fecha actual en formato ISO
         var description = document.getElementById('description-text1').value; // Ajusta el ID según tu formulario
 
-        fetch('/guardarDiv', {
+        fetch('versions/post', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
