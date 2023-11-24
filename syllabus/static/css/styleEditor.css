@@ -241,3 +241,20 @@ table table td {
 .vody {
   background-color: rgb(231, 223, 213);
 }
+
+@media print {
+  .carta {
+    width: 100%;
+    height: 100%;
+    page-break-before: always; /* Agrega salto de página antes de cada div */
+  }
+}
+
+
+.carta {
+  width: 100%; /* o width: 800px; según tus necesidades */
+  height: 100%;
+  border: 1px solid #000;
+  margin-bottom: 10px;
+  padding: 10px;
+}
