@@ -735,11 +735,11 @@
           </td>
         </tr>
       </table>
-
-      <table>
+      
+       <!-- VII. CONTENIDOS PROGRAMÁTICOS VIII. ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
+       <table>
         <tr>
           <td>
-            <!-- VII. CONTENIDOS PROGRAMÁTICOS VIII. ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
             <section class="contenido-estrategias">
               <div class="contenidoProgramatico">
                 <div class="tContenidoProgramatico">
@@ -778,6 +778,24 @@
           </td>
         </tr>
       </table>
+
+
+                  <!--CONTENIDOS Y ESTRATEGIAS-->
+                  <section id="contenidosYEstrategias">
+                    <table><tr class="fw-bold text-center">
+                      <td>VII. CONTENIDOS PROGRAMÁTICOS</td>
+                      <td>VIII. ESTRATEGIAS DE ENSEÑANZAAPRENDIZAJE</td>
+                    </tr>
+                    {% for content in contentsAndStrategies_data %}
+                    <tr>
+                      <td>{{ content.content_name }}
+                        {{ content.sub_name }}
+                      </td>
+                      <td>{{ content.strategies }}</td>
+                    </tr>
+                    {% endfor %}
+                  </table>
+                  </section>
 
       <!-- EVALUACION -->
       <section class="evaluacion">
