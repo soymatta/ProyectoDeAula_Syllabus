@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const $boton = document.querySelector("#btnCrearPdf");
     
     $boton.addEventListener("click", () => {
-        const $elementoParaConvertir = document.querySelector("#contenedorParaExportar");
+        const $elementoParaConvertir = document.querySelector("#DivExportar");
 
         html2pdf()
             .set({ jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } })

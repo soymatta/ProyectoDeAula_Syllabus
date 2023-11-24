@@ -1,9 +1,6 @@
 {% extends "layout.html" %} {% block css%}
 <!-- CSS Especifico para el editor-->
-<link
-  rel="stylesheet"
-  href="{{ url_for('static', filename='css/styleEditor.css' ) }}"
-/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styleEditor.css' ) }}" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
@@ -14,24 +11,10 @@
     <div class="navigation">
       <nav class="navi">
         <div id="headerButton">
-          <button
-            href="#"
-            class="button_nav"
-            onmouseover="showHeaderMenu()"
-            onmouseout="hideHeaderMenu()"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-text-size"
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke="#ffffff"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+          <button href="#" class="button_nav" onmouseover="showHeaderMenu()" onmouseout="hideHeaderMenu()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-text-size" width="28"
+              height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+              stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M3 7v-2h13v2" />
               <path d="M10 5v14" />
@@ -41,11 +24,7 @@
               <path d="M17 19h2" />
             </svg>
           </button>
-          <div
-            id="headerMenu"
-            onmouseover="showHeaderMenu()"
-            onmouseout="hideHeaderMenu()"
-          >
+          <div id="headerMenu" onmouseover="showHeaderMenu()" onmouseout="hideHeaderMenu()">
             <a href="#" onclick="addHeader(1)">h1</a>
             <a href="#" onclick="addHeader(2)">h2</a>
             <a href="#" onclick="addHeader(3)">h3</a>
@@ -56,41 +35,21 @@
         </div>
 
         <button href="#" class="button_nav" onclick="aplicarImg()">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-photo"
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="#ffffff"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo" width="28" height="28"
+            viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M15 8h.01" />
-            <path
-              d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z"
-            />
+            <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" />
             <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
             <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
           </svg>
         </button>
 
         <button href="#" class="button_nav" onclick="exportarAPDF()">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-download"
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="#ffffff"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="28" height="28"
+            viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
             <path d="M7 11l5 5l5 -5" />
@@ -100,43 +59,21 @@
 
         <!-- aplicar negrita -->
         <button href="#" class="button_nav" onclick="aplicarNegrita()">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-bold"
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="#ffffff"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bold" width="28" height="28"
+            viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M7 5h6a3.5 3.5 0 0 1 0 7h-6z" />
             <path d="M13 12h1a3.5 3.5 0 0 1 0 7h-7v-7" />
           </svg>
         </button>
 
-        <img
-          width="4%"
-          src="{{ url_for('static', filename='img/logo.png') }}"
-          alt="icono"
-        />
+        <img width="4%" src="{{ url_for('static', filename='img/logo.png') }}" alt="icono" />
         <!-- aplicar cursiva -->
         <button href="#" class="button_nav" onclick="aplicarCursiva()">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-italic"
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="#ffffff"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-italic" width="28" height="28"
+            viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M11 5l6 0" />
             <path d="M7 19l6 0" />
@@ -145,40 +82,20 @@
         </button>
 
         <button href="#" class="button_nav" onclick="aplicarEnlace()">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-link"
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="#ffffff"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="28" height="28"
+            viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M9 15l6 -6" />
             <path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" />
-            <path
-              d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463"
-            />
+            <path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" />
           </svg>
         </button>
 
         <button href="#" class="button_nav" onclick="aplicarListas()">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-list"
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="#ffffff"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="28" height="28"
+            viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M9 6l11 0" />
             <path d="M9 12l11 0" />
@@ -190,22 +107,11 @@
         </button>
 
         <button href="#" class="button_nav">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-device-floppy"
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="#ffffff"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy" width="28"
+            height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path
-              d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"
-            />
+            <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
             <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
             <path d="M14 4l0 4l-6 0l0 -4" />
           </svg>
@@ -217,22 +123,12 @@
   <div class="accordion float-md-end me-3" id="accordionExample">
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button
-          class="accordion-button collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseOne"
-          aria-expanded="true"
-          aria-controls="collapseOne"
-        >
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
           SINTAXIS MARKDOWN
         </button>
       </h2>
-      <div
-        id="collapseOne"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-      >
+      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <strong>Encabezados:</strong>
           <ul>
@@ -292,206 +188,99 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button
-          class="accordion-button collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseThree"
-          aria-expanded="false"
-          aria-controls="collapseThree"
-        >
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           JUSTIFICACIÓN
         </button>
       </h2>
-      <div
-        id="collapseThree"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-      >
+      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <textarea
-            name="justificationArea"
-            id="JustificationText"
-            class="full-width-textarea"
-            rows="15"
-            cols="80"
-            oninput="JustificationRun()"
-            onclick="setActiveTextArea(this)"
-          >
-{{syllabus_data.justification}}</textarea
-          >
+          <textarea name="justificationArea" id="JustificationText" class="full-width-textarea" rows="15" cols="80"
+            oninput="JustificationRun()" onclick="setActiveTextArea(this)">
+{{syllabus_data.justification}}</textarea>
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button
-          class="accordion-button collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseFour"
-          aria-expanded="false"
-          aria-controls="collapseFour"
-        >
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
           COMPETENCIAS
         </button>
       </h2>
-      <div
-        id="collapseFour"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-      >
+      <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <textarea
-            name="competencesArea"
-            id="competencesText"
-            class="full-width-textarea"
-            rows="15"
-            cols="80"
-            oninput="competencesRun()"
-            onclick="setActiveTextArea(this)"
-          >
-{{ syllabus_data.competences}}</textarea
-          >
+          <textarea name="competencesArea" id="competencesText" class="full-width-textarea" rows="15" cols="80"
+            oninput="competencesRun()" onclick="setActiveTextArea(this)">
+{{ syllabus_data.competences}}</textarea>
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button
-          class="accordion-button collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseFive"
-          aria-expanded="false"
-          aria-controls="collapseFive"
-        >
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
           RESULTADOS DE APRENDIZAJE DEL PROGRAMA
         </button>
       </h2>
-      <div
-        id="collapseFive"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-      >
+      <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <textarea
-            name="learningssArea"
-            id="learningsText"
-            class="full-width-textarea"
-            rows="15"
-            cols="80"
-            oninput="learningsRun()"
-            onclick="setActiveTextArea(this)"
-          >
-{{ syllabus_data.learning_results}}</textarea
-          >
+          <textarea name="learningssArea" id="learningsText" class="full-width-textarea" rows="15" cols="80"
+            oninput="learningsRun()" onclick="setActiveTextArea(this)">
+{{ syllabus_data.learning_results}}</textarea>
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button
-          class="accordion-button collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseSix"
-          aria-expanded="false"
-          aria-controls="collapseSix"
-        >
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix"
+          aria-expanded="false" aria-controls="collapseSix">
           METODOLOGÍA GENERAL
         </button>
       </h2>
-      <div
-        id="collapseSix"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-      >
+      <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <textarea
-            name="methodologyArea"
-            id="methodologyText"
-            class="full-width-textarea"
-            rows="15"
-            cols="80"
-            oninput="methodologyRun()"
-            onclick="setActiveTextArea(this)"
-          >
-{{ syllabus_data.methodology}}</textarea
-          >
+          <textarea name="methodologyArea" id="methodologyText" class="full-width-textarea" rows="15" cols="80"
+            oninput="methodologyRun()" onclick="setActiveTextArea(this)">
+{{ syllabus_data.methodology}}</textarea>
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button
-          class="accordion-button collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseSeven"
-          aria-expanded="false"
-          aria-controls="collapseSeven"
-        >
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
           CONTENIDO PROGRÁMATICO Y ENSEÑANZA-APRENDIZAJE
         </button>
       </h2>
-      <div
-        id="collapseSeven"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-      >
+      <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-            data-bs-whatever="@getbootstrap"
-          >
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="@getbootstrap">
             Crear nuevo bloque
           </button>
 
           <div class="bloques" id="blockItems"></div>
 
-          <div
-            class="modal fade"
-            id="exampleModal"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">
                     Crear nuevo Bloque para contenido y enseñanzas
                   </h1>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   <form>
                     <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label"
-                        >Contenido Programático:</label
-                      >
-                      <textarea
-                        class="form-control program_contentTextArea"
-                        id="content-text"
-                      ></textarea>
+                      <label for="recipient-name" class="col-form-label">Contenido Programático:</label>
+                      <textarea class="form-control program_contentTextArea" id="content-text"></textarea>
                     </div>
                     <div class="mb-3">
-                      <label for="message-text" class="col-form-label"
-                        >Estrategias de enseñanza de Aprendizaje:</label
-                      >
-                      <textarea
-                        class="form-control strategyLearningTextArea"
-                        id="learning-text"
-                      ></textarea>
+                      <label for="message-text" class="col-form-label">Estrategias de enseñanza de Aprendizaje:</label>
+                      <textarea class="form-control strategyLearningTextArea" id="learning-text"></textarea>
                     </div>
 
                     <!-- Campo oculto para almacenar el ID del bloque que se está editando -->
@@ -500,18 +289,10 @@
 
                   <!-- Botones del pie del modal -->
                   <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                       Close
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      id="createBlockBtn"
-                    >
+                    <button type="button" class="btn btn-primary" id="createBlockBtn">
                       Crear bloque
                     </button>
                   </div>
@@ -524,53 +305,27 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button
-          class="accordion-button collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseNine"
-          aria-expanded="false"
-          aria-controls="collapseNine"
-        >
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
           EVALUACIÓN
         </button>
       </h2>
-      <div
-        id="collapseNine"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-      >
+      <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <div class="accordion3" id="accordionPanelsStayOpenExample">
             <div class="accordion-item3">
               <h2 class="accordion-header">
-                <button
-                  class="accordion-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseOne"
-                  aria-expanded="true"
-                  aria-controls="panelsStayOpen-collapseOne"
-                >
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                  aria-controls="panelsStayOpen-collapseOne">
                   PRIMER CORTE
                 </button>
               </h2>
-              <div
-                id="panelsStayOpen-collapseOne"
-                class="accordion-collapse collapse"
-              >
+              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                  <textarea
-                    name="firstEvaluationArea"
-                    id="firstEvaluationText"
-                    class="full-width-textarea"
-                    rows="15"
-                    cols="80"
-                    oninput="firstEvaluationRun()"
-                    onclick="setActiveTextArea(this)"
-                  >
-{{ evaluations_data.description_first_percentage}}</textarea
-                  >
+                  <textarea name="firstEvaluationArea" id="firstEvaluationText" class="full-width-textarea" rows="15"
+                    cols="80" oninput="firstEvaluationRun()" onclick="setActiveTextArea(this)">
+{{ evaluations_data.description_first_percentage}}</textarea>
                 </div>
               </div>
             </div>
@@ -578,67 +333,35 @@
             {% if evaluations_data.second_percentage is not none %}
             <div class="accordion-item3">
               <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="panelsStayOpen-collapseTwo"
-                >
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseTwo">
                   SEGUNDO CORTE
                 </button>
               </h2>
-              <div
-                id="panelsStayOpen-collapseTwo"
-                class="accordion-collapse collapse"
-              >
+              <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                  <textarea
-                    name="secondEvaluationArea"
-                    id="secondEvaluationText"
-                    class="full-width-textarea"
-                    rows="15"
-                    cols="80"
-                    oninput="secondEvaluationRun()"
-                    onclick="setActiveTextArea(this)"
-                  >
+                  <textarea name="secondEvaluationArea" id="secondEvaluationText" class="full-width-textarea" rows="15"
+                    cols="80" oninput="secondEvaluationRun()" onclick="setActiveTextArea(this)">
                       {{ evaluations_data.description_second_percentage}}
-                   </textarea
-                  >
+                   </textarea>
                 </div>
               </div>
             </div>
             <div class="accordion-item3">
               <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseThree"
-                  aria-expanded="false"
-                  aria-controls="panelsStayOpen-collapseThree"
-                >
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseThree">
                   TERCER CORTE
                 </button>
               </h2>
-              <div
-                id="panelsStayOpen-collapseThree"
-                class="accordion-collapse collapse"
-              >
+              <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                  <textarea
-                    name="thirdEvaluationArea"
-                    id="thirdEvaluationText"
-                    class="full-width-textarea"
-                    rows="15"
-                    cols="80"
-                    oninput="thirdEvaluationRun()"
-                    onclick="setActiveTextArea(this)"
-                  >
+                  <textarea name="thirdEvaluationArea" id="thirdEvaluationText" class="full-width-textarea" rows="15"
+                    cols="80" oninput="thirdEvaluationRun()" onclick="setActiveTextArea(this)">
                       {{ evaluations_data.description_third_percentage}}
-                   </textarea
-                  >
+                   </textarea>
                 </div>
               </div>
             </div>
@@ -649,43 +372,25 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button
-          class="accordion-button collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseTen"
-          aria-expanded="false"
-          aria-controls="collapseTen"
-        >
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen"
+          aria-expanded="false" aria-controls="collapseTen">
           BIBLIOGRAFÍA
         </button>
       </h2>
-      <div
-        id="collapseTen"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-      >
+      <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <textarea
-            name="bibliographyArea"
-            id="bibliographyText"
-            class="full-width-textarea"
-            rows="15"
-            cols="80"
-            oninput="bibliographyRun()"
-            onclick="setActiveTextArea(this)"
-          >
-{{subject_data.bibliography}}</textarea
-          >
+          <textarea name="bibliographyArea" id="bibliographyText" class="full-width-textarea" rows="15" cols="80"
+            oninput="bibliographyRun()" onclick="setActiveTextArea(this)">
+{{subject_data.bibliography}}</textarea>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div id="contenedorParaExportar" class="float-md-start ms-5">
+<div id="contenedorParaExportar" >
   <!-- Cuadro de inicio -->
-  <div class="cuerpo" id="DivExportar">
+  <div class="cuerpo float-md-start ms-5 mx-auto" id="DivExportar">
     <section class="inicio">
       <div class="imageLibre"></div>
       <div class="titulo">
@@ -811,11 +516,8 @@
                       </div>
                     </td>
                     <td>
-                      <div
-                        class="campoModalidadPresencial"
-                        id="idModalidadPresencial"
-                        data-modalidad="{{ subject_data.modality }}"
-                      ></div>
+                      <div class="campoModalidadPresencial" id="idModalidadPresencial"
+                        data-modalidad="{{ subject_data.modality }}"></div>
                     </td>
                   </tr>
                   <tr>
@@ -848,11 +550,7 @@
           </tr>
           <tr>
             <td>
-              <div
-                class="filaTipoAsignatura"
-                data-tipo="{{ subject_data.type }}"
-                id="typeAsignatura"
-              >
+              <div class="filaTipoAsignatura" data-tipo="{{ subject_data.type }}" id="typeAsignatura">
                 <div class="tTipoAsignatura">
                   <p>TIPO DE ASIGNATURA*</p>
                 </div>
@@ -882,10 +580,7 @@
                       </div>
                     </td>
                     <td>
-                      <div
-                        class="campoTeoricoPractica"
-                        id="idAsignaturaTeoricoPractica"
-                      ></div>
+                      <div class="campoTeoricoPractica" id="idAsignaturaTeoricoPractica"></div>
                     </td>
                   </tr>
                   <tr>
@@ -897,10 +592,7 @@
                       </div>
                     </td>
                     <td>
-                      <div
-                        class="campoPractica"
-                        id="idAsignaturaPractica"
-                      ></div>
+                      <div class="campoPractica" id="idAsignaturaPractica"></div>
                     </td>
                   </tr>
                 </table>
@@ -1157,28 +849,28 @@
                   <th>Responsable</th>
                 </tr>
               </thead>
-              <tbody
-                id="changesTableBody"
-                data-changes="{{ versions_data | tojson | safe }}"
-              >
+              <tbody id="changesTableBody" data-changes="{{ versions_data | tojson | safe }}">
                 <!-- Aquí se insertarán las filas de la tabla con JavaScript -->
               </tbody>
             </table>
           </div>
         </div>
-
-        <script src="{{ url_for('static', filename='jss/getVersions.js') }}"></script>
-        <script src="{{ url_for('static', filename='jss/getSubjects.js') }}"></script>
-        <script src="{{ url_for('static', filename='jss/bloques.js') }}"></script>
-        <script src="{{ url_for('static', filename='jss/botones.js') }}"></script>
-        <script src="{{ url_for('static', filename='jss/bundle.js') }}"></script>
-        <script src="{{ url_for('static', filename='jss/markdown.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/showdown@2.0.0/dist/showdown.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-        <script src="{{ url_for('static', filename='jss/drag.js') }}"></script>
-
-        {% endblock %}
       </tr>
-    </table>
   </div>
+</div>
+
+<script src="{{ url_for('static', filename='jss/getVersions.js') }}"></script>
+<script src="{{ url_for('static', filename='jss/getSubjects.js') }}"></script>
+<script src="{{ url_for('static', filename='jss/bloques.js') }}"></script>
+<script src="{{ url_for('static', filename='jss/botones.js') }}"></script>
+<script src="{{ url_for('static', filename='jss/bundle.js') }}"></script>
+<script src="{{ url_for('static', filename='jss/markdown.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/showdown@2.0.0/dist/showdown.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+<script src="{{ url_for('static', filename='jss/drag.js') }}"></script>
+
+{% endblock %}
+</tr>
+</table>
+</div>
 </div>
