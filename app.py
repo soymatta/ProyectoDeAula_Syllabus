@@ -109,11 +109,14 @@ def menu():
                 "subject_name": row[1],
                 "subject_id": row[2],
                 "program_name": row[3],
-                "version_update_date": row[4].strftime("%d/%m/%Y"),
+                "version_update_date": row[4].strftime("%d/%m/%Y")
+                if row[4] is not None
+                else None,
             }
             for row in query
         ]
 
+        print(data)
         return render_template("/menu.html", username=user.name.upper(), data=data)
     else:
         return redirect(url_for("login"))
@@ -262,7 +265,9 @@ def editor_by_id(subject_id):
         versions_data = [
             {
                 "id": version.id,
-                "update_date": version.update_date.strftime("%d/%m/%Y"),
+                "update_date": version.update_date.strftime("%d/%m/%Y")
+                if version.update_date is not None
+                else None,
                 "description": version.description,
                 "user_name": Users.query.get(version.user_id).name,
                 "syllabus_id": version.syllabus_id,
@@ -272,12 +277,15 @@ def editor_by_id(subject_id):
 
         lastVersion = [
             {
-                "date": version.update_date.strftime("%d/%m/%Y"),
+                "date": version.update_date.strftime("%d/%m/%Y")
+                if version.update_date is not None
+                else None,
             }
             for version in versions
         ]
 
         print(lastVersion)
+        print(versions_data)
 
         return render_template(
             "/editor.html",
