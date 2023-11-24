@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    changesUpdate = document.getElementById('changesTableBody');
-    changes = changesUpdate.getAttribute('data-changes');
-
+    const changesUpdate = document.getElementById('changesTableBody');
+    const changes = changesUpdate.getAttribute('data-changes');
     const versionsData = JSON.parse(changes);
-    console.log(versionsData)
 
     // Obtener el último cambio
     const lastVersion = versionsData[versionsData.length - 1];
@@ -13,11 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Mostrar la fecha en el div
     const dateActualizacion = document.getElementById('dateActualizacion');
-    dateActualizacion.textContent = formattedDate;
-
-    // Mostrar la fecha en el otro div
-    const dateDiv = document.getElementById('date');
-    dateDiv.textContent = formattedDate;
+    
+    // Verificar si el elemento existe antes de intentar establecer su contenido
+    if (dateActualizacion) {
+        dateActualizacion.textContent = formattedDate;
+    }
 
     // Mostrar los últimos cinco cambios en la tabla
     const lastFiveVersions = versionsData.slice(-5);
@@ -39,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         row.appendChild(descriptionCell);
 
         const userCell = document.createElement('td');
-        userCell.textContent = version.user_id;
+        userCell.textContent = version.user_name;
         row.appendChild(userCell);
 
         // Agregar la fila a la tabla
