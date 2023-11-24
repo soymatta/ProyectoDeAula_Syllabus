@@ -15,11 +15,11 @@
   <header class="navigation">
     <div class="navigation">
       <nav class="navi">
-  
+
         <div id="headerButton">
           <button href="#" class="button_nav" onmouseover="showHeaderMenu()" onmouseout="hideHeaderMenu()">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-text-size" width="28" height="28"
-              viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-text-size" width="28"
+              height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
               stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M3 7v-2h13v2" />
@@ -39,7 +39,7 @@
             <a href="#" onclick="addHeader(6)">h6</a>
           </div>
         </div>
-  
+
         <button href="#" class="button_nav" onclick="aplicarImg()">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo" width="28" height="28"
             viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
@@ -51,7 +51,7 @@
             <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
           </svg>
         </button>
-  
+
         <button href="#" class="button_nav" onclick="exportarAPDF()">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="28" height="28"
             viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
@@ -62,19 +62,19 @@
             <path d="M12 4l0 12" />
           </svg>
         </button>
-        
+
         <!-- aplicar negrita -->
         <button href="#" class="button_nav" onclick="aplicarNegrita()">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bold"
-            width="28" height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none"
-            stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bold" width="28" height="28"
+            viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M7 5h6a3.5 3.5 0 0 1 0 7h-6z" />
             <path d="M13 12h1a3.5 3.5 0 0 1 0 7h-7v-7" />
           </svg>
         </button>
-  
-  
+
+
         <img width="4%" src="{{ url_for('static', filename='img/logo.png') }}" alt="icono">
         <!-- aplicar cursiva -->
         <button href="#" class="button_nav" onclick="aplicarCursiva()">
@@ -87,7 +87,7 @@
             <path d="M14 5l-4 14" />
           </svg>
         </button>
-  
+
         <button href="#" class="button_nav" onclick="aplicarEnlace()">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="28" height="28"
             viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
@@ -98,7 +98,7 @@
             <path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" />
           </svg>
         </button>
-  
+
         <button href="#" class="button_nav" onclick="aplicarListas()">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="28" height="28"
             viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
@@ -112,7 +112,7 @@
             <path d="M5 18l0 .01" />
           </svg>
         </button>
-  
+
         <button href="#" class="button_nav">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy" width="28"
             height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
@@ -126,8 +126,8 @@
       </nav>
     </div>
   </header>
-  
-  
+
+
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">
       <h2 class="accordion-header">
@@ -192,16 +192,16 @@
           <strong>Código en línea:</strong>
           <br>
           `código en línea`
-  
-  
+
+
           </p>
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
-          aria-expanded="false" aria-controls="collapseThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           JUSTIFICACIÓN
         </button>
       </h2>
@@ -215,8 +215,8 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
-          aria-expanded="false" aria-controls="collapseFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
           COMPETENCIAS
         </button>
       </h2>
@@ -229,8 +229,8 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
-          aria-expanded="false" aria-controls="collapseFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
           RESULTADOS DE APRENDIZAJE DEL PROGRAMA
         </button>
       </h2>
@@ -257,21 +257,22 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven"
-          aria-expanded="false" aria-controls="collapseSeven">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
           CONTENIDO PROGRÁMATICO Y ENSEÑANZA-APRENDIZAJE
         </button>
       </h2>
       <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body" >
+        <div class="accordion-body">
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
             data-bs-whatever="@getbootstrap">Crear nuevo bloque</button>
-          
-           <div class="bloques" id="blockItems">
 
-           </div>
+          <div class="bloques" id="blockItems">
 
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          </div>
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -289,11 +290,11 @@
                       <label for="message-text" class="col-form-label">Estrategias de enseñanza de Aprendizaje:</label>
                       <textarea class="form-control strategyLearningTextArea" id="learning-text"></textarea>
                     </div>
-  
+
                     <!-- Campo oculto para almacenar el ID del bloque que se está editando -->
                     <input type="hidden" id="editBlockId" value="">
                   </form>
-  
+
                   <!-- Botones del pie del modal -->
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -308,14 +309,14 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine"
-          aria-expanded="false" aria-controls="collapseNine">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
           EVALUACIÓN
         </button>
       </h2>
       <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-  
+
           <div class="accordion3" id="accordionPanelsStayOpenExample">
             <div class="accordion-item3">
               <h2 class="accordion-header">
@@ -328,11 +329,12 @@
               <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
                 <div class="accordion-body">
                   <textarea name="firstEvaluationArea" id="firstEvaluationText" class="full-width-textarea" rows="15"
-                    cols="80" oninput="firstEvaluationRun()" onclick="setActiveTextArea(this)">{{ evaluations_data.description_first_percentage}}</textarea>
+                    cols="80" oninput="firstEvaluationRun()"
+                    onclick="setActiveTextArea(this)">{{ evaluations_data.description_first_percentage}}</textarea>
                 </div>
               </div>
             </div>
-            
+
             {% if evaluations_data.second_percentage is not none %}
             <div class="accordion-item3">
               <h2 class="accordion-header">
@@ -370,7 +372,7 @@
             </div>
             {% endif %}
           </div>
-  
+
         </div>
       </div>
     </div>
@@ -389,8 +391,8 @@
       </div>
     </div>
   </div>
-  </div>
-  </div>
+</div>
+</div>
 </div>
 
 
@@ -398,98 +400,98 @@
 <div id="contenedorParaExportar">
 
   <!-- Cuadro de inicio -->
-<div class="cuerpo" id="DivExportar">
-  <section class="inicio">
-    <div class="imageLibre"></div>
-    <div class="titulo">
-      <p>FORMATO MICROCURRICULO</p>
-    </div>
-    <!-- Para la tabla formatos -->
-    <div class="documento" id="IdVersionFormato">
-      <p><!-- {{ syllabus_data.id}} --></p>
-    </div>
-    <div class="version" id="VersionFormato">
-      <p>Versión 2</p>
-    </div>
-    <div class="fecha" id="fechaFormato">
-      
-    </div>
-  </section>
+  <div class="cuerpo" id="DivExportar">
+    <section class="inicio">
+      <div class="imageLibre"></div>
+      <div class="titulo">
+        <p>FORMATO MICROCURRICULO</p>
+      </div>
+      <!-- Para la tabla formatos -->
+      <div class="documento" id="IdVersionFormato">
+        <p><!-- {{ syllabus_data.id}} --></p>
+      </div>
+      <div class="version" id="VersionFormato">
+        <p>Versión 2</p>
+      </div>
+      <div class="fecha" id="fechaFormato">
 
-  <!-- Facultad del syllabus y el programa -->
-  <section class="facultad-programa">
-    <div class="facultad">
-      <p>FACULTAD DE {{faculty_data.name}}</p>
-    </div>
-    <!-- para la tabla progama -->
-    <div class="programa" id="programaNombre">
-      <p>PROGRAMA DE <strong><!-- {{ syllabus_data.program }} --></strong></p>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <!-- Ciclo -->
-  <section class="ciclo">
-    <div class="tipoCiclo">
-      <p>
-        <strong><span class="num">I.</span>CICLO:</strong>
-        <span id="ciclo">{{ syllabus_data.cycle }}</span>
-      </p>
-    </div>
-    <div class="componenteCiclo">
-      <p><strong>COMPONENTE:</strong> PROFESIONAL</p>
-    </div>
-  </section>
+    <!-- Facultad del syllabus y el programa -->
+    <section class="facultad-programa">
+      <div class="facultad">
+        <p>FACULTAD DE {{faculty_data.name}}</p>
+      </div>
+      <!-- para la tabla progama -->
+      <div class="programa" id="programaNombre">
+        <p>PROGRAMA DE <strong><!-- {{ syllabus_data.program }} --></strong></p>
+      </div>
+    </section>
 
-  <!-- Identificación -->
-  <section class="identificacion" id="identification">
-    <div class="tIdentificacion">
-      <p><span class="num">II.</span><strong>IDENTIFICACIÓN</strong></p>
-    </div>
-    <div class="cuadroIdentificacion">
-      <!-- fila nombre asignatura -->
-      <table>
-        <tr>
-          <td>
-            <div class="filaNombreAsignatura">
-              <div class="tNombreAsignatura">
-                <p>NOMBRE ASIGNATURA O MÓDULO</p>
+    <!-- Ciclo -->
+    <section class="ciclo">
+      <div class="tipoCiclo">
+        <p>
+          <strong><span class="num">I.</span>CICLO:</strong>
+          <span id="ciclo">{{ syllabus_data.cycle }}</span>
+        </p>
+      </div>
+      <div class="componenteCiclo">
+        <p><strong>COMPONENTE:</strong> PROFESIONAL</p>
+      </div>
+    </section>
+
+    <!-- Identificación -->
+    <section class="identificacion" id="identification">
+      <div class="tIdentificacion">
+        <p><span class="num">II.</span><strong>IDENTIFICACIÓN</strong></p>
+      </div>
+      <div class="cuadroIdentificacion">
+        <!-- fila nombre asignatura -->
+        <table>
+          <tr>
+            <td>
+              <div class="filaNombreAsignatura">
+                <div class="tNombreAsignatura">
+                  <p>NOMBRE ASIGNATURA O MÓDULO</p>
+                </div>
+            </td>
+            <td>
+              <div class="NombreAsignatura" id="nameAsignatura">
+                <p>{{subject_data.name}}</p>
               </div>
-          </td>
-          <td>
-            <div class="NombreAsignatura" id="nameAsignatura">
-              <p>{{subject_data.name}}</p>
-            </div>
-    </div>
-    </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="filaCodigoAsignatura">
-          <div class="tCodigo">
-            <p>CÓDIGO</p>
-          </div>
+      </div>
       </td>
-      <td>
-        <div class="CodigoAsignatura" id="codeAsignatura">
-          <p>{{subject_data.id}}</p>
+      </tr>
+      <tr>
+        <td>
+          <div class="filaCodigoAsignatura">
+            <div class="tCodigo">
+              <p>CÓDIGO</p>
+            </div>
+        </td>
+        <td>
+          <div class="CodigoAsignatura" id="codeAsignatura">
+            <p>{{subject_data.id}}</p>
+          </div>
+  </div>
+  </td>
+
+  </tr>
+  <tr>
+    <td>
+      <div class="filaSemestreAsignatura">
+        <div class="tSemestre">
+          <p>SEMESTRE</p>
         </div>
+    </td>
+    <td>
+      <div class="SemestreAsignatura" id="semesterAsignatura">
+        <p>{{subject_data.semester}}</p>
+      </div>
 </div>
 </td>
-
-</tr>
-<tr>
-  <td>
-    <div class="filaSemestreAsignatura">
-      <div class="tSemestre">
-        <p>SEMESTRE</p>
-      </div>
-  </td>
-  <td>
-    <div class="SemestreAsignatura" id="semesterAsignatura">
-      <p>{{subject_data.semester}}</p>
-    </div>
-    </div>
-  </td>
 </tr>
 <tr>
   <td>
@@ -526,9 +528,10 @@
               </div>
           </td>
           <td>
-            <div class="campoModalidadPresencial" id="idModalidadPresencial" data-modalidad="{{ subject_data.modality }}">
-              
-          </div>
+            <div class="campoModalidadPresencial" id="idModalidadPresencial"
+              data-modalidad="{{ subject_data.modality }}">
+
+            </div>
     </div>
   </td>
 </tr>
@@ -569,7 +572,7 @@
 
 <tr>
   <td>
-    <div class="filaTipoAsignatura" data-tipo = "{{subject_data.type}}" id="typeAsignatura">
+    <div class="filaTipoAsignatura" data-tipo="{{subject_data.type}}" id="typeAsignatura">
       <div class="tTipoAsignatura">
         <p>TIPO DE ASIGNATURA*</p>
       </div>
@@ -732,170 +735,170 @@
   <tr>
     <td>
       <!-- VII. CONTENIDOS PROGRAMÁTICOS VIII. ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
-<section class="contenido-estrategias">
-    <div class="contenidoProgramatico">
-      <div class="tContenidoProgramatico">
-        <p>
-          <span class="num">VII.</span> <strong>CONTENIDO PROGRAMATICO</strong>
-        </p>
+      <section class="contenido-estrategias">
+        <div class="contenidoProgramatico">
+          <div class="tContenidoProgramatico">
+            <p>
+              <span class="num">VII.</span> <strong>CONTENIDO PROGRAMATICO</strong>
+            </p>
+          </div>
+    </td>
+    <td>
+      <!-- ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
+      <div class="estrategias">
+        <div class="estrategiasDeAprendizaje">
+          <div class="tEstrategias">
+            <p>
+              <span class="num">VIII.</span>
+              <strong>ESTRATEGIAS DE ENSEÑANZA-APRENDIZAJE</strong>
+            </p>
+          </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="campoContenidoProgramatico">
+        <div class="bloques" id="program-content">
+
+        </div>
+      </div>
       </div>
     </td>
-      <td>
-        <!-- ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
-    <div class="estrategias">
-      <div class="estrategiasDeAprendizaje">
-        <div class="tEstrategias">
-          <p>
-            <span class="num">VIII.</span>
-            <strong>ESTRATEGIAS DE ENSEÑANZA-APRENDIZAJE</strong>
-          </p>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="campoContenidoProgramatico" >
-        <div class="bloques" id="program-content">
-          
+    <td>
+      <div class="campoEstrategias">
+        <div class="bloques" id="strategies">
+
         </div>
       </div>
-    </div>
-  </td>
-      <td>
-          <div class="campoEstrategias">
-          <div class="bloques" id="strategies">
-            
-          </div>
-        </div>
       </div>
-    </div>
-  </section>
-  </td>
-    </tr>
-  </table>
-  <p></p>
-  <table>
+      </div>
+      </section>
+    </td>
+  </tr>
+</table>
+<p></p>
+<table>
   <tr>
-    
-                  <!-- EVALUACION -->
-                  <section class="evaluacion">
-                    <div class="tEvaluacion">
-                      <p><span class="num">IX.</span> <strong>EVALUACIÓN</strong></p>
-                    </div>
-                    <table>
-                  
-                      <tr>
-                        <td>
-                          <div class="tTablaPorcentaje-Estrategias">
-                            <div class="tPorcentaje">
-                              <p>PORCENTAJE</p>
-                            </div> 
-                          </div>
-                        </td>
-                        <td>
-                          <div class="tEstrategias">
-                            <p>ESTRATEGIAS</p>
-                          </div>
-                        </td>
-                      </tr>
-                  
-                      <tr>
-                        <td>
-                          <div class="porcentaje-estrategias">
-                            <div class="primerCorte">
-                              <div class="tPrimerCorte">
-                                {{evaluations_data.first_percentage}}%
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="estrategiasPrimerCorte">
-                            <div class="bloques" id="firstEvaluation"></div>
-                          </div>
-                        </td>
-                      </tr>
-                  
-                      {% if evaluations_data.second_percentage is not none %}
-                      <tr>
-                        <td>
-                          <div class="segundoCorte">
-                            <div class="tSegundoCorte">
-                              {{evaluations_data.second_percentage}}%
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="estrategiasSegundoCorte">
-                            <div class="bloques" id="secondEvaluation"></div>
-                          </div>
-                        </td>
-                      </tr>
-                  
-                      <tr>
-                        <td>
-                          <div class="tercerCorte">
-                            <div class="tTercerCorte">
-                              {{evaluations_data.third_percentage}}%
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="estrategiasTercerCorte">
-                            <div class="bloques" id="thirdEvaluation"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      {% endif %}
-                  
-                    </table>
-                  </section>
-                  
-                  <!-- BIBLIOGRAFÍA -->
-                  <section class="bibliografia">
-                    <div class="tBibliografia">
-                      <p>X. BIBLIOGRAFÍA</p>
-                    </div>
-                    <table>
-                      <tr>
-                        <td>
-                          <div class="campoBibliografia" id="bibliography"></div>
-                        </td>
-                      </tr>
-                    </table>
-                  </section>
-                  
-                  
-                  <!-- ultimos cambios -->
-                  <div class="changesControl" >
-                    <div class="tChangesControl"></div>
-                    <div class="formatChanges">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Fecha de Actualización</th>
-                                    <th>Descripción de la actualización del microcurrículo realizado</th>
-                                    <th>Responsable</th>
-                                </tr>
-                            </thead>
-                            <tbody id="changesTableBody" data-changes = '{{ versions_data | tojson | safe }}'>
-                                <!-- Aquí se insertarán las filas de la tabla con JavaScript -->
-                            </tbody>
-                        </table>
-                    </div>
-                  </div>
+
+    <!-- EVALUACION -->
+    <section class="evaluacion">
+      <div class="tEvaluacion">
+        <p><span class="num">IX.</span> <strong>EVALUACIÓN</strong></p>
+      </div>
+      <table>
+
+        <tr>
+          <td>
+            <div class="tTablaPorcentaje-Estrategias">
+              <div class="tPorcentaje">
+                <p>PORCENTAJE</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="tEstrategias">
+              <p>ESTRATEGIAS</p>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="porcentaje-estrategias">
+              <div class="primerCorte">
+                <div class="tPrimerCorte">
+                  {{evaluations_data.first_percentage}}%
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="estrategiasPrimerCorte">
+              <div class="bloques" id="firstEvaluation"></div>
+            </div>
+          </td>
+        </tr>
+
+        {% if evaluations_data.second_percentage is not none %}
+        <tr>
+          <td>
+            <div class="segundoCorte">
+              <div class="tSegundoCorte">
+                {{evaluations_data.second_percentage}}%
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="estrategiasSegundoCorte">
+              <div class="bloques" id="secondEvaluation"></div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="tercerCorte">
+              <div class="tTercerCorte">
+                {{evaluations_data.third_percentage}}%
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="estrategiasTercerCorte">
+              <div class="bloques" id="thirdEvaluation"></div>
+            </div>
+          </td>
+        </tr>
+        {% endif %}
+
+      </table>
+    </section>
+
+    <!-- BIBLIOGRAFÍA -->
+    <section class="bibliografia">
+      <div class="tBibliografia">
+        <p>X. BIBLIOGRAFÍA</p>
+      </div>
+      <table>
+        <tr>
+          <td>
+            <div class="campoBibliografia" id="bibliography"></div>
+          </td>
+        </tr>
+      </table>
+    </section>
+
+
+    <!-- ultimos cambios -->
+    <div class="changesControl">
+      <div class="tChangesControl"></div>
+      <div class="formatChanges">
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha de Actualización</th>
+              <th>Descripción de la actualización del microcurrículo realizado</th>
+              <th>Responsable</th>
+            </tr>
+          </thead>
+          <tbody id="changesTableBody" data-changes='{{ versions_data | tojson | safe }}'>
+            <!-- Aquí se insertarán las filas de la tabla con JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
 
 
 
 
-<script src="{{ url_for('static', filename='jss/getVersions.js') }}"></script>
-<script src="{{ url_for('static', filename='jss/getSubjects.js') }}"></script>
-<script src="{{ url_for('static', filename='jss/bloques.js') }}"></script>
-<script src="{{ url_for('static', filename='jss/botones.js') }}"></script>
-<script src="{{ url_for('static', filename='jss/bundle.js') }}"></script>
-<script src="{{ url_for('static', filename='jss/markdown.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/showdown@2.0.0/dist/showdown.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-<script src="{{ url_for('static', filename='jss/drag.js') }}"></script>
+    <script src="{{ url_for('static', filename='jss/getVersions.js') }}"></script>
+    <script src="{{ url_for('static', filename='jss/getSubjects.js') }}"></script>
+    <script src="{{ url_for('static', filename='jss/bloques.js') }}"></script>
+    <script src="{{ url_for('static', filename='jss/botones.js') }}"></script>
+    <script src="{{ url_for('static', filename='jss/bundle.js') }}"></script>
+    <script src="{{ url_for('static', filename='jss/markdown.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@2.0.0/dist/showdown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="{{ url_for('static', filename='jss/drag.js') }}"></script>
 
-{% endblock %}
+    {% endblock %}
