@@ -4,6 +4,7 @@ from ..db.db import db, ma, app
 class Syllabi(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     cycle = db.Column(db.String(50))
+    component = db.Column(db.String(50))
     justification = db.Column(db.Text)
     competences = db.Column(db.Text)
     learning_results = db.Column(db.Text)
@@ -18,30 +19,22 @@ class Syllabi(db.Model):
         program_id,
         faculty_id,
         cycle,
-        identification,
+        component,
         justification,
         competences,
         learning_results,
         methodology,
-        program_content,
-        strategies,
-        bibliography,
-        five_last_updates,
         subject_id,
         format_id,
     ):
         self.program_id = program_id
         self.faculty_id = faculty_id
         self.cycle = cycle
-        self.identification = identification
+        self.component = component
         self.justification = justification
         self.competences = competences
         self.learning_results = learning_results
         self.methodology = methodology
-        self.program_content = program_content
-        self.strategies = strategies
-        self.bibliography = bibliography
-        self.five_last_updates = five_last_updates
         self.subject_id = subject_id
         self.format_id = format_id
 

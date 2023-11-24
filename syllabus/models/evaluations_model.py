@@ -4,11 +4,11 @@ from ..db.db import db, ma, app
 class Evaluations(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     first_percentage = db.Column(db.Integer, nullable=False)
-    description_first_percentage = db.Column(db.Text)
-    second_percentage = db.Column(db.Integer, nullable=False)
-    description_second_percentage = db.Column(db.Text)
-    third_percentage = db.Column(db.Integer, nullable=False)
-    description_third_percentage = db.Column(db.Text)
+    description_first_percentage = db.Column(db.Text, nullable=False)
+    second_percentage = db.Column(db.Integer, nullable=True)
+    description_second_percentage = db.Column(db.Text, nullable=True)
+    third_percentage = db.Column(db.Integer, nullable=True)
+    description_third_percentage = db.Column(db.Text, nullable=True)
     syllabus_id = db.Column(db.Integer, db.ForeignKey("syllabi.id"), nullable=False)
 
     def __init__(

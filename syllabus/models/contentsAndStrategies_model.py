@@ -3,7 +3,7 @@ from ..db.db import db, ma, app
 
 class ContentsAndStrategies(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    content_name = db.Column(db.String(50), nullable=False)
+    content_name = db.Column(db.String(70), nullable=False)
     sub_content = db.Column(db.Text)
     strategies = db.Column(db.Text)
     syllabus_id = db.Column(db.Integer, db.ForeignKey("syllabi.id"), nullable=False)

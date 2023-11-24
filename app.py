@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for, session, flash, jsonify
-from sqlalchemy import Enum
+from sqlalchemy import Enum, func, desc
 from datetime import datetime
 
 from syllabus.db.db import app, db
@@ -9,8 +9,10 @@ from syllabus.db.db import app, db
 # Tablas Independientes
 from syllabus.models.subjects_model import Subjects
 from syllabus.models.faculties_model import Faculties
+from syllabus.models.formats_model import Formats
 
 # Tablas Dependientes
+from syllabus.models.programs_model import Programs
 from syllabus.models.users_model import Users
 from syllabus.models.syllabi_model import Syllabi
 from syllabus.models.versions_model import Versions
@@ -20,6 +22,8 @@ from syllabus.models.contentsAndStrategies_model import ContentsAndStrategies
 # Tablas Intermedias
 from syllabus.models.users_subjects_model import UsersSubjects
 from syllabus.models.faculties_subjects_model import FacultiesSubjects
+from syllabus.models.programs_subjects_model import ProgramsSubjects
+from syllabus.models.users_programs_model import UsersPrograms
 
 # Importación de las rutas HTTP
 from syllabus.routes.faculties_routes import faculties_routes
@@ -29,6 +33,10 @@ from syllabus.routes.subjects_routes import subjects_routes
 from syllabus.routes.users_routes import users_routes
 from syllabus.routes.users_subjects_routes import users_subjects_routes
 from syllabus.routes.faculties_subjects_routes import faculties_subjects_routes
+from syllabus.routes.programs_routes import programs_routes
+from syllabus.routes.formats_routes import formats_routes
+from syllabus.routes.programs_subjects_routes import programs_subjects_routes
+from syllabus.routes.users_programs_routes import users_programs_routes
 
 app.register_blueprint(faculties_routes, url_prefix="/faculties")
 app.register_blueprint(subjects_routes, url_prefix="/subjects")
@@ -49,16 +57,64 @@ def menu():
         user_id = session["user_id"]
         user = Users.query.get(user_id)
 
-        # Consulta de las materias por usuario
-        user_subjects = (
-            db.session.query(Subjects)
-            .join(UsersSubjects)
-            .filter(UsersSubjects.users_id == user_id)
+        subquery = (
+            db.session.query(
+                Users.name.label("user_name"),
+                Subjects.name.label("subject_name"),
+                Subjects.id.label("subject_id"),
+                Programs.name.label("program_name"),
+                Versions.update_date.label("version_update_date"),
+                func.row_number()
+                .over(
+                    partition_by=(Users.id, Subjects.id, Programs.id),
+                    order_by=desc(Versions.update_date),
+                )
+                .label("row_num"),
+            )
+            .join(UsersSubjects, Users.id == UsersSubjects.users_id)
+            .join(Subjects, UsersSubjects.subjects_id == Subjects.id)
+            .join(ProgramsSubjects, Subjects.id == ProgramsSubjects.subjects_id)
+            .join(Programs, ProgramsSubjects.programs_id == Programs.id)
+            .join(
+                UsersPrograms,
+                (Users.id == UsersPrograms.users_id)
+                & (Programs.id == UsersPrograms.programs_id),
+            )
+            .outerjoin(Versions, Subjects.id == Versions.syllabus_id)
+            .filter(Users.id == user_id)
+            .subquery()
+        )
+
+        query = (
+            db.session.query(
+                subquery.c.user_name,
+                subquery.c.subject_name,
+                subquery.c.subject_id,
+                subquery.c.program_name,
+                subquery.c.version_update_date,
+            )
+            .filter(subquery.c.row_num == 1)
+            .order_by(
+                subquery.c.user_name,
+                subquery.c.subject_name,
+                subquery.c.program_name,
+                desc(subquery.c.version_update_date),
+            )
             .all()
         )
-        data = [{"id": subject.id, "name": subject.name} for subject in user_subjects]
 
-        return render_template("/menu.html", username=user.name, data=data)
+        data = [
+            {
+                "user_name": row[0],
+                "subject_name": row[1],
+                "subject_id": row[2],
+                "program_name": row[3],
+                "version_update_date": row[4].strftime("%d/%m/%Y"),
+            }
+            for row in query
+        ]
+
+        return render_template("/menu.html", username=user.name.upper(), data=data)
     else:
         return redirect(url_for("login"))
 
@@ -151,22 +207,23 @@ def editor_by_id(subject_id):
         # Formatear consultas en JSON
         syllabus_data = {
             "id": syllabus.id,
-            "date": syllabus.date,
-            "program": syllabus.program,
+            "program_id": syllabus.program_id,
             "cycle": syllabus.cycle,
+            "component": syllabus.component,
             "justification": syllabus.justification,
             "competences": syllabus.competences,
             "learning_results": syllabus.learning_results,
             "methodology": syllabus.methodology,
             "faculty_id": syllabus.faculty_id,
             "subjects_id": syllabus.subject_id,
+            "format_id": syllabus.format_id,
         }
 
-        faculty_data = {"id": faculty.id, "name": faculty.name}
+        faculty_data = {"id": faculty.id, "name": faculty.name.upper()}
 
         subject_data = {
             "id": subject.id,
-            "name": subject.name,
+            "name": subject.name.upper(),
             "modality": subject.modality,
             "type": subject.type,
             "credits": subject.credits,
@@ -181,7 +238,6 @@ def editor_by_id(subject_id):
             for teacher in teachers
         ]
 
-        # Formatear los profesores en un STRING
         teachers_data = ", ".join([teacher["name"] for teacher in teachers_data])
 
         contentsAndStrategies_data = [
@@ -213,8 +269,6 @@ def editor_by_id(subject_id):
             }
             for version in versions
         ]
-
-        print(teachers_data)
 
         return render_template(
             "/editor.html",
