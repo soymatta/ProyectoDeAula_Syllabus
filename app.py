@@ -264,11 +264,13 @@ def editor_by_id(subject_id):
                 "id": version.id,
                 "update_date": version.update_date.isoformat(),
                 "description": version.description,
-                "user_id": version.user_id,
+                "user_name": Users.query.get(version.user_id).name,
                 "syllabus_id": version.syllabus_id,
             }
             for version in versions
         ]
+
+        print(versions_data)
 
         return render_template(
             "/editor.html",
