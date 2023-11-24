@@ -1,4 +1,4 @@
-const lista= document.getElementById('program_content');
+const lista= document.getElementById('program-content');
 const lista2= document.getElementById('strategies');
 
 
