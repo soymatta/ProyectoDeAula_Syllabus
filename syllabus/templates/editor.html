@@ -332,6 +332,8 @@
                 </div>
               </div>
             </div>
+            
+            {% if evaluations_data.second_percentage is not none %}
             <div class="accordion-item3">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -343,7 +345,9 @@
               <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                 <div class="accordion-body">
                   <textarea name="secondEvaluationArea" id="secondEvaluationText" class="full-width-textarea" rows="15"
-                    cols="80" oninput="secondEvaluationRun()" onclick="setActiveTextArea(this)">{{ evaluations_data.description_second_percentage}}</textarea>
+                    cols="80" oninput="secondEvaluationRun()" onclick="setActiveTextArea(this)">
+                      {{ evaluations_data.description_second_percentage}}
+                   </textarea>
                 </div>
               </div>
             </div>
@@ -358,10 +362,13 @@
               <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                 <div class="accordion-body">
                   <textarea name="thirdEvaluationArea" id="thirdEvaluationText" class="full-width-textarea" rows="15"
-                    cols="80" oninput="thirdEvaluationRun()" onclick="setActiveTextArea(this)">{{ evaluations_data.description_third_percentage}}</textarea>
+                    cols="80" oninput="thirdEvaluationRun()" onclick="setActiveTextArea(this)">
+                      {{ evaluations_data.description_third_percentage}}
+                   </textarea>
                 </div>
               </div>
             </div>
+            {% endif %}
           </div>
   
         </div>
@@ -769,123 +776,114 @@
   <p></p>
   <table>
   <tr>
-    <td>
-    <!-- EVALUACION -->
-<section class="evaluacion">
-  <div class="tEvaluacion">
-    <p><span class="num">IX.</span> <strong>EVALUACIÓN</strong></p>
-  </div>
-</td>
-</tr>
-</table>
-<table>
-  <tr>
-    <td>
-      <div class="tTablaPorcentaje-Estrategias">
-        <div class="tPorcentaje">
-          <p>PORCENTAJE</p>
-        </div> 
-      </div>
-    </td>
-    <td>
-      <div class="tEstrategias">
-        <p>ESTRATEGIAS</p>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      {% if evaluations_data.second_percentage is none and evaluations_data.third_percentage is none %}
-        <div class="porcentaje-estrategias" data-evaluations="{{ evaluations_data }}">
-          <div class="primerCorte">
-            <div class="tPrimerCorte">
-              {{ evaluations_data.first_percentage }}%
-            </div>
-          </div>
-        </div>
-      {% else %}
-          {% if evaluations_data.second_percentage is not none %}
-            <div class="segundoCorte">
-              <div class="tSegundoCorte">
-                {{ evaluations_data.second_percentage }}%
-              </div>
-            </div>
-          {% endif %}
-          {% if evaluations_data.third_percentage is not none %}
-            <div class="tercerCorte">
-              <div class="tTercerCorte">
-                {{ evaluations_data.third_percentage }}%
-              </div>
-            </div>
-          {% endif %}
-        </div>
-      {% endif %}
-    </td>
-    <td>
-      <div class="estrategiasPrimerCorte">
-        <div class="bloques" id="firstEvaluation"></div>
-        {% if evaluations_data.description_first_percentage is not none %}
-          <p>{{ evaluations_data.description_first_percentage }}</p>
-        {% endif %}
-      </div>
-      <div class="estrategiasSegundoCorte">
-        <div class="bloques" id="secondEvaluation"></div>
-        {% if evaluations_data.description_second_percentage is not none %}
-          <p>{{ evaluations_data.description_second_percentage }}</p>
-        {% endif %}
-      </div>
-      <div class="estrategiasTercerCorte">
-        <div class="bloques" id="thirdEvaluation"></div>
-        {% if evaluations_data.description_third_percentage is not none %}
-          <p>{{ evaluations_data.description_third_percentage }}</p>
-        {% endif %}
-      </div>
-    </td>
-  </tr>
-</table>
-
-
-<span>
-<p></p>
-</span>
-<table>
-  <tr>
-    <td>
-     <!-- BIBLIOGRAFÍA -->
-<section class="bibliografia">
-  <div class="tBibliografia">
-    <p>X. BIBLIOGRAFÍA</p>
-  </div> 
-    </td>
-  </tr>
-  <tr>
-   <div class="campoBibliografia" id="bibliography"></div>
-</section>
- 
-  </tr>
-</table>
-
-<!-- ultimos cambios -->
-<div class="changesControl" >
-  <div class="tChangesControl"></div>
-  <div class="formatChanges">
-      <table>
-          <thead>
-              <tr>
-                  <th>Fecha de Actualización</th>
-                  <th>Descripción de la actualización del microcurrículo realizado</th>
-                  <th>Responsable</th>
-              </tr>
-          </thead>
-          <tbody id="changesTableBody" data-changes = '{{ versions_data | tojson | safe }}'>
-              <!-- Aquí se insertarán las filas de la tabla con JavaScript -->
-          </tbody>
-      </table>
-  </div>
-</div>
-
-
-</div>
+    
+                  <!-- EVALUACION -->
+                  <section class="evaluacion">
+                    <div class="tEvaluacion">
+                      <p><span class="num">IX.</span> <strong>EVALUACIÓN</strong></p>
+                    </div>
+                    <table>
+                  
+                      <tr>
+                        <td>
+                          <div class="tTablaPorcentaje-Estrategias">
+                            <div class="tPorcentaje">
+                              <p>PORCENTAJE</p>
+                            </div> 
+                          </div>
+                        </td>
+                        <td>
+                          <div class="tEstrategias">
+                            <p>ESTRATEGIAS</p>
+                          </div>
+                        </td>
+                      </tr>
+                  
+                      <tr>
+                        <td>
+                          <div class="porcentaje-estrategias">
+                            <div class="primerCorte">
+                              <div class="tPrimerCorte">
+                                {{evaluations_data.first_percentage}}%
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="estrategiasPrimerCorte">
+                            <div class="bloques" id="firstEvaluation"></div>
+                          </div>
+                        </td>
+                      </tr>
+                  
+                      {% if evaluations_data.second_percentage is not none %}
+                      <tr>
+                        <td>
+                          <div class="segundoCorte">
+                            <div class="tSegundoCorte">
+                              {{evaluations_data.second_percentage}}%
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="estrategiasSegundoCorte">
+                            <div class="bloques" id="secondEvaluation"></div>
+                          </div>
+                        </td>
+                      </tr>
+                  
+                      <tr>
+                        <td>
+                          <div class="tercerCorte">
+                            <div class="tTercerCorte">
+                              {{evaluations_data.third_percentage}}%
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="estrategiasTercerCorte">
+                            <div class="bloques" id="thirdEvaluation"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      {% endif %}
+                  
+                    </table>
+                  </section>
+                  
+                  <!-- BIBLIOGRAFÍA -->
+                  <section class="bibliografia">
+                    <div class="tBibliografia">
+                      <p>X. BIBLIOGRAFÍA</p>
+                    </div>
+                    <table>
+                      <tr>
+                        <td>
+                          <div class="campoBibliografia" id="bibliography"></div>
+                        </td>
+                      </tr>
+                    </table>
+                  </section>
+                  
+                  
+                  <!-- ultimos cambios -->
+                  <div class="changesControl" >
+                    <div class="tChangesControl"></div>
+                    <div class="formatChanges">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Fecha de Actualización</th>
+                                    <th>Descripción de la actualización del microcurrículo realizado</th>
+                                    <th>Responsable</th>
+                                </tr>
+                            </thead>
+                            <tbody id="changesTableBody" data-changes = '{{ versions_data | tojson | safe }}'>
+                                <!-- Aquí se insertarán las filas de la tabla con JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
 
 
 
