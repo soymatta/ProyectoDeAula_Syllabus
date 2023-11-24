@@ -143,7 +143,6 @@ section #targetDiv {
   margin-top: 190px;
 }
 
-
 @media only screen and (min-width: 768px) {
   .cuerpo {
     padding: 25px;
@@ -218,7 +217,6 @@ table table td {
   /* Para evitar que el usuario redimensione el textarea */
 }
 
-
 /* Personalizar la barra de desplazamiento */
 ::-webkit-scrollbar {
   width: 12px;
@@ -249,7 +247,6 @@ table table td {
     page-break-before: always; /* Agrega salto de página antes de cada div */
   }
 }
-
 
 .carta {
   width: 100%; /* o width: 800px; según tus necesidades */
