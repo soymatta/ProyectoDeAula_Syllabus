@@ -262,7 +262,7 @@ def editor_by_id(subject_id):
         versions_data = [
             {
                 "id": version.id,
-                "update_date": version.update_date.isoformat(),
+                "update_date": version.update_date.strftime("%d/%m/%Y"),
                 "description": version.description,
                 "user_name": Users.query.get(version.user_id).name,
                 "syllabus_id": version.syllabus_id,
@@ -270,7 +270,14 @@ def editor_by_id(subject_id):
             for version in versions
         ]
 
-        print(versions_data)
+        lastVersion = [
+            {
+                "date": version.update_date.strftime("%d/%m/%Y"),
+            }
+            for version in versions
+        ]
+
+        print(lastVersion)
 
         return render_template(
             "/editor.html",
