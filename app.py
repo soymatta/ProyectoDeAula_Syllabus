@@ -284,8 +284,12 @@ def editor_by_id(subject_id):
             for version in versions
         ]
 
-        print(lastVersion)
-        print(versions_data)
+        lastVersion = [{'date': '24/11/2023'}, {'date': '01/11/2023'}]
+
+        if len(lastVersion) > 1:
+            lastVersion = max(map(lambda x: datetime.strptime(x['date'], '%d/%m/%Y'), lastVersion)).strftime('%d/%m/%Y')
+        else:
+            lastVersion = datetime.strptime(lastVersion[0]['date'], '%d/%m/%Y').strftime('%d/%m/%Y')
 
         return render_template(
             "/editor.html",
@@ -297,6 +301,7 @@ def editor_by_id(subject_id):
             contentsAndStrategies_data=contentsAndStrategies_data,
             evaluations_data=evaluations_data,
             versions_data=versions_data,
+            lastVersion = lastVersion,
         )
 
     else:

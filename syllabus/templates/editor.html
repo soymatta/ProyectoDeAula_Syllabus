@@ -500,10 +500,8 @@
                   </div>
                 </div>
               </td>
-              <td>
-                <div class="CodigoAsignatura" id="codeAsignatura">
-                  <p>{{ subject_data.id }}</p>
-                </div>
+              <td class="text-center">
+                {{ subject_data.id }}
               </td>
             </tr>
             <tr>
@@ -514,10 +512,8 @@
                   </div>
                 </div>
               </td>
-              <td>
-                <div class="SemestreAsignatura" id="semesterAsignatura">
-                  <p>{{ subject_data.semester }}</p>
-                </div>
+              <td class="text-center">
+                {{ subject_data.semester }}
               </td>
             </tr>
             <tr>
@@ -659,10 +655,8 @@
                   </div>
                 </div>
               </td>
-              <td>
-                <div class="campoFechaActualizacion" id="dateActualizacion">
-                  <p>{{ date_actualizacion }}</p>
-                </div>
+              <td class="text-center">
+                {{ lastVersion }}
               </td>
             </tr>
           </table>
@@ -859,15 +853,9 @@
 
       <!-- BIBLIOGRAFÍA -->
       <section class="bibliografia">
-        <div class="tBibliografia">
-          <p>X. BIBLIOGRAFÍA</p>
-        </div>
         <table>
-          <tr>
-            <td>
-              <div class="campoBibliografia" id="bibliography"></div>
-            </td>
-          </tr>
+          <tr>X. BIBLIOGRAFÍA</tr>
+          <tr>{{ subject_data.bibliography  }}</tr>
         </table>
       </section>
 
