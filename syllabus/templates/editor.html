@@ -245,7 +245,7 @@
             <br />
             <strong>Citas:</strong>
             <br />
-            > Esto es una cita.
+            &gt; Esto es una cita.
             <br />
             <br />
             <strong>Líneas horizontales:</strong>
@@ -426,19 +426,19 @@
   <div id="contenedorParaExportar">
     <!-- Cuadro de inicio -->
     <div class="cuerpo float-md-start ms-5 mx-auto" id="DivExportar">
-      <section class="inicio">
-        <div class="imageLibre"></div>
-        <div class="titulo">
-          <p>FORMATO MICROCURRICULO</p>
+    
+      <section id="formato" class="row container-fluid fw-bold mb-4">
+        <div class="col-3 border border-black ps-0 pe-0 d-flex align-items-center justify-content-center">            <img
+          src="{{ url_for('static', filename='img/logoSyllabus.png') }}"
+          alt="Logo syllabus virtual"
+          class="img-fluid"
+        /></div>
+        <div class="col-5 border border-black d-flex justify-content-center align-items-center">FORMATO MICROCURRÍCULO</div>
+        <div class="col-4 d-flex flex-column border border-black ps-0 pe-0 text-center justify-content-center">
+          <div class="container-fluid">{{ format_data.code }}</div>
+          <div class="container-fluid border border-black">Versión {{ format_data.version }}</div>
+          <div class="container-fluid">{{ format_data.update_date }}</div>
         </div>
-        <!-- Para la tabla formatos -->
-        <div class="documento" id="IdVersionFormato">
-          <p class="d-none" id="syllabus_id"> {{ syllabus_data.id}} </p>
-        </div>
-        <div class="version" id="VersionFormato">
-          <p>Versión 2</p>
-        </div>
-        <div class="fecha" id="fechaFormato"></div>
       </section>
 
       <!-- Facultad del syllabus y el programa -->
@@ -449,7 +449,7 @@
         <!-- para la tabla progama -->
         <div class="programa" id="programaNombre">
           <p>
-            PROGRAMA DE <strong><!-- {{ syllabus_data.program }} --></strong>
+            PROGRAMA DE <strong>{{program_name}}</strong>
           </p>
         </div>
       </section>
@@ -477,25 +477,15 @@
           <table>
             <tr>
               <td>
-                <div class="filaNombreAsignatura">
-                  <div class="tNombreAsignatura">
                     <p>NOMBRE ASIGNATURA O MÓDULO</p>
-                  </div>
-                </div>
               </td>
               <td>
-                <div class="NombreAsignatura" id="nameAsignatura">
                   <p>{{ subject_data.name }}</p>
-                </div>
               </td>
             </tr>
             <tr>
               <td>
-                <div class="filaCodigoAsignatura">
-                  <div class="tCodigo">
                     <p>CÓDIGO</p>
-                  </div>
-                </div>
               </td>
               <td class="text-center">
                 {{ subject_data.id }}
@@ -503,11 +493,7 @@
             </tr>
             <tr>
               <td>
-                <div class="filaSemestreAsignatura">
-                  <div class="tSemestre">
                     <p>SEMESTRE</p>
-                  </div>
-                </div>
               </td>
               <td class="text-center">
                 {{ subject_data.semester }}
@@ -515,11 +501,7 @@
             </tr>
             <tr>
               <td>
-                <div class="filaCreditosAcademicos">
-                  <div class="tCreditos">
                     <p>Nº DE CRÉDITOS ACADÉMICOS</p>
-                  </div>
-                </div>
               </td>
               <td>
                 <div class="creditosAcademicos" id="creditsAcademicos">
@@ -529,42 +511,30 @@
             </tr>
             <tr>
               <td>
-                <div class="filaModalidadAsignatura">
-                  <div class="tModalidad">
                     <p>MODALIDAD*</p>
-                  </div>
-                </div>
               </td>
-              <td style="padding: 0%;">
+              <td class="p-0" style="border: 0;">
                 <div class="tipoModalidades">
-                  <table>
+                  <table class="border-0">
                     <tr>
-                      <td style="border: none;">
-                        <div class="filaModalidadPresencial">
-                          <div class="modalidadPresencial">
+                      <td class="b-0">
                             <p>Presencial</p>
-                          </div>
-                        </div>
                       </td>
                       <td>
-                        <div class="campoModalidadPresencial" id="idModalidadPresencial"
+                        <div class="campoModalidadPresencial" id="idModalidadPresencial" style="border-left: 0;"
                           data-modalidad="{{ subject_data.modality }}"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td style="border-left:none ;">
-                        <div class="filaModalidadTIC">
-                          <div class="modalidadTIC">
+                      <td class="b-0">
                             <p>Presencial asistida por TIC</p>
-                          </div>
-                        </div>
                       </td>
                       <td>
                         <div class="campoTIC" id="idModalidadTIC"></div>
                       </td>
                     </tr>
                     <tr>
-                      <td style="border: none;">
+                      <td class="b-0">
                         <div class="filaModalidadVirtual">
                           <div class="modalidadVirtual">
                             <p>Virtual</p>
@@ -580,14 +550,14 @@
               </td>
             </tr>
             <tr>
-              <td style="padding: 0%;">
+              <td >
                 <div class="filaTipoAsignatura" data-tipo="{{ subject_data.type }}" id="typeAsignatura">
                   <div class="tTipoAsignatura">
                     <p>TIPO DE ASIGNATURA*</p>
                   </div>
                 </div>
               </td>
-              <td>
+              <td class="p-0">
                 <div class="tipoAsignaturas">
                   <table>
                     <tr>
@@ -657,22 +627,27 @@
               </td>
             </tr>
           </table>
+          
         </div>
       </section>
 
-      <table>
+      
+      <table class="mt-4">
         <!-- III Justificación -->
+        <section class="justificacion"></section>
+        
         <tr>
           <td>
-            <section class="justificacion">
+            
               <div class="tJustificacion">
                 <p>
                   <span class="num">III.</span> <strong>JUSTIFICACIÓN</strong>
                 </p>
               </div>
-            </section>
+            
           </td>
         </tr>
+      </section>
         <tr>
           <td>
             <div class="campoJustificacion p-3" id="justification"></div>
@@ -734,7 +709,7 @@
       </table>
       
        <!-- VII. CONTENIDOS PROGRAMÁTICOS VIII. ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
-       <table>
+       <table class="mt-4">
         <tr>
           <td>
             <section class="contenido-estrategias">
@@ -776,30 +751,10 @@
         </tr>
       </table>
 
-
-                  <!--CONTENIDOS Y ESTRATEGIAS-->
-                  <section id="contenidosYEstrategias">
-                    <table><tr class="fw-bold text-center">
-                      <td>VII. CONTENIDOS PROGRAMÁTICOS</td>
-                      <td>VIII. ESTRATEGIAS DE ENSEÑANZAAPRENDIZAJE</td>
-                    </tr>
-                    {% for content in contentsAndStrategies_data %}
-                    <tr>
-                      <td>{{ content.content_name }}
-                        {{ content.sub_name }}
-                      </td>
-                      <td>{{ content.strategies }}</td>
-                    </tr>
-                    {% endfor %}
-                  </table>
-                  </section>
-
       <!-- EVALUACION -->
       <section class="evaluacion">
-        <div class="tEvaluacion">
-          <p><span class="num">IX.</span> <strong>EVALUACIÓN</strong></p>
-        </div>
-        <table>
+        <table class="mt-4">
+          <tr><td class="fw-bold">   <p class="ms-4 mb-0">IX. EVALUACIÓN</p></td>
           <tr>
             <td>
               <div class="tTablaPorcentaje-Estrategias">
@@ -867,17 +822,18 @@
       </section>
 
       <!-- BIBLIOGRAFÍA -->
-      <section class="bibliografia">
+      <section class="bibliografia mt-4">
         <table>
-          <tr>X. BIBLIOGRAFÍA</tr>
-          <tr>{{ subject_data.bibliography  }}</tr>
+          <tr><td class="fw-bold">   <p class="ms-4 mb-0">X. BIBLIOGRAFÍA</p></td>
+            </tr>
+          <tr><td>{{ subject_data.bibliography  }}</td></tr>
         </table>
       </section>
 
       <!-- ultimos cambios -->
-      <section id="versiones">
+      <section id="versiones" class="mt-4">
         <table>
-          <tr class="fw-bold">Histórico de control de cambios</tr>
+          <div class="conteiner-fluid fw-bold text-center">Histórico de control de cambios</div>
           <tr>
             <td class="fw-bold text-center">Fecha de
               actualización </td>

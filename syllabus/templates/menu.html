@@ -5,7 +5,10 @@
     Mis materias <i class="bx bxs-book"></i>
   </h2>
   {% if data %} {% for row in data %}
-  <a href="/editor/{{ row.subject_id }}?" class="text-decoration-none">
+  <a
+    href="/editor/{{ row.subject_id }}/{{ row.program_name }}"
+    class="text-decoration-none"
+  >
     <div class="bg_primary p-2 container-fluid rounded" style="color: #fff">
       <div class="row">
         <div class="col-5 me-5">
@@ -40,62 +43,3 @@
   {% endif %}
 </section>
 {% endblock %}{% block scripts%} {% endblock %}
-
-<!-- VII. CONTENIDOS PROGRAMÁTICOS VIII. ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
-<table>
-  <tr>
-    <td>
-      <section class="contenido-estrategias">
-        <div class="contenidoProgramatico">
-          <div class="tContenidoProgramatico">
-            <p>
-              <span class="num">VII.</span>
-              <strong>CONTENIDO PROGRAMATICO</strong>
-            </p>
-          </div>
-        </div>
-      </section>
-    </td>
-    <td>
-      <!-- ESTRATEGIAS DE ENSEÑANZA DE APRENDIZAJE -->
-      <div class="estrategias">
-        <div class="estrategiasDeAprendizaje">
-          <div class="tEstrategias">
-            <p>
-              <span class="num">VIII.</span>
-              <strong>ESTRATEGIAS DE ENSEÑANZA-APRENDIZAJE</strong>
-            </p>
-          </div>
-        </div>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div class="campoContenidoProgramatico">
-        <div class="bloques" id="program-content"></div>
-      </div>
-    </td>
-    <td>
-      <div class="campoEstrategias">
-        <div class="bloques" id="strategies"></div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-<!--CONTENIDOS Y ESTRATEGIAS-->
-<section id="contenidosYEstrategias">
-  <table>
-    <tr class="fw-bold text-center">
-      <td>VII. CONTENIDOS PROGRAMÁTICOS</td>
-      <td>VIII. ESTRATEGIAS DE ENSEÑANZAAPRENDIZAJE</td>
-    </tr>
-    {% for content in contentsAndStrategies_data %}
-    <tr>
-      <td>{{ content.content_name }} {{ content.sub_name }}</td>
-      <td>{{ content.strategies }}</td>
-    </tr>
-    {% endfor %}
-  </table>
-</section>

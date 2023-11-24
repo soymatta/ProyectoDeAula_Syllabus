@@ -162,8 +162,8 @@ def admin():
 
 
 # Editor online
-@app.route("/editor/<int:subject_id>", methods=["GET"])
-def editor_by_id(subject_id):
+@app.route("/editor/<int:subject_id>/<string:program_name>", methods=["GET"])
+def editor_by_id(subject_id, program_name):
     if "user_id" in session:
         syllabus_id = (
             db.session.query(Syllabi.id)
@@ -173,6 +173,10 @@ def editor_by_id(subject_id):
 
         # Consultas a la base de datos
         syllabus = db.session.query(Syllabi).filter(Syllabi.id == syllabus_id).first()
+
+        format_query = (
+            db.session.query(Formats).filter(Formats.id == syllabus.format_id).first()
+        )
 
         evaluations = (
             db.session.query(Evaluations)
@@ -220,6 +224,12 @@ def editor_by_id(subject_id):
             "faculty_id": syllabus.faculty_id,
             "subjects_id": syllabus.subject_id,
             "format_id": syllabus.format_id,
+        }
+
+        format_data = {
+            "code": format_query.code.upper(),
+            "version": format_query.version,
+            "update_date": format_query.update_date.strftime("%d/%m/%Y"),
         }
 
         faculty_data = {"id": faculty.id, "name": faculty.name.upper()}
@@ -284,13 +294,18 @@ def editor_by_id(subject_id):
             for version in versions
         ]
 
-        lastVersion = [{'date': '24/11/2023'}, {'date': '01/11/2023'}]
+        lastVersion = [{"date": "24/11/2023"}, {"date": "01/11/2023"}]
 
         if len(lastVersion) > 1:
-            lastVersion = max(map(lambda x: datetime.strptime(x['date'], '%d/%m/%Y'), lastVersion)).strftime('%d/%m/%Y')
+            lastVersion = max(
+                map(lambda x: datetime.strptime(x["date"], "%d/%m/%Y"), lastVersion)
+            ).strftime("%d/%m/%Y")
         else:
-            lastVersion = datetime.strptime(lastVersion[0]['date'], '%d/%m/%Y').strftime('%d/%m/%Y')
+            lastVersion = datetime.strptime(
+                lastVersion[0]["date"], "%d/%m/%Y"
+            ).strftime("%d/%m/%Y")
 
+        print(format_data)
         return render_template(
             "/editor.html",
             # Mandar JSON para el HTML
@@ -301,7 +316,9 @@ def editor_by_id(subject_id):
             contentsAndStrategies_data=contentsAndStrategies_data,
             evaluations_data=evaluations_data,
             versions_data=versions_data,
-            lastVersion = lastVersion,
+            lastVersion=lastVersion,
+            program_name=program_name.upper(),
+            format_data = format_data,
         )
 
     else:
