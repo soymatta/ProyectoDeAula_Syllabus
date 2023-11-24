@@ -6,6 +6,86 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
 {% endblock %} {% block header%} {% endblock %} {% block content %}
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Crear nuevo Bloque para contenido y enseñanzas
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Contenido Programático:</label>
+            <textarea class="form-control program_contentTextArea" id="content-text"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Estrategias de enseñanza de Aprendizaje:</label>
+            <textarea class="form-control strategyLearningTextArea" id="learning-text"></textarea>
+          </div>
+
+          <!-- Campo oculto para almacenar el ID del bloque que se está editando -->
+          <input type="hidden" id="editBlockId" value="" />
+        </form>
+
+        <!-- Botones del pie del modal -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary" id="createBlockBtn">
+            Crear bloque
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+  tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Show a second modal and hide this one with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second
+          modal</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+  tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Hide this modal and show the first with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to
+          first</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="fixed-top">
   <header class="navigation">
     <div class="navigation">
@@ -106,7 +186,8 @@
           </svg>
         </button>
 
-        <button href="#" class="button_nav">
+
+        <button href="#" class="button_nav" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy" width="28"
             height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
             stroke-linejoin="round">
@@ -262,44 +343,7 @@
 
           <div class="bloques" id="blockItems"></div>
 
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">
-                    Crear nuevo Bloque para contenido y enseñanzas
-                  </h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label">Contenido Programático:</label>
-                      <textarea class="form-control program_contentTextArea" id="content-text"></textarea>
-                    </div>
-                    <div class="mb-3">
-                      <label for="message-text" class="col-form-label">Estrategias de enseñanza de Aprendizaje:</label>
-                      <textarea class="form-control strategyLearningTextArea" id="learning-text"></textarea>
-                    </div>
 
-                    <!-- Campo oculto para almacenar el ID del bloque que se está editando -->
-                    <input type="hidden" id="editBlockId" value="" />
-                  </form>
-
-                  <!-- Botones del pie del modal -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                      Close
-                    </button>
-                    <button type="button" class="btn btn-primary" id="createBlockBtn">
-                      Crear bloque
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -388,7 +432,9 @@
   </div>
 </div>
 
-<div id="contenedorParaExportar" >
+
+
+<div id="contenedorParaExportar">
   <!-- Cuadro de inicio -->
   <div class="cuerpo float-md-start ms-5 mx-auto" id="DivExportar">
     <section class="inicio">
