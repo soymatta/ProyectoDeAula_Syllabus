@@ -360,8 +360,7 @@
                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
                   <div class="accordion-body">
                     <textarea name="firstEvaluationArea" id="firstEvaluationText" class="full-width-textarea" rows="3"
-                      cols="80" oninput="firstEvaluationRun()" onclick="setActiveTextArea(this)">
-{{ evaluations_data.description_first_percentage}}</textarea>
+                      cols="80" oninput="firstEvaluationRun()" onclick="setActiveTextArea(this)">{{ evaluations_data.description_first_percentage}}</textarea>
                   </div>
                 </div>
               </div>
@@ -378,8 +377,7 @@
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                   <div class="accordion-body">
                     <textarea name="secondEvaluationArea" id="secondEvaluationText" class="full-width-textarea" rows="3"
-                      cols="80" oninput="secondEvaluationRun()" onclick="setActiveTextArea(this)">
-                      {{ evaluations_data.description_second_percentage}}
+                      cols="80" oninput="secondEvaluationRun()" onclick="setActiveTextArea(this)">{{ evaluations_data.description_second_percentage}}
                    </textarea>
                   </div>
                 </div>
@@ -395,8 +393,7 @@
                 <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                   <div class="accordion-body">
                     <textarea name="thirdEvaluationArea" id="thirdEvaluationText" class="full-width-textarea" rows="3"
-                      cols="80" oninput="thirdEvaluationRun()" onclick="setActiveTextArea(this)">
-                      {{ evaluations_data.description_third_percentage}}
+                      cols="80" oninput="thirdEvaluationRun()" onclick="setActiveTextArea(this)">{{ evaluations_data.description_third_percentage}}
                    </textarea>
                   </div>
                 </div>
@@ -767,15 +764,15 @@
         </tr>
         <tr>
           <td>
-            <div class="campoContenidoProgramatico">
-              <div class="bloques" id="program-content"></div>
+            <div class="campoContenidoProgramatico" data-contents='{{ contentsAndStrategies_data | tojson | safe }}'>
+                <div class="bloques" id="program-content"></div>
             </div>
-          </td>
-          <td>
+        </td>
+        <td>
             <div class="campoEstrategias">
-              <div class="bloques" id="strategies"></div>
+                <div class="bloques" id="strategies"></div>
             </div>
-          </td>
+        </td>
         </tr>
       </table>
 
