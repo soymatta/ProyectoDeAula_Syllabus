@@ -1,11 +1,14 @@
 from ..db.db import db, ma, app
 from sqlalchemy import Enum
 
+
 class Subjects(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(50), nullable=False)
-    modality = db.Column(Enum('presencial', 'presencial-tic', 'virtual'), nullable=False)
-    type = db.Column(Enum('practica', 'teorica', 'teorico-practica'), nullable=False)
+    modality = db.Column(
+        Enum("presencial", "presencial-tic", "virtual"), nullable=False
+    )
+    type = db.Column(Enum("practica", "teorica", "teorico-practica"), nullable=False)
     credits = db.Column(db.Integer, nullable=False)
     semester = db.Column(db.String(2), nullable=False)
     bibliography = db.Column(db.Text)
@@ -18,9 +21,11 @@ class Subjects(db.Model):
         self.bibliography = bibliography
         self.content = content
 
+
 class SubjectsSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Subjects
+
 
 subject_schema = SubjectsSchema()
 subjects_schema = SubjectsSchema(many=True)
