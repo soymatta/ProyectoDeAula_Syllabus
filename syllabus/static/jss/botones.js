@@ -233,3 +233,32 @@ function addHeader(level) {
         activeTextArea.value = newText;
     }
 }
+
+
+
+function guardarEnBaseDeDatos() {
+    var update_date = new Date().toISOString(); // Obtén la fecha actual en formato ISO
+    var description = document.getElementById('descriptionInput').value; // Ajusta el ID según tu formulario
+    var user_id = document.getElementById('userIdInput').value; // Ajusta el ID según tu formulario
+    var syllabus_id = document.getElementById('syllabusIdInput').value; // Ajusta el ID según tu formulario
+
+    fetch('/guardarDiv', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            update_date: update_date,
+            description: description,
+            user_id: user_id,
+            syllabus_id: syllabus_id
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.mensaje || data.error);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}

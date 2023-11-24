@@ -16,7 +16,7 @@ def get_versions():
 def create_version():
     try:
         data = request.get_json()
-        version = Version(**data)
+        version = version(**data)
         db.session.add(version)
         db.session.commit()
         return VersionsSchema().jsonify(version), 201
