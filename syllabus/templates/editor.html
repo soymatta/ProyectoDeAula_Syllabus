@@ -62,9 +62,10 @@
             <path d="M12 4l0 12" />
           </svg>
         </button>
-  
+        
+        <!-- aplicar negrita -->
         <button href="#" class="button_nav" onclick="aplicarNegrita()">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bold" onclick="aplicarNegrita()"
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bold"
             width="28" height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none"
             stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -75,7 +76,7 @@
   
   
         <img width="4%" src="{{ url_for('static', filename='img/logo.png') }}" alt="icono">
-  
+        <!-- aplicar cursiva -->
         <button href="#" class="button_nav" onclick="aplicarCursiva()">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-italic" width="28" height="28"
             viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
@@ -207,9 +208,8 @@
       <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <textarea name="justificationArea" id="JustificationText" class="full-width-textarea" rows="15" cols="80"
-            oninput="JustificationRun()" onclick="setActiveTextArea(this)">
-            {{ syllabus_data.justification }}
-          </textarea>
+            oninput="JustificationRun()" onclick="setActiveTextArea(this)">{{syllabus_data.justification}}</textarea>
+
         </div>
       </div>
     </div>
@@ -223,9 +223,7 @@
       <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <textarea name="competencesArea" id="competencesText" class="full-width-textarea" rows="15" cols="80"
-            oninput="competencesRun()" onclick="setActiveTextArea(this)">
-            {{ syllabus_data.competences}}
-          </textarea>
+            oninput="competencesRun()" onclick="setActiveTextArea(this)">{{ syllabus_data.competences}}</textarea>
         </div>
       </div>
     </div>
@@ -239,9 +237,7 @@
       <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <textarea name="learningssArea" id="learningsText" class="full-width-textarea" rows="15" cols="80"
-            oninput="learningsRun()" onclick="setActiveTextArea(this)">
-            {{ syllabus_data.learning_results}}
-          </textarea>
+            oninput="learningsRun()" onclick="setActiveTextArea(this)">{{ syllabus_data.learning_results}}</textarea>
         </div>
       </div>
     </div>
@@ -255,9 +251,7 @@
       <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <textarea name="methodologyArea" id="methodologyText" class="full-width-textarea" rows="15" cols="80"
-            oninput="methodologyRun()" onclick="setActiveTextArea(this)">
-            {{ syllabus_data.methodology}}
-          </textarea>
+            oninput="methodologyRun()" onclick="setActiveTextArea(this)">{{ syllabus_data.methodology}}</textarea>
         </div>
       </div>
     </div>
@@ -334,9 +328,7 @@
               <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
                 <div class="accordion-body">
                   <textarea name="firstEvaluationArea" id="firstEvaluationText" class="full-width-textarea" rows="15"
-                    cols="80" oninput="firstEvaluationRun()" onclick="setActiveTextArea(this)">
-                      {{ evaluations_data.description_first_percentage}}
-                   </textarea>
+                    cols="80" oninput="firstEvaluationRun()" onclick="setActiveTextArea(this)">{{ evaluations_data.description_first_percentage}}</textarea>
                 </div>
               </div>
             </div>
@@ -351,9 +343,7 @@
               <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                 <div class="accordion-body">
                   <textarea name="secondEvaluationArea" id="secondEvaluationText" class="full-width-textarea" rows="15"
-                    cols="80" oninput="secondEvaluationRun()" onclick="setActiveTextArea(this)">
-                      {{ evaluations_data.description_second_percentage}}
-                   </textarea>
+                    cols="80" oninput="secondEvaluationRun()" onclick="setActiveTextArea(this)">{{ evaluations_data.description_second_percentage}}</textarea>
                 </div>
               </div>
             </div>
@@ -368,9 +358,7 @@
               <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                 <div class="accordion-body">
                   <textarea name="thirdEvaluationArea" id="thirdEvaluationText" class="full-width-textarea" rows="15"
-                    cols="80" oninput="thirdEvaluationRun()" onclick="setActiveTextArea(this)">
-                      {{ evaluations_data.description_third_percentage}}
-                   </textarea>
+                    cols="80" oninput="thirdEvaluationRun()" onclick="setActiveTextArea(this)">{{ evaluations_data.description_third_percentage}}</textarea>
                 </div>
               </div>
             </div>
@@ -389,9 +377,7 @@
       <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <textarea name="bibliographyArea" id="bibliographyText" class="full-width-textarea" rows="15" cols="80"
-            oninput="bibliographyRun()" onclick="setActiveTextArea(this)">
-            {{subject_data.bibliography}}
-          </textarea>
+            oninput="bibliographyRun()" onclick="setActiveTextArea(this)">{{subject_data.bibliography}}</textarea>
         </div>
       </div>
     </div>
@@ -793,66 +779,72 @@
 </tr>
 </table>
 <table>
-<tr>
-  <td>
-   <div class="tTablaPorcentaje-Estrategias">
-    <div class="tPorcentaje">
-      <p>PORCENTAJE</p>
-    </div> 
-  </td>
-  <td>
-    <div class="tEstrategias">
-      <p>ESTRATEGIAS</p>
-    </div>
-  </div>
-  </td>
-</tr>
-<tr>
-  <td>
-    <div class="porcentaje-estrategias" data-evaluations = "{{ evaluations_data }}">
-    <div class="primerCorte">
-      <div class="tPrimerCorte">
-        {{evaluations_data.first_percentage}}%
+  <tr>
+    <td>
+      <div class="tTablaPorcentaje-Estrategias">
+        <div class="tPorcentaje">
+          <p>PORCENTAJE</p>
+        </div> 
       </div>
-  </td>
-  <td>
+    </td>
+    <td>
+      <div class="tEstrategias">
+        <p>ESTRATEGIAS</p>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      {% if evaluations_data.second_percentage is none and evaluations_data.third_percentage is none %}
+        <div class="porcentaje-estrategias" data-evaluations="{{ evaluations_data }}">
+          <div class="primerCorte">
+            <div class="tPrimerCorte">
+              {{ evaluations_data.first_percentage }}%
+            </div>
+          </div>
+        </div>
+      {% else %}
+          {% if evaluations_data.second_percentage is not none %}
+            <div class="segundoCorte">
+              <div class="tSegundoCorte">
+                {{ evaluations_data.second_percentage }}%
+              </div>
+            </div>
+          {% endif %}
+          {% if evaluations_data.third_percentage is not none %}
+            <div class="tercerCorte">
+              <div class="tTercerCorte">
+                {{ evaluations_data.third_percentage }}%
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </td>
+    <td>
       <div class="estrategiasPrimerCorte">
         <div class="bloques" id="firstEvaluation"></div>
+        {% if evaluations_data.description_first_percentage is not none %}
+          <p>{{ evaluations_data.description_first_percentage }}</p>
+        {% endif %}
       </div>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td>
- <div class="segundoCorte">
-      <div class="tSegundoCorte">
-        {{evaluations_data.second_percentage}}%
-      </div>
-  </td>
-  <td>
-    <div class="estrategiasSegundoCorte">
+      <div class="estrategiasSegundoCorte">
         <div class="bloques" id="secondEvaluation"></div>
+        {% if evaluations_data.description_second_percentage is not none %}
+          <p>{{ evaluations_data.description_second_percentage }}</p>
+        {% endif %}
       </div>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td>
-    <div class="tercerCorte">
-      <div class="tTercerCorte">
-        {{evaluations_data.third_percentage}}%
-      </div>
-  </td>
-  <td>
-     <div class="estrategiasTercerCorte">
+      <div class="estrategiasTercerCorte">
         <div class="bloques" id="thirdEvaluation"></div>
+        {% if evaluations_data.description_third_percentage is not none %}
+          <p>{{ evaluations_data.description_third_percentage }}</p>
+        {% endif %}
       </div>
-    </div>
-  </div>
-</section>
-  </td>
-</tr>
+    </td>
+  </tr>
 </table>
+
+
 <span>
 <p></p>
 </span>
