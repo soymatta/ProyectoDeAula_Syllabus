@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const $boton = document.querySelector("#btnCrearPdf");
-    
+
     $boton.addEventListener("click", () => {
-        const $elementoParaConvertir = document.querySelector("#DivExportar");
+        const $elementoParaConvertir = document.querySelector("#contenedorParaExportar");
 
         html2pdf()
             .set({ jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } })
@@ -235,17 +235,18 @@ function addHeader(level) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    var syllabus_id = changesUpdate.getAttribute('syllabus_data.id');
-    var user_id = changesUpdate.getAttribute('syllabus_data.id');
+document.addEventListener('DOMContentLoaded', function () {
+    const $boton = document.querySelector("#btnGuardar");
 
-    function guardarEnBaseDeDatos() {
+
+    $boton.addEventListener("click", () => {
+        alert("entra")
+        var syllabus_id = changesUpdate.getAttribute('syllabus_data.id');
+        var user_id = changesUpdate.getAttribute('syllabus_data.id');
         var update_date = new Date().toISOString(); // Obtén la fecha actual en formato ISO
-        var description = document.getElementById('descriptionInput').value; // Ajusta el ID según tu formulario
-        user_id = document.getElementById('userIdInput').value; // Ajusta el ID según tu formulario
-        syllabus_id = syllabus_id; // Ajusta el ID según tu formulario
-    
-        fetch('/guardarDiv', {
+        var description = document.getElementById('description-text1').value; // Ajusta el ID según tu formulario
+
+        fetch('versions/post', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -257,13 +258,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 syllabus_id: syllabus_id
             }),
         })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.mensaje || data.error);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    }
+            .then(response => response.json())
+            .then(data => {
+                alert(data.mensaje || data.error);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+    });
+
+
 
 });

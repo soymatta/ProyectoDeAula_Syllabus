@@ -41,7 +41,7 @@
               Close
             </button>
             <button type="button" class="btn btn-danger" id="createBlockBtn">
-              Crear bloque
+              Save
             </button>
           </div>
         </div>
@@ -64,13 +64,13 @@
           <form>
             <div class="mb-3">
               <label for="message-text" class="col-form-label">Describa los cambios en el syllabus</label>
-              <textarea rows="3" cols="15" class="full-width-textarea" id="message-text"></textarea>
+              <textarea rows="3" cols="15" class="full-width-textarea" id="description-text1"></textarea>
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger">Save</button>
+          <button type="button" class="btn btn-danger" id="btnGuardar">Save</button>
         </div>
       </div>
     </div>
@@ -117,7 +117,7 @@
             </svg>
           </button>
 
-          <button href="#" class="button_nav" onclick="exportarAPDF()">
+          <button href="#" class="button_nav" id="btnCrearPdf">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="28" height="28"
               viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round"
               stroke-linejoin="round">
@@ -329,7 +329,7 @@
         <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
-              data-bs-whatever="@getbootstrap">
+              data-bs-whatever="@getbootstrap" style="width: 100%;">
               Crear nuevo bloque
             </button>
 
@@ -500,10 +500,8 @@
                   </div>
                 </div>
               </td>
-              <td>
-                <div class="CodigoAsignatura" id="codeAsignatura">
-                  <p>{{ subject_data.id }}</p>
-                </div>
+              <td class="text-center">
+                {{ subject_data.id }}
               </td>
             </tr>
             <tr>
@@ -514,10 +512,8 @@
                   </div>
                 </div>
               </td>
-              <td>
-                <div class="SemestreAsignatura" id="semesterAsignatura">
-                  <p>{{ subject_data.semester }}</p>
-                </div>
+              <td class="text-center">
+                {{ subject_data.semester }}
               </td>
             </tr>
             <tr>
@@ -659,10 +655,8 @@
                   </div>
                 </div>
               </td>
-              <td>
-                <div class="campoFechaActualizacion" id="dateActualizacion">
-                  <p>{{ date_actualizacion }}</p>
-                </div>
+              <td class="text-center">
+                {{ lastVersion }}
               </td>
             </tr>
           </table>
@@ -859,15 +853,9 @@
 
       <!-- BIBLIOGRAFÍA -->
       <section class="bibliografia">
-        <div class="tBibliografia">
-          <p>X. BIBLIOGRAFÍA</p>
-        </div>
         <table>
-          <tr>
-            <td>
-              <div class="campoBibliografia" id="bibliography"></div>
-            </td>
-          </tr>
+          <tr>X. BIBLIOGRAFÍA</tr>
+          <tr>{{ subject_data.bibliography  }}</tr>
         </table>
       </section>
 
