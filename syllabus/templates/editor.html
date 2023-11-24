@@ -37,7 +37,7 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Close
           </button>
-          <button type="button" class="btn btn-primary" id="createBlockBtn">
+          <button type="button" class="btn btn-danger" id="createBlockBtn">
             Crear bloque
           </button>
         </div>
@@ -67,7 +67,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-danger">Save</button>
       </div>
     </div>
   </div>
@@ -197,8 +197,8 @@
           SINTAXIS MARKDOWN
         </button>
       </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
+      <div id="collapseOne" class="accordion-collapse collapse" style="overflow-y: scroll;" data-bs-parent="#accordionExample">
+        <div class="accordion-body" style="height: 300px;">
           <strong>Encabezados:</strong>
           <ul>
             <li># Encabezado 1</li>
@@ -324,7 +324,7 @@
       </h2>
       <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
             data-bs-whatever="@getbootstrap">
             Crear nuevo bloque
           </button>
@@ -355,7 +355,7 @@
               </h2>
               <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                  <textarea name="firstEvaluationArea" id="firstEvaluationText" class="full-width-textarea" rows="15"
+                  <textarea name="firstEvaluationArea" id="firstEvaluationText" class="full-width-textarea" rows="3"
                     cols="80" oninput="firstEvaluationRun()" onclick="setActiveTextArea(this)">
 {{ evaluations_data.description_first_percentage}}</textarea>
                 </div>
@@ -373,7 +373,7 @@
               </h2>
               <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                  <textarea name="secondEvaluationArea" id="secondEvaluationText" class="full-width-textarea" rows="15"
+                  <textarea name="secondEvaluationArea" id="secondEvaluationText" class="full-width-textarea" rows="3"
                     cols="80" oninput="secondEvaluationRun()" onclick="setActiveTextArea(this)">
                       {{ evaluations_data.description_second_percentage}}
                    </textarea>
@@ -390,7 +390,7 @@
               </h2>
               <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                  <textarea name="thirdEvaluationArea" id="thirdEvaluationText" class="full-width-textarea" rows="15"
+                  <textarea name="thirdEvaluationArea" id="thirdEvaluationText" class="full-width-textarea" rows="3"
                     cols="80" oninput="thirdEvaluationRun()" onclick="setActiveTextArea(this)">
                       {{ evaluations_data.description_third_percentage}}
                    </textarea>

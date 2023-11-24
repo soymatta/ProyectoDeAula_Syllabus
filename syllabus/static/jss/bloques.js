@@ -25,9 +25,10 @@ document.addEventListener('DOMContentLoaded', function () {
       newItem.classList.add('item');
       newItem.dataset.blockId = blockId;  // Añadir un atributo de datos para almacenar el ID del bloque
       newItem.innerHTML = `
+          <br>
           <span>Bloque ${blockCounter}</span>
-          <button class="config-button" onclick="editBlock('${blockId}')">Editar</button>
-          <button class="config-button" onclick="deleteBlock('${blockId}')">Eliminar</button>
+          <button class="btn btn-secondary ms-4" onclick="editBlock('${blockId}')">Editar</button>
+          <button class="btn-close ms-4" onclick="deleteBlock('${blockId}')"></button>
       `;
 
       // Añadir ítem al contenedor
