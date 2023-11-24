@@ -11,7 +11,7 @@
 {% endblock %}
 {% block content %}
 
-<div class="">
+<div>
   <header class="navigation">
     <div class="navigation">
       <nav class="navi">
@@ -138,7 +138,7 @@
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <p>
+          
             <strong>Encabezados:</strong>
           <ul>
             <li># Encabezado 1</li>
@@ -194,7 +194,7 @@
           `código en línea`
 
 
-          </p>
+          
         </div>
       </div>
     </div>
@@ -392,8 +392,6 @@
     </div>
   </div>
 </div>
-</div>
-</div>
 
 
 
@@ -443,26 +441,26 @@
     </section>
 
     <!-- Identificación -->
-    <section class="identificacion" id="identification">
-      <div class="tIdentificacion">
-        <p><span class="num">II.</span><strong>IDENTIFICACIÓN</strong></p>
-      </div>
-      <div class="cuadroIdentificacion">
-        <!-- fila nombre asignatura -->
-        <table>
-          <tr>
-            <td>
-              <div class="filaNombreAsignatura">
-                <div class="tNombreAsignatura">
-                  <p>NOMBRE ASIGNATURA O MÓDULO</p>
-                </div>
-            </td>
-            <td>
-              <div class="NombreAsignatura" id="nameAsignatura">
-                <p>{{subject_data.name}}</p>
-              </div>
-      </div>
-      </td>
+<section class="identificacion" id="identification">
+  <div class="tIdentificacion">
+    <p><span class="num">II.</span><strong>IDENTIFICACIÓN</strong></p>
+  </div>
+  <div class="cuadroIdentificacion">
+    <!-- Fila nombre asignatura -->
+    <table>
+      <tr>
+        <td>
+          <div class="filaNombreAsignatura">
+            <div class="tNombreAsignatura">
+              <p>NOMBRE ASIGNATURA O MÓDULO</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="NombreAsignatura" id="nameAsignatura">
+            <p>{{ subject_data.name }}</p>
+          </div>
+        </td>
       </tr>
       <tr>
         <td>
@@ -470,196 +468,182 @@
             <div class="tCodigo">
               <p>CÓDIGO</p>
             </div>
+          </div>
         </td>
         <td>
           <div class="CodigoAsignatura" id="codeAsignatura">
-            <p>{{subject_data.id}}</p>
+            <p>{{ subject_data.id }}</p>
           </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="filaSemestreAsignatura">
+            <div class="tSemestre">
+              <p>SEMESTRE</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="SemestreAsignatura" id="semesterAsignatura">
+            <p>{{ subject_data.semester }}</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="filaCreditosAcademicos">
+            <div class="tCreditos">
+              <p>Nº DE CRÉDITOS ACADÉMICOS</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="creditosAcademicos" id="creditsAcademicos">
+            <p>{{ subject_data.credits }}</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="filaModalidadAsignatura">
+            <div class="tModalidad">
+              <p>MODALIDAD*</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="tipoModalidades">
+            <table>
+              <tr>
+                <td>
+                  <div class="filaModalidadPresencial">
+                    <div class="modalidadPresencial">
+                      <p>Presencial</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="campoModalidadPresencial" id="idModalidadPresencial" data-modalidad="{{ subject_data.modality }}">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="filaModalidadTIC">
+                    <div class="modalidadTIC">
+                      <p>Presencial asistida por TIC</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="campoTIC" id="idModalidadTIC">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="filaModalidadVirtual">
+                    <div class="modalidadVirtual">
+                      <p>Virtual</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="campoVirtual" id="idModalidadVirtual">
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="filaTipoAsignatura" data-tipo="{{ subject_data.type }}" id="typeAsignatura">
+            <div class="tTipoAsignatura">
+              <p>TIPO DE ASIGNATURA*</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="tipoAsignaturas">
+            <table>
+              <tr>
+                <td>
+                  <div class="filaAsignaturaTeorica">
+                    <div class="tTeorica">
+                      <p>Teórica</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="campoTeorica" id="idAsignaturaTeorica">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="filaAsignaturaTeoricoPractica">
+                    <div class="tTeoricoPractica">
+                      <p>Teórico-Práctica</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="campoTeoricoPractica" id="idAsignaturaTeoricoPractica">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="filaAsignaturaPractica">
+                    <div class="tPractica">
+                      <p>Práctica</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="campoPractica" id="idAsignaturaPractica">
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="filaDocentes">
+            <div class="tDocentes">
+              <p>DOCENTE(S)</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="campoDocentes" id="idDocentes">
+            <p>{{ teachers_data }}</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="filaFechaActualizacion">
+            <div class="tFechaActualizacion">
+              <p>FECHA DE ACTUALIZACIÓN</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="campoFechaActualizacion" id="dateActualizacion">
+            <p>{{ date_actualizacion }}</p>
+          </div>
+        </td>
+      </tr>
+    </table>
   </div>
-  </td>
-
-  </tr>
-  <tr>
-    <td>
-      <div class="filaSemestreAsignatura">
-        <div class="tSemestre">
-          <p>SEMESTRE</p>
-        </div>
-    </td>
-    <td>
-      <div class="SemestreAsignatura" id="semesterAsignatura">
-        <p>{{subject_data.semester}}</p>
-      </div>
-</div>
-</td>
-</tr>
-<tr>
-  <td>
-    <div class="filaCreditosAcademicos">
-      <div class="tCreditos">
-        <p>Nº DE CRÉDITOS ACADÉMICOS</p>
-      </div>
-  </td>
-  <td>
-    <div class="creditosAcademicos" id="creditsAcademicos">
-      <p>{{subject_data.credits}}</p>
-    </div>
-    </div>
-  </td>
-</tr>
-
-<tr>
-  <td>
-    <div class="filaModalidadAsignatura">
-      <div class="tModalidad">
-        <p>MODALIDAD*</p>
-      </div>
-  </td>
-
-  <td>
-    <div class="tipoModalidades">
-      <table>
-        <tr>
-          <td>
-            <div class="filaModalidadPresencial">
-
-              <div class="modalidadPresencial">
-                <P>Presencial</P>
-              </div>
-          </td>
-          <td>
-            <div class="campoModalidadPresencial" id="idModalidadPresencial"
-              data-modalidad="{{ subject_data.modality }}">
-
-            </div>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td>
-    <div class="filaModalidadTIC">
-      <div class="modalidadTIC">
-        <p>Presencial asistida por TIC</p>
-      </div>
-  </td>
-  <td>
-    <div class="campoTIC" id="idModalidadTIC">
-
-    </div>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td>
-    <div class="filaModalidadVirtual">
-      <div class="modalidadVirtual">
-        <p>Virtual</p>
-      </div>
-  </td>
-  <td>
-    <div class="campoVirtual" id="idModalidadVirtual">
-
-    </div>
-    </div>
-  </td>
-</tr>
-</table>
-</div>
-</div>
-</td>
-</tr>
-
-
-<tr>
-  <td>
-    <div class="filaTipoAsignatura" data-tipo="{{subject_data.type}}" id="typeAsignatura">
-      <div class="tTipoAsignatura">
-        <p>TIPO DE ASIGNATURA*</p>
-      </div>
-  </td>
-  <td>
-    <div class="tipoAsignaturas">
-      <table>
-        <tr>
-          <td>
-            <div class="filaAsignaturaTeorica">
-              <div class="tTeorica">
-                <p>Teórica</p>
-              </div>
-          </td>
-          <td>
-            <div class="campoTeorica" id="idAsignaturaTeorica">
-
-            </div>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td>
-    <div class="filaAsignaturaTeoricoPractica">
-      <div class="tTeoricoPractica">
-        <p>Teórico-Práctica</p>
-      </div>
-  </td>
-  <td>
-    <div class="campoTeoricoPractica" id="idAsignaturaTeoricoPractica">
-
-    </div>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td>
-    <div class="filaAsignaturaPractica">
-      <div class="tPractica">
-        <p>Práctica</p>
-      </div>
-  </td>
-  <td>
-    <div class="campoPractica" id="idAsignaturaPractica">
-
-    </div>
-    </div>
-  </td>
-</tr>
-</table>
-</div>
-</div>
-</td>
-</tr>
-<tr>
-  <td>
-    <div class="filaDocentes">
-      <div class="tDocentes">
-        <p>DOCENTE(S)</p>
-      </div>
-  </td>
-  <td>
-    <div class="campoDocentes" id="idDocentes">
-      <p>{{teachers_data}}</p>
-    </div>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td>
-    <div class="filaFechaActualizacion">
-      <div class="tFechaActualizacion">
-        <p>FECHA DE ACTUALIZACIÓN</p>
-      </div>
-  </td>
-  <td>
-    <div class="campoFechaActualizacion" id="dateActualizacion">
-
-    </div>
-    </div>
-  </td>
-</tr>
-
-</table>
-
-</div>
 </section>
+
 <p>Marque una X en la opción indicada</p>
 <table>
   <!-- III Justificación -->
