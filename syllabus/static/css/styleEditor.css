@@ -161,7 +161,7 @@ section #targetDiv {
     box-sizing: border-box;
     height: 50%;
     margin-bottom: 20%;
-    margin-left: 40%;
+    margin-top: 110px;
     top: 8%;
   }
 }
@@ -177,7 +177,7 @@ section #targetDiv {
     box-sizing: border-box;
     height: 50%;
     margin-bottom: 20%;
-    margin-left: 15%;
+    margin-top: 110px;
     top: 8%;
   }
 }
